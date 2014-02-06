@@ -1,0 +1,7 @@
+parameters:
+#    votolab.example.class: Votolab\VotolabBundle\Example
+
+services:
+#    votolab.example:
+#        class: %votolab.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
