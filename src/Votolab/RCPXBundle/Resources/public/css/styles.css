@@ -1,1 +1,7 @@
 /* css styles */
+html{
+    background:#ffffff;
+}
+form{
+    width:600px;
+}
