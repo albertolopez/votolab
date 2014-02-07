@@ -1,1 +1,3 @@
-votolab_homepage:
+votolab_elections:
+    pattern:  /elections
+    defaults: { _controller: VotolabBundle:Elections:elections }
