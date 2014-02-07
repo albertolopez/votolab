@@ -1,106 +1,146 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-    <header>
-        <h1>
-            <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
-        </h1>
-    </header>
     <div class="title-logo">
         <h2>Elige a un candidato para valorar</h2>
     </div>
     <ul class="list">
         <li>
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li class="last">
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li>
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li class="last">
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li>
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li class="last">
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li>
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li class="last">
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li>
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
         <li class="last">
             <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example" />
+                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
+
             <div>
                 <h3><a href="">Xavier Vilà Albiol</a></h3>
+
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
     </ul>
     <span class="separator"></span>
-    <p class="copy">&copy; Red Ciudadana - Partido X </p>
+{% endblock %}
+{% block viewScripts %}
+    <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
+    <script>
+        (function ($, B) {
+            $(function () {
+                B.core.namespace('Views.Election', {
+                    init: function () {
+                        //https://github.com/netboy/jquery-bar-rating
+                        //http://netboy.pl/demo/jquery-bar-rating/examples/
+                        //http://stackoverflow.com/questions/13584591/how-to-integrate-ajax-with-symfony2
 
+                        $('body').barrating({
+                            onSelect: function (value, text) {
+                                $.post('{{path('RCPXe_ajax_update_mydata')}} ',
+                                        {data1: 'mydata1', data2: 'mydata2'},
+                                        function (response) {
+                                            if (response.code == 100 && response.success) {//dummy check
+                                            }
+                                        }, "json");
+                            }
+                        });
+                    }
+                });
+            })
+        })(jQuery, barlovento);
+    </script>
 {% endblock %}
