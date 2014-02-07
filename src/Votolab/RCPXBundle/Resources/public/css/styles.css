@@ -1,7 +1,139 @@
-/* css styles */
 html{
     background:#ffffff;
+    font-family: Helvetica, Arial, Sans-Serif !important;
+    color: #666666;
+}
+ul{
+    margin:0;
+    padding: 0;
+}
+header{
+    width: auto;
+    margin: 50px auto 0;
+}
+h2{
+    width: 960px;
+    margin: 50px auto 0;
+    background: #39bad9;
+    padding: 25px;
+    color:#ffffff;
+    text-align: center;
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+.separator{
+    width: 960px;
+    height: 10px;
+    margin: 10px auto;
+    background: #39bad9;
 }
 form{
-    width:600px;
+    width:960px;
+    background: #f9f9f9;
+    margin: 10px auto 0;
+    padding: 25px;
+}
+form div{
+    width: 50%;
+    float: left;
+}
+form div:last-child label{
+    display: inline-block;
+}
+form label{
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+form input[type=text],
+form input[type=password]{
+    border: 1px solid #f1f1f1;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    width: 95%;
+    padding:0.5rem;
+    margin-right: 10px;
+}
+form input[type=submit]{
+    width: 100%;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #39bad9;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    padding:0.75rem;
+    font-size: 1rem;
+}
+form input[type=submit]:hover{
+    background: #999999;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.copy{
+    text-align: center;
+    font-size: 0.8em;
+    margin: 20px auto;
+    color: #cccccc;
+    display: block;
+}
+ul{
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    width:1011px;
+    margin: 10px auto 0;
+    padding:0;
+    background: #000000;
+    display: block;
+}
+.list li{
+    float: left;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    width: 49.5%;
+    background: #f9f9f9;
+    padding: 25px;
+    list-style: none;
+    margin:0 0 10px 0px;
+}
+.list li.last{
+    float: right;
+}
+.list li img{
+    float: left;
+    width: 50px;
+    height: auto;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+.list li div{
+    float: left;
+    margin-left:15px;
+    width: 80%
+}
+.list li div h3{
+    float: left;
+    width: 100%;
+    margin:2px 0 0 0;
+}
+.list li div h3 a{
+    color: #39bad9;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+.list li div h3 a:hover{
+    color:#666666;
+}
+.list li div p{
+    float: left;
+    width: 100%;
+    margin:3px 0 0 0;
+    font-style: italic;
 }
