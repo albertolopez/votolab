@@ -2,6 +2,6 @@ votolab_elections:
     pattern:  /elections
     defaults: { _controller: VotolabBundle:Elections:elections }
 
-votolab_elections:
+votolab_election:
     pattern:  /election
     defaults: { _controller: VotolabBundle:Elections:election }
