@@ -36,16 +36,11 @@ assetic:
     bundles:        [ ]
     #java: /usr/bin/java
     filters:
-        lessphp:
-             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
-             apply_to: "\.less$"
         cssrewrite: ~
         #closure:
         #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
-braincrafted_bootstrap:
-    less_filter: lessphp
 
 # Doctrine Configuration
 doctrine:
@@ -78,18 +73,3 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Votolab\UserBundle\Entity\User
-
-braincrafted_bootstrap:
-    output_dir: bootstrap
-    assets_dir: "%kernel.root_dir%/../vendor/twbs/bootstrap"
-    jquery_path: "%kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js"
-    less_filter: lessphp # "less", "lessphp" or "none"
-    auto_configure:
-        assetic: true
-        twig: true
-        knp_menu: true
-        knp_paginator: true
-    customize:
-        variables_file: ~
-        bootstrap_output: "%kernel.root_dir%/Resources/less/bootstrap.less"
-        bootstrap_template: "BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig"

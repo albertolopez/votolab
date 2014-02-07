@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new \Votolab\UserBundle\UserBundle(),
             new Votolab\VotolabBundle\VotolabBundle(),
             new Votolab\RCPXBundle\RCPXBundle(),
-            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

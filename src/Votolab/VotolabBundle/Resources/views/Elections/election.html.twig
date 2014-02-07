@@ -119,28 +119,5 @@
 {% endblock %}
 {% block viewScripts %}
     <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
-    <script>
-        (function ($, B) {
-            $(function () {
-                B.core.namespace('Views.Election', {
-                    init: function () {
-                        //https://github.com/netboy/jquery-bar-rating
-                        //http://netboy.pl/demo/jquery-bar-rating/examples/
-                        //http://stackoverflow.com/questions/13584591/how-to-integrate-ajax-with-symfony2
 
-                        $('body').barrating({
-                            onSelect: function (value, text) {
-                                $.post('{{path('RCPXe_ajax_update_mydata')}} ',
-                                        {data1: 'mydata1', data2: 'mydata2'},
-                                        function (response) {
-                                            if (response.code == 100 && response.success) {//dummy check
-                                            }
-                                        }, "json");
-                            }
-                        });
-                    }
-                });
-            })
-        })(jQuery, barlovento);
-    </script>
 {% endblock %}
