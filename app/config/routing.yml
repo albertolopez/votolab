@@ -1,5 +1,5 @@
-votolab:
-    resource: "@VotolabBundle/Resources/config/routing.yml"
+rcpx:
+    resource: "@RCPXBundle/Resources/config/routing.yml"
     prefix:   /
 
 _user_bundle:

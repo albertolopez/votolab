@@ -1,0 +1,3 @@
+rcpx_homepage:
+    pattern:  /
+    defaults: { _controller: RCPXBundle:Home:index }
