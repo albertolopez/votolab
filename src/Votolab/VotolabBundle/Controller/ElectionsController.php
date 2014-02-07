@@ -18,9 +18,9 @@ class ElectionsController extends Controller
         $electionRepository = $this->getDoctrine()->getRepository('VotolabBundle:Election');
         $election = $electionRepository->findOneByAlias('listas-abiertas-europeas-2014');
 
-        if (empty($election)) {
+        /*if (empty($election)) {
             return $this->redirect($this->generateUrl('votolab_elections'));
-        }
+        }*/
 
         $user = $this->getUser();
 
