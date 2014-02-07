@@ -1,3 +1,1 @@
 votolab_homepage:
-    pattern:  /
-    defaults: { _controller: VotolabBundle:Home:index }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Votolab\VotolabBundle\Controller;
+namespace Votolab\RCPXBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('VotolabBundle:Home:index.html.twig');
+        return $this->render('RCPXBundle:Home:index.html.twig');
     }
 }

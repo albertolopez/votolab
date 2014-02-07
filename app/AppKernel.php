@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new \Votolab\UserBundle\UserBundle(),
             new Votolab\VotolabBundle\VotolabBundle(),
+            new Votolab\RCPXBundle\RCPXBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle()
         );
 
