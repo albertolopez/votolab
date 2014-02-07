@@ -24,8 +24,8 @@ class ElectionsController extends Controller
 
         $user = $this->getUser();
 
-        $voterRepository = $this->getDoctrine()->getRepository('VotolabBundle:Voter');
-        $election = $voterRepository->findOneBy('listas-abiertas-europeas-2014');
+        /*$voterRepository = $this->getDoctrine()->getRepository('VotolabBundle:Voter');
+        $election = $voterRepository->findOneBy('listas-abiertas-europeas-2014');*/
 
         return $this->render('VotolabBundle:Elections:election.html.twig', array('election' => $election));
     }
