@@ -14,6 +14,7 @@ class ElectionsController extends Controller
 
     public function electionAction()
     {
+
         return $this->render('VotolabBundle:Elections:election.html.twig');
     }
 
