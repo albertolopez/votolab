@@ -31,6 +31,13 @@ class Election
     /**
      * @var string
      *
+     * @ORM\Column(name="alias", type="string", length=255)
+     */
+    private $alias;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -109,6 +116,29 @@ class Election
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set alias
+     *
+     * @param string $alias
+     * @return Election
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->alias;
     }
 
     /**

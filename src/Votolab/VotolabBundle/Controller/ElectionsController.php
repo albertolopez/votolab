@@ -12,4 +12,9 @@ class ElectionsController extends Controller
         return $this->render('VotolabBundle:Elections:elections.html.twig');
     }
 
+    public function electionAction()
+    {
+        return $this->render('VotolabBundle:Elections:election.html.twig');
+    }
+
 }
