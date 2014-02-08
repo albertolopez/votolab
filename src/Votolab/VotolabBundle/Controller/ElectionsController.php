@@ -16,8 +16,9 @@ class ElectionsController extends Controller
             ->createQuery('
                 SELECT e FROM Votolab\VotolabBundle\Entity\Election e
                 LEFT JOIN e.voters v
-                WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()'
-                );
+                WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()
+                AND v.id = :user'
+                )->setParameter('user',$user->getId());
 
         $elections = $query->execute();
 
