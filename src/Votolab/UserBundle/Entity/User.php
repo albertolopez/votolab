@@ -20,8 +20,8 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Votolab\VotolabBundle\Entity\Election", inversedBy="users")
-     * @ORM\JoinTable(name="Voters")
+     * @ORM\ManyToMany(targetEntity="Votolab\VotolabBundle\Entity\Election", inversedBy="voters")
+     * @ORM\JoinTable(name="Voter")
      **/
     private $elections;
 
