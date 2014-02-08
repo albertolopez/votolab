@@ -87,10 +87,10 @@ class Election
     /**
      * @ORM\ManyToMany(targetEntity="Votolab\UserBundle\Entity\User", mappedBy="elections")
      **/
-    private $users;
+    private $voters;
 
     public function __construct() {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->voters = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

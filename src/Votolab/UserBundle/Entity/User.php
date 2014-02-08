@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="User")
+ * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
 {
@@ -20,7 +20,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Election", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Votolab\VotolabBundle\Entity\Election", inversedBy="users")
      * @ORM\JoinTable(name="Voters")
      **/
     private $elections;
