@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="votolab_user")
+ * @ORM\Table(name="User")
  */
 class User extends BaseUser
 {
@@ -19,9 +19,15 @@ class User extends BaseUser
      */
     protected $id;
 
-    public function __construct()
-    {
+    /**
+     * @ORM\ManyToMany(targetEntity="Election", inversedBy="users")
+     * @ORM\JoinTable(name="Voters")
+     **/
+    private $elections;
+
+    public function __construct() {
         parent::__construct();
-        // your own logic
+        $this->elections = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 }

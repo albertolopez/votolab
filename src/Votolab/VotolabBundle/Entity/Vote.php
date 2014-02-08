@@ -23,7 +23,7 @@ class Vote
 
     /**
      * @var integer
-     *
+     * @ORM\ManyToOne(targetEntity="Election")
      * @ORM\Column(name="election_id", type="integer")
      */
     private $electionId;
@@ -37,7 +37,7 @@ class Vote
 
     /**
      * @var integer
-     *
+     * @ORM\ManyToOne(targetEntity="Address")
      * @ORM\Column(name="criterion_id", type="integer")
      */
     private $criterionId;

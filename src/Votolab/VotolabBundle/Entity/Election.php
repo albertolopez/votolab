@@ -84,6 +84,14 @@ class Election
      */
     private $datePublished;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Votolab\UserBundle\Entity\User", mappedBy="elections")
+     **/
+    private $users;
+
+    public function __construct() {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id

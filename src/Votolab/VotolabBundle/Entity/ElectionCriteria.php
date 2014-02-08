@@ -23,8 +23,7 @@ class ElectionCriteria
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="election_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Election")
      */
     private $electionId;
 
