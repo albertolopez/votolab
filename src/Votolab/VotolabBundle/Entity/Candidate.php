@@ -22,6 +22,11 @@ class Candidate
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Election")
+     */
+    private $electionId;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -58,6 +63,29 @@ class Candidate
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set electionId
+     *
+     * @param integer $electionId
+     * @return Voter
+     */
+    public function setElectionId($electionId)
+    {
+        $this->electionId = $electionId;
+
+        return $this;
+    }
+
+    /**
+     * Get electionId
+     *
+     * @return integer
+     */
+    public function getElectionId()
+    {
+        return $this->electionId;
     }
 
     /**
