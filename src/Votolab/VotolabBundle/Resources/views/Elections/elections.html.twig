@@ -6,7 +6,7 @@
     <ul class="list">
         {%  for election in elections %}
         <li>
-            <h3><a href="{{ path('votolab_election') }}">{{ election.title }}</a></h3>
+            <h3><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
             <p>{{ election.description }}</p>
         </li>
         {% endfor %}

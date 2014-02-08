@@ -31,9 +31,9 @@ class Election
     /**
      * @var string
      *
-     * @ORM\Column(name="alias", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $alias;
+    private $slug;
 
     /**
      * @var string
@@ -127,26 +127,26 @@ class Election
     }
 
     /**
-     * Set alias
+     * Set slug
      *
-     * @param string $alias
+     * @param string $slug
      * @return Election
      */
-    public function setAlias($alias)
+    public function setSlug($slug)
     {
-        $this->alias = $alias;
+        $this->slug= $slug;
 
         return $this;
     }
 
     /**
-     * Get alias
+     * Get slug
      *
      * @return string
      */
-    public function getAlias()
+    public function getSlug()
     {
-        return $this->alias;
+        return $this->slug;
     }
 
     /**

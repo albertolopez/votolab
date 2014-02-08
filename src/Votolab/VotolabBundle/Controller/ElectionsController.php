@@ -3,7 +3,6 @@
 namespace Votolab\VotolabBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Votolab\VotolabBundle\Entity\Election;
 
 class ElectionsController extends Controller
 {
@@ -18,25 +17,26 @@ class ElectionsController extends Controller
                 LEFT JOIN e.voters v
                 WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()
                 AND v.id = :user'
-                )->setParameter('user',$user->getId());
+            )->setParameter('user', $user->getId());
 
         $elections = $query->execute();
 
-        return $this->render('VotolabBundle:Elections:elections.html.twig',
+        return $this->render(
+            'VotolabBundle:Elections:elections.html.twig',
             array(
                 'elections' => $elections
             )
         );
     }
 
-    public function electionAction()
+    public function electionAction($slug)
     {
         $electionRepository = $this->getDoctrine()->getRepository('VotolabBundle:Election');
-        $election = $electionRepository->findOneByAlias('listas-abiertas-europeas-2014');
+        $election = $electionRepository->findOneBySlug($slug);
 
-        /*if (empty($election)) {
+        if (empty($election)) {
             return $this->redirect($this->generateUrl('votolab_elections'));
-        }*/
+        }
 
         $user = $this->getUser();
 
