@@ -12,8 +12,20 @@ class ElectionsController extends Controller
     {
         $user = $this->getUser();
 
+        $query = $this->getDoctrine()->getManager()
+            ->createQuery('
+                SELECT e FROM Votolab\VotolabBundle\Entity\Election e
+                LEFT JOIN e.voters v
+                WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()'
+                );
 
-        return $this->render('VotolabBundle:Elections:elections.html.twig');
+        $elections = $query->execute();
+
+        return $this->render('VotolabBundle:Elections:elections.html.twig',
+            array(
+                'elections' => $elections
+            )
+        );
     }
 
     public function electionAction()

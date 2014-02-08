@@ -4,8 +4,11 @@
         <h2>Elecciones abiertas</h2>
     </div>
     <ul class="list">
+        {%  for election in elections %}
         <li>
-            hola
+            <h3><a href="{{ path('votolab_election') }}">{{ election.title }}</a></h3>
+            <p>{{ election.description }}</p>
         </li>
+        {% endfor %}
     </ul>
 {% endblock %}
