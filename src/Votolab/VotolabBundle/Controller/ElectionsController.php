@@ -31,19 +31,33 @@ class ElectionsController extends Controller
 
     public function electionAction($slug)
     {
-        $electionRepository = $this->getDoctrine()->getRepository('VotolabBundle:Election');
-        $election = $electionRepository->findOneBySlug($slug);
+        $user = $this->getUser();
+
+        $query = $this->getDoctrine()->getManager()
+            ->createQuery('
+                SELECT e FROM Votolab\VotolabBundle\Entity\Election e
+                LEFT JOIN e.voters v
+                WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()
+                AND v.id = :user AND e.slug = :slug'
+            )->setParameter('user', $user->getId())
+            ->setParameter('slug', $slug)
+            ->setMaxResults(1);
+        $election = $query->execute();
 
         if (empty($election)) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
 
-        $user = $this->getUser();
+        $election= reset($election);
 
-        /*$voterRepository = $this->getDoctrine()->getRepository('VotolabBundle:Voter');
-        $election = $voterRepository->findOneBy('listas-abiertas-europeas-2014');*/
+        $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
+        $candidates = $repository->findByElectionId($election->getId());
 
-        return $this->render('VotolabBundle:Elections:election.html.twig', array('election' => $election));
+        return $this->render('VotolabBundle:Elections:election.html.twig', array(
+                'election' => $election,
+                'candidates' => $candidates
+            )
+        );
     }
 
 }

@@ -4,116 +4,19 @@
         <h2>Elige a un candidato para valorar</h2>
     </div>
     <ul class="list">
-        <li>
+        {%  for candidate in candidates %}
+        <li class="{{ cycle(["first", "last"], loop.index) }}">
             <a href="#">
                 <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
             </a>
 
             <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
+                <h3><a href="">{{ candidate.name }}</a></h3>
 
                 <p>Diseñador y Front-end Developer</p>
             </div>
         </li>
-        <li class="last">
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li>
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li class="last">
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li>
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li class="last">
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li>
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li class="last">
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li>
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
-        <li class="last">
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="Example"/>
-            </a>
-
-            <div>
-                <h3><a href="">Xavier Vilà Albiol</a></h3>
-
-                <p>Diseñador y Front-end Developer</p>
-            </div>
-        </li>
+        {%  endfor %}
     </ul>
     <span class="separator"></span>
 {% endblock %}
