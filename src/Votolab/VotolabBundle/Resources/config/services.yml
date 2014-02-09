@@ -5,3 +5,8 @@ services:
 #    votolab.example:
 #        class: %votolab.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+  election_manager:
+    class: Votolab\VotolabBundle\Model\ElectionManager
+    arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
