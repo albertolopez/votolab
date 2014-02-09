@@ -10,3 +10,5 @@ votolab
 
 
 - Acceder a la web con usuario *admin* y clave *12345*
+
+
