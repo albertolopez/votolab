@@ -1,6 +1,6 @@
 <?php
 
-namespace Launcher\UserBundle\DataFixtures\ORM;
+namespace Votolab\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
