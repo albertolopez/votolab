@@ -35,7 +35,9 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "jquery/jquery": "1.10.*"
+        "jquery/jquery": "1.10.*",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "fzaninotto/faker":"dev-master"
     },
     "scripts": {
         "post-install-cmd": [
