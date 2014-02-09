@@ -2,13 +2,13 @@
 
 namespace Votolab\VotolabBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Election
  *
- * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Votolab\VotolabBundle\EntityRepository\ElectionRepository")
  */
 class Election
 {
@@ -90,7 +90,7 @@ class Election
     private $voters;
 
     public function __construct() {
-        $this->voters = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->voters = new ArrayCollection();
     }
 
     /**
