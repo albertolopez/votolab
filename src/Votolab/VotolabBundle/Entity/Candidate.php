@@ -22,9 +22,9 @@ class Candidate
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Election")
+     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Election")
      */
-    private $electionId;
+    private $election;
 
     /**
      * @var string
@@ -50,7 +50,7 @@ class Candidate
     /**
      * @var integer
      *
-     * @ORM\Column(name="gender", type="integer")
+     * @ORM\Column(name="gender", type="boolean")
      */
     private $gender;
 
@@ -68,24 +68,24 @@ class Candidate
     /**
      * Set electionId
      *
-     * @param integer $electionId
-     * @return Voter
+     * @param Election $election
+     * @return Candidate
      */
-    public function setElectionId($electionId)
+    public function setElection(Election $election)
     {
-        $this->electionId = $electionId;
+        $this->election = $election;
 
         return $this;
     }
 
     /**
-     * Get electionId
+     * Get election
      *
-     * @return integer
+     * @return Election
      */
-    public function getElectionId()
+    public function getElection()
     {
-        return $this->electionId;
+        return $this->election;
     }
 
     /**
@@ -160,7 +160,7 @@ class Candidate
     /**
      * Set gender
      *
-     * @param integer $gender
+     * @param boolean $gender
      * @return Candidate
      */
     public function setGender($gender)
@@ -173,7 +173,7 @@ class Candidate
     /**
      * Get gender
      *
-     * @return integer 
+     * @return boolean
      */
     public function getGender()
     {
