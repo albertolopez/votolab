@@ -3,6 +3,7 @@
 namespace Votolab\VotolabBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Votolab\UserBundle\Entity\User;
 
 /**
  * Vote
@@ -22,25 +23,22 @@ class Vote
     private $id;
 
     /**
-     * @var integer
+     * @var Election
      * @ORM\ManyToOne(targetEntity="Election")
-     * @ORM\Column(name="election_id", type="integer")
      */
-    private $electionId;
+    private $election;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="fos_user_id", type="integer")
+     * @var User
+     * @ORM\ManyToOne(targetEntity="Votolab\UserBundle\Entity\User")
      */
-    private $fosUserId;
+    private $user;
 
     /**
-     * @var integer
-     * @ORM\ManyToOne(targetEntity="Address")
-     * @ORM\Column(name="criterion_id", type="integer")
+     * @var ElectionCriteria
+     * @ORM\ManyToOne(targetEntity="ElectionCriteria")
      */
-    private $criterionId;
+    private $criterion;
 
     /**
      * @var string
@@ -53,7 +51,7 @@ class Vote
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -61,72 +59,72 @@ class Vote
     }
 
     /**
-     * Set electionId
+     * Set election
      *
-     * @param integer $electionId
+     * @param Election $election
      * @return Vote
      */
-    public function setElectionId($electionId)
+    public function setElection(Election $election)
     {
-        $this->electionId = $electionId;
+        $this->election = $election;
 
         return $this;
     }
 
     /**
-     * Get electionId
+     * Get election
      *
-     * @return integer 
+     * @return Election
      */
-    public function getElectionId()
+    public function getElection()
     {
-        return $this->electionId;
+        return $this->election;
     }
 
     /**
-     * Set fosUserId
+     * Set User
      *
-     * @param integer $fosUserId
+     * @param User $user
      * @return Vote
      */
-    public function setFosUserId($fosUserId)
+    public function setUser(User $user)
     {
-        $this->fosUserId = $fosUserId;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get fosUserId
+     * Get User
      *
-     * @return integer 
+     * @return User
      */
-    public function getFosUserId()
+    public function getUser()
     {
-        return $this->fosUserId;
+        return $this->user;
     }
 
     /**
-     * Set criterionId
+     * Set criterion
      *
-     * @param integer $criterionId
+     * @param ElectionCriteria $criterion
      * @return Vote
      */
-    public function setCriterionId($criterionId)
+    public function setCriterion(ElectionCriteria $criterion)
     {
-        $this->criterionId = $criterionId;
+        $this->criterion = $criterion;
 
         return $this;
     }
 
     /**
-     * Get criterionId
+     * Get criterion
      *
-     * @return integer 
+     * @return ElectionCriteria
      */
-    public function getCriterionId()
+    public function getCriterion()
     {
-        return $this->criterionId;
+        return $this->criterion;
     }
 
     /**
@@ -145,7 +143,7 @@ class Vote
     /**
      * Get vote
      *
-     * @return string 
+     * @return string
      */
     public function getVote()
     {
