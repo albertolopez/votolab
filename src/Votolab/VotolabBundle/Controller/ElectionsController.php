@@ -4,6 +4,7 @@ namespace Votolab\VotolabBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Votolab\VotolabBundle\Entity\Election;
 
 class ElectionsController extends Controller
 {
@@ -15,31 +16,18 @@ class ElectionsController extends Controller
     {
         $user = $this->getUser();
         $electionManager = $this->get('election_manager');
-        $elections = $electionManager->findForUser($user);
         return array('elections' => $electionManager->findForUser($user));
     }
 
-    public function electionAction($slug)
+    public function electionAction(Election $election)
     {
         $user = $this->getUser();
+        $electionManager = $this->get('election_manager');
 
-        $query = $this->getDoctrine()->getManager()
-            ->createQuery(
-                '
-                                SELECT e FROM Votolab\VotolabBundle\Entity\Election e
-                                LEFT JOIN e.voters v
-                                WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()
-                                AND v.id = :user AND e.slug = :slug'
-            )->setParameter('user', $user->getId())
-            ->setParameter('slug', $slug)
-            ->setMaxResults(1);
-        $election = $query->execute();
-
-        if (empty($election)) {
+        $isVoter = $electionManager->isVoterForElection($user,$election);
+        if (empty($isVoter)) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
-
-        $election = reset($election);
 
         $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
         $candidates = $repository->findByElectionId($election->getId());
