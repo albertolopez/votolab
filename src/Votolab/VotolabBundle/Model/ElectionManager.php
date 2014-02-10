@@ -38,4 +38,10 @@ class ElectionManager
     {
         return new Election();
     }
+
+    public function persist(Election $election)
+    {
+        $this->em->persist($election);
+        $this->em->flush();
+    }
 }
