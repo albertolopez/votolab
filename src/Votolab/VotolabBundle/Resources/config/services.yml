@@ -10,3 +10,11 @@ services:
   election_manager:
     class: Votolab\VotolabBundle\Model\ElectionManager
     arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
+
+  candidate_manager:
+    class: Votolab\VotolabBundle\Model\CandidateManager
+    arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
+
+  vote_manager:
+    class: Votolab\VotolabBundle\Model\VoteManager
+    arguments: [@doctrine.orm.entity_manager,@event_dispatcher]

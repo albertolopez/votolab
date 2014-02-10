@@ -2,26 +2,14 @@
 
 namespace Votolab\VotolabBundle\Model;
 
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Votolab\VotolabBundle\Entity\Election;
+use Votolab\VotolabBundle\Entity\ElectionCriteria;
 
 /**
  * election_manager
  */
-class ElectionManager
+class ElectionManager extends ManagerAbstract
 {
-    protected $em;
-    protected $dispatcher;
-
-    public function __construct(
-        EntityManager $em,
-        EventDispatcherInterface $dispatcher
-    ) {
-        $this->em = $em;
-        $this->dispatcher = $dispatcher;
-    }
-
     public function findForUser($user)
     {
         $query = $this->em->getRepository('VotolabBundle:Election')->findForUser($user);
@@ -36,6 +24,17 @@ class ElectionManager
     public function persist(Election $election)
     {
         $this->em->persist($election);
+        $this->em->flush();
+    }
+
+    public function createElectionCriteria()
+    {
+        return new ElectionCriteria();
+    }
+
+    public function persistCriteria(ElectionCriteria $criteria)
+    {
+        $this->em->persist($criteria);
         $this->em->flush();
     }
 }
