@@ -24,18 +24,24 @@ class LoadElectionData extends AbstractFixture implements FixtureInterface, Orde
      */
     public function load(ObjectManager $manager)
     {
-        /*
+
         $electionManager = $this->container->get('election_manager');
 
         $faker = \Faker\Factory::create();
-        for($i=0; $i<30; $i++)
-        {
+        for ($i = 0; $i < 30; $i++) {
             $election = $electionManager->createElection();
             $election->setTitle($faker->sentence());
+            $election->setSlug($faker->word);
+            $election->setDescription($faker->sentence());
+            $election->setDateStart($faker->dateTime);
+            $election->setDateEnd($faker->dateTime);
+            $election->setMinCandidates($faker->randomNumber());
+            $election->setMaxCandidates($faker->randomNumber());
+            $election->setPublishResults($faker->boolean());
+            $election->setDatePublished($faker->dateTime);
             $electionManager->persist($election);
-            $this->addReference('election-'.$i, $election);
+            $this->addReference('election-' . $i, $election);
         }
-        */
     }
 
     public function getOrder()
