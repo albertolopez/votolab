@@ -28,6 +28,12 @@ class ElectionManager
         return $query->getResult();
     }
 
+    public function isVoterForElection($user, $election)
+    {
+        $query = $this->em->getRepository('VotolabBundle:Election')->isVoterForElection($user, $election);
+        return $query->getResult();
+    }
+
     public function createElection()
     {
         return new Election();
