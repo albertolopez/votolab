@@ -22,10 +22,10 @@ class ElectionCriteria
     private $id;
 
     /**
-     * @var integer
+     * @var Election
      * @ORM\ManyToOne(targetEntity="Election")
      */
-    private $electionId;
+    private $election;
 
     /**
      * @var string
@@ -62,24 +62,24 @@ class ElectionCriteria
     /**
      * Set electionId
      *
-     * @param integer $electionId
+     * @param Election $election
      * @return ElectionCriteria
      */
-    public function setElectionId($electionId)
+    public function setElection(Election $election)
     {
-        $this->electionId = $electionId;
+        $this->election = $election;
 
         return $this;
     }
 
     /**
-     * Get electionId
+     * Get election
      *
-     * @return integer 
+     * @return Election
      */
-    public function getElectionId()
+    public function getElection()
     {
-        return $this->electionId;
+        return $this->election;
     }
 
     /**
