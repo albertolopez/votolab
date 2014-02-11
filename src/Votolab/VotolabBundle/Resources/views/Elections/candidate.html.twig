@@ -1,0 +1,28 @@
+<div class="{{ cycle(["first", "last"], loop.index) }} candidate clearfix"
+     data-candidate="{{ candidate.id }}">
+    <a href="#">
+        <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
+    </a>
+
+    <div>
+        <h3><a href="">{{ candidate.name }}</a></h3>
+    </div>
+    <div class="moreInfo" data-panel>
+        <span>{{ candidate.video|raw }}</span>
+        <span>{{ candidate.biography }}</span>
+        <ul class="criteria">
+            {% for criterion in criteria %}
+                <li>{{ criterion.criterion }}:
+                    <select data-rating>
+                        <option value="0">hola</option>
+                        <option value="1">asfsadf</option>
+                        <option value="asfdasd">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
