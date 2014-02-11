@@ -3,12 +3,12 @@
     <div class="title-logo">
         <h2>Elecciones abiertas</h2>
     </div>
-    <ul class="list">
+    <div class="list">
         {%  for election in elections %}
-        <li>
+        <div>
             <h3><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
             <p>{{ election.description }}</p>
-        </li>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

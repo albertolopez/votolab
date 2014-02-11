@@ -35,6 +35,17 @@ class ElectionsController extends Controller
         $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
         $candidates = $repository->findByElection($election);
 
-        return array('election' => $election, 'candidates' => $candidates);
+        $repositoryCriteria = $this->getDoctrine()->getRepository('VotolabBundle:ElectionCriteria');
+        $criteria = $repositoryCriteria->findByElection($election);
+
+        return array('election' => $election, 'candidates' => $candidates, 'criteria' => $criteria);
+    }
+
+    /**
+     * @template
+     */
+    public function resultAction(Election $election)
+    {
+
     }
 }
