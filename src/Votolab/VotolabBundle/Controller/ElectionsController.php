@@ -33,7 +33,7 @@ class ElectionsController extends Controller
         }
 
         $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
-        $candidates = $repository->findByElectionId($election->getId());
+        $candidates = $repository->findByElection($election);
 
         return array('election' => $election, 'candidates' => $candidates);
     }
