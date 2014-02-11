@@ -26,20 +26,30 @@ class LoadElectionData extends AbstractFixture implements FixtureInterface, Orde
     {
 
         $electionManager = $this->container->get('election_manager');
+        $em = $this->container->get('doctrine')->getEntityManager();
 
         $faker = \Faker\Factory::create();
         for ($i = 0; $i < 30; $i++) {
+            $startDate = $faker->dateTimeThisMonth;
             $election = $electionManager->createElection();
             $election->setTitle($faker->sentence());
             $election->setSlug($faker->word);
             $election->setDescription($faker->sentence());
-            $election->setDateStart($faker->dateTime);
-            $election->setDateEnd($faker->dateTime);
+            $election->setDateStart($startDate);
+            $election->setDateEnd($faker->dateTimeBetween('now', '+10 days'));
             $election->setMinCandidates($faker->randomNumber());
             $election->setMaxCandidates($faker->randomNumber());
             $election->setPublishResults($faker->boolean());
-            $election->setDatePublished($faker->dateTime);
+            $election->setDatePublished($startDate);
             $electionManager->persist($election);
+
+            $user = $this->getReference('user-' . rand(1, 29));
+            $user->addElection($election);
+            $user = $this->getReference('user-0');
+            $user->addElection($election);
+            $em->persist($user);
+            $em->flush();
+
             $this->addReference('election-' . $i, $election);
         }
     }
