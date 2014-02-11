@@ -37,7 +37,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "jquery/jquery": "1.10.*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "fzaninotto/faker":"dev-master"
+        "fzaninotto/faker":"dev-master",
+        "friendsofsymfony/jsrouting-bundle": "@stable"
     },
     "scripts": {
         "post-install-cmd": [
