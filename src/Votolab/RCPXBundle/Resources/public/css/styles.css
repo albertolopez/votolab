@@ -3,25 +3,21 @@ html{
     font-family: Helvetica, Arial, Sans-Serif !important;
     color: #666666;
 }
-ul{
-    margin:0;
-    padding: 0;
-}
 header{
     width: auto;
     margin: 50px auto 0;
 }
-header h1{
-    width: 960px;
-    margin: 0 auto;
-}
-header img{
-    width: 350px;
-    margin:0 0 0 305px;
-}
+    header h1{
+        width: 960px;
+        margin: 0 auto;
+    }
+    header img{
+        width: 350px;
+        margin:0 0 0 305px;
+    }
 h2{
     width: 960px;
-    margin: 50px auto 0;
+    margin: 15px auto 0;
     background: #39bad9;
     padding: 25px;
     color:#ffffff;
@@ -42,45 +38,45 @@ form{
     margin: 10px auto 0;
     padding: 25px;
 }
-form div{
-    width: 50%;
-    float: left;
-}
-form div:last-child label{
-    display: inline-block;
-}
-form label{
-    display: block;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-}
-form input[type=text],
-form input[type=password]{
-    border: 1px solid #f1f1f1;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    width: 95%;
-    padding:0.5rem;
-    margin-right: 10px;
-}
-form input[type=submit]{
-    width: 100%;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    background: #39bad9;
-    color: #ffffff;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    padding:0.75rem;
-    font-size: 1rem;
-}
-form input[type=submit]:hover{
-    background: #999999;
-    color: #ffffff;
-    text-transform: uppercase;
-    cursor: pointer;
-}
+    form div{
+        width: 50%;
+        float: left;
+    }
+        form div:last-child label{
+            display: inline-block;
+        }
+    form label{
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+        form input[type=text],
+        form input[type=password]{
+            border: 1px solid #f1f1f1;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            width: 95%;
+            padding:0.5rem;
+            margin-right: 10px;
+        }
+        form input[type=submit]{
+            width: 100%;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            background: #39bad9;
+            color: #ffffff;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            padding:0.75rem;
+            font-size: 1rem;
+        }
+        form input[type=submit]:hover{
+            background: #999999;
+            color: #ffffff;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
 .copy{
     text-align: center;
     font-size: 0.8em;
@@ -89,36 +85,43 @@ form input[type=submit]:hover{
     display: block;
     clear:both;
 }
+div.listWrapper{
+    width: 1010px;
+    margin: 10px auto 0;
+}
+div.left,
+div.right{
+    float: left;
+    width:49.5%;
+}
+div.right{
+    float: right;
+}
+
 div.list{
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;
-    width:1011px;
-    margin: 10px auto 0;
-    padding:0;
-    background: #000000;
-    display: block;
+    margin: 0px auto 10px;
 }
-.list div{
-    float: none;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    width: 49.5%;
-    background: #f9f9f9;
-    padding: 25px;
-    list-style: none;
-    margin:0 0 10px 0px;
+
+div.list .candidate{
+    display: block;
+    background-color: #f9f9f9 !important;
+    float: left;
+    margin-bottom: 10px;
+    padding: 10px 10px 20px 10px;
 }
 
 .list div img{
     float: left;
-    width: 50px;
+    width: 60px;
     height: auto;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     background-color: #ffffff;
+    margin:10px 0px 10px 10px;
 }
 .list div div{
     float: left;
@@ -128,17 +131,19 @@ div.list{
 .list div div h3{
     float: left;
     width: 100%;
-    margin:2px 0 0 0;
+    margin:10px 0 6px 0;
 }
 .list div div h3 a{
     color: #39bad9;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-family: "times new roman", serif;
+    font-size: 1.5rem;
 }
 .list div div h3 a:hover{
     color:#666666;
 }
-.list div div p{
+.list div div p,
+.list div div span{
     float: left;
     width: 100%;
     margin:3px 0 0 0;
