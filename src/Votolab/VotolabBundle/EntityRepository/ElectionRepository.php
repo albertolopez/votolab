@@ -17,8 +17,8 @@ class ElectionRepository extends EntityRepository
                 'SELECT e FROM Votolab\VotolabBundle\Entity\Election e
                                 LEFT JOIN e.voters v
                                 WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()
-                                AND v.id = :user'
-            )->setParameter('user', $user->getId());
+                                AND v = :user'
+            )->setParameter('user', $user);
     }
 
     public function isVoterForElection($user, $election)
@@ -29,9 +29,9 @@ class ElectionRepository extends EntityRepository
                 SELECT e FROM Votolab\VotolabBundle\Entity\Election e
                 LEFT JOIN e.voters v
                 WHERE e.dateStart < CURRENT_TIMESTAMP() AND e.dateEnd > CURRENT_TIMESTAMP()
-                AND v.id = :user AND e.id = :electionId'
-            )->setParameter('user', $user->getId())
-            ->setParameter('electionId', $election->getId());
+                AND v = :user AND e = :election'
+            )->setParameter('user', $user)
+            ->setParameter('election', $election);
     }
 
 }
