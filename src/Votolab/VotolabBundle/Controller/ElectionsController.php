@@ -19,12 +19,15 @@ class ElectionsController extends Controller
         return array('elections' => $electionManager->findForUser($user));
     }
 
+    /**
+     * @template
+     */
     public function electionAction(Election $election)
     {
         $user = $this->getUser();
         $electionManager = $this->get('election_manager');
 
-        $isVoter = $electionManager->isVoterForElection($user,$election);
+        $isVoter = $electionManager->isVoterForElection($user, $election);
         if (empty($isVoter)) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
@@ -32,13 +35,6 @@ class ElectionsController extends Controller
         $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
         $candidates = $repository->findByElectionId($election->getId());
 
-        return $this->render(
-            'VotolabBundle:Elections:election.html.twig',
-            array(
-                'election' => $election,
-                'candidates' => $candidates
-            )
-        );
+        return array('election' => $election, 'candidates' => $candidates);
     }
-
 }
