@@ -4,6 +4,7 @@ namespace Votolab\VotolabBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Votolab\UserBundle\Entity\User;
 
 /**
  * Election
@@ -86,12 +87,30 @@ class Election
 
     /**
      * @ORM\ManyToMany(targetEntity="Votolab\UserBundle\Entity\User", mappedBy="elections")
+     * @ORM\JoinTable(name="election_users")
      **/
     private $voters;
 
     public function __construct() {
         $this->voters = new ArrayCollection();
     }
+
+    /**
+     * @param User $user
+     */
+    public function addVoter(User $user)
+    {
+        $this->voters[] = $user;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getVoters()
+    {
+        return $this->voters;
+    }
+
 
     /**
      * Get id

@@ -29,9 +29,10 @@ class LoadVoteData extends AbstractFixture implements FixtureInterface, OrderedF
         $faker = \Faker\Factory::create();
         for ($i = 0; $i < 300; $i++) {
             $vote = $voteManager->createVote();
-
-            $vote->setElection($this->getReference('election-' . rand(0, 29)));
-            $vote->setUser($this->getReference('user-' . rand(0, 29)));
+            $election = $this->getReference('election-' . rand(0, 29));
+            $user = $this->getReference('user-' . rand(0, 29));
+            $vote->setElection($election);
+            $vote->setUser($user);
             $vote->setCriterion($this->getReference('criteria-' . rand(0, 29)));
             $vote->setVote($faker->word);
             $voteManager->persist($vote);

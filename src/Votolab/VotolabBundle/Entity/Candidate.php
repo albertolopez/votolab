@@ -66,7 +66,7 @@ class Candidate
     }
 
     /**
-     * Set electionId
+     * Set election
      *
      * @param Election $election
      * @return Candidate
