@@ -1,6 +1,8 @@
 votolab_elections:
     pattern:  /elections
     defaults: { _controller: VotolabBundle:Elections:elections }
+    options:
+        expose: true
 
 votolab_election:
     pattern:  /election/{slug}

@@ -8,3 +8,6 @@ votolab:
 
 _user_bundle:
   resource: "@UserBundle/Resources/config/routing.yml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
