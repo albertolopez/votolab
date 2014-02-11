@@ -34,10 +34,10 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, OrderedF
         $user->addRole('ROLE_SUPER_ADMIN');
         $user->setEnabled(true);
         $userManager->updateUser($user);
-        $this->addReference('admin', $user);
+        $this->addReference('user-0', $user);
 
         $faker = \Faker\Factory::create();
-        for($i=0; $i<30; $i++)
+        for($i=1; $i<30; $i++)
         {
             $user = $userManager->createUser();
             $user->setUsername($faker->username);
