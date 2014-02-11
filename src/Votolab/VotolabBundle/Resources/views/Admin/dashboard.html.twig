@@ -3,5 +3,29 @@
     <div class="title-logo">
         <h2>Admin</h2>
     </div>
-    dummy text
+    <div>
+        <div><a href="{{ path('votolab_add_election') }}">Añadir Elección</a></div>
+        <table>
+            <thead>
+                <th>Elección</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Votos</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+            {% for election in elections %}
+                <tr>
+                    <td>{{ election.title }}</td>
+                    <td>{{ election.dateStart|date("d/m/Y") }}</td>
+                    <td>{{ election.dateEnd|date("d/m/Y") }}</td>
+                    <td>{{ election.voters|length }}</td>
+                    <td><a href="{{ path('votolab_edit_election', {'slug': election.slug}) }}">Editar</a></td>
+                    <td><a href="{{ path('votolab_delete_election', {'slug': election.slug}) }}">Borrar</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

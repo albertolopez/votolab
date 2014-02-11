@@ -14,15 +14,35 @@ class AdminController extends Controller
      */
     public function dashboardAction()
     {
+        $electionsManager = $this->get('election_manager');
+        $elections = $electionsManager->findAllElections();
+        return array('elections' => $elections);
+    }
+
+    /**
+     * @template
+     */
+    public function addElectionsAction()
+    {
         return array();
     }
 
     /**
      * @template
      */
-    public function electionsAdminAction()
+    public function editElectionsAction(Election $election)
     {
-        return array();
+        return array('election' => $election);
+    }
+
+    /**
+     * @template
+     */
+    public function deleteElectionsAction(Election $election)
+    {
+        $electionsManager = $this->get('election_manager');
+        $electionsManager->removeElection($election);
+        $this->redirect($this->generateUrl('votolab_admin'));
     }
 
 }
