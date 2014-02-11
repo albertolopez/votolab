@@ -2,7 +2,6 @@
     $(function () {
         B.core.namespace('Views.Election', {
             init: function () {
-                console.log("HHH", Math.random());
                 $('[data-candidate]').on('click', function (event) {
                     event.preventDefault();
                     var $this = $(event.currentTarget), target = $this.find('[data-panel]');
@@ -13,7 +12,8 @@
                         target.slideDown(function () {
                         });
                     }
-                })
+                });
+                $('[data-rating]').barrating();
             }
         });
     });
