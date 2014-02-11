@@ -3,25 +3,47 @@
     <div class="title-logo">
         <h2>Elige a un candidato para valorar</h2>
     </div>
-    <ul class="list">
-        {%  for candidate in candidates %}
-        <li class="{{ cycle(["first", "last"], loop.index) }} candidate">
-            <a href="#">
-                <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
-            </a>
-            <div>
-                <h3><a href="">{{ candidate.name }}</a></h3>
+    <div class="list left">
+        {% for candidate in candidates %}
+        {%  if loop.index%2==0 %}
+            <div class="{{ cycle(["first", "last"], loop.index) }} candidate">
+                <a href="#">
+                    <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
+                </a>
+
+                <div>
+                    <h3><a href="">{{ candidate.name }}</a></h3>
+                </div>
+                <div class="moreInfo" style="display:none" data-panel>
+                    <span>{{ candidate.video|raw }}</span>
+                    <span>{{ candidate.biography }}</span>
+                </div>
             </div>
-            <div class="moreInfo" style="display:none">
-                <span>{{ candidate.video|raw }}</span>
-                <span>{{ candidate.biography }}</span>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="list right">
+        {% for candidate in candidates %}
+            {%  if loop.index%2==1  %}
+            <div class="{{ cycle(["first", "last"], loop.index) }} candidate">
+                <a href="#">
+                    <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
+                </a>
+
+                <div>
+                    <h3><a href="">{{ candidate.name }}</a></h3>
+                </div>
+                <div class="moreInfo" style="display:none" data-panel>
+                    <span>{{ candidate.video|raw }}</span>
+                    <span>{{ candidate.biography }}</span>
+                </div>
             </div>
-        </li>
-        {%  endfor %}
-    </ul>
+        {% endif %}
+        {% endfor %}
+    </div>
     <span class="separator"></span>
 {% endblock %}
 {% block viewScripts %}
     <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
-    <script src="{{ asset('bundles/rcpx/js/election.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/views/election.js') }}"></script>
 {% endblock %}

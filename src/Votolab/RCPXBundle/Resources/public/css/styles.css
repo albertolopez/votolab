@@ -87,8 +87,9 @@ form input[type=submit]:hover{
     margin: 20px auto;
     color: #cccccc;
     display: block;
+    clear:both;
 }
-ul{
+div.list{
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;
@@ -98,8 +99,8 @@ ul{
     background: #000000;
     display: block;
 }
-.list li{
-    float: left;
+.list div{
+    float: none;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;
@@ -109,10 +110,8 @@ ul{
     list-style: none;
     margin:0 0 10px 0px;
 }
-.list li.last{
-    float: right;
-}
-.list li img{
+
+.list div img{
     float: left;
     width: 50px;
     height: auto;
@@ -121,25 +120,25 @@ ul{
     border-radius: 50%;
     background-color: #ffffff;
 }
-.list li div{
+.list div div{
     float: left;
     margin-left:15px;
     width: 80%
 }
-.list li div h3{
+.list div div h3{
     float: left;
     width: 100%;
     margin:2px 0 0 0;
 }
-.list li div h3 a{
+.list div div h3 a{
     color: #39bad9;
     text-decoration: none;
     font-size: 1.3rem;
 }
-.list li div h3 a:hover{
+.list div div h3 a:hover{
     color:#666666;
 }
-.list li div p{
+.list div div p{
     float: left;
     width: 100%;
     margin:3px 0 0 0;
