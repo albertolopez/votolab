@@ -16,6 +16,11 @@ class ElectionManager extends ManagerAbstract
         return $query->getResult();
     }
 
+    public function findAllElections()
+    {
+        return $this->em->getRepository('VotolabBundle:Election')->findAll();
+    }
+
     public function isVoterForElection($user, $election)
     {
         $query = $this->em->getRepository('VotolabBundle:Election')->isVoterForElection($user, $election);
@@ -41,6 +46,12 @@ class ElectionManager extends ManagerAbstract
     public function persistCriteria(ElectionCriteria $criteria)
     {
         $this->em->persist($criteria);
+        $this->em->flush();
+    }
+
+    public function removeElection(Election $election)
+    {
+        $this->em->remove($election);
         $this->em->flush();
     }
 }
