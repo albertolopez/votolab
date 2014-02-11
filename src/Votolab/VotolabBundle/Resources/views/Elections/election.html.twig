@@ -4,10 +4,11 @@
         <h2>Elige a un candidato para valorar</h2>
     </div>
     <div class="listWrapper">
-        <div class="list left" >
+        <div class="list left">
             {% for candidate in candidates %}
                 {% if loop.index%2==0 %}
-                    <div class="{{ cycle(["first", "last"], loop.index) }} candidate" data-candidate="{{ candidate.id }}">
+                    <div class="{{ cycle(["first", "last"], loop.index) }} candidate"
+                         data-candidate="{{ candidate.id }}">
                         <a href="#">
                             <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
                         </a>
@@ -18,6 +19,11 @@
                         <div class="moreInfo" data-panel>
                             <span>{{ candidate.video|raw }}</span>
                             <span>{{ candidate.biography }}</span>
+                            <ul class="criteria">
+                                {% for criterion in criteria %}
+                                    <li>{{ criterion }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 {% endif %}
@@ -26,7 +32,8 @@
         <div class="list right">
             {% for candidate in candidates %}
                 {% if loop.index%2==1 %}
-                    <div class="{{ cycle(["first", "last"], loop.index) }} candidate" data-candidate="{{ candidate.id }}">
+                    <div class="{{ cycle(["first", "last"], loop.index) }} candidate"
+                         data-candidate="{{ candidate.id }}">
                         <a href="#">
                             <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
                         </a>
