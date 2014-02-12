@@ -4,6 +4,49 @@
         <h2>Add election</h2>
     </div>
     <div>
-        add
+        {{ form_start(form, {'attr': {'class': 'stdform' }}) }}
+        {{ form_errors(form) }}
+        <p>
+            <label>{{ form_label(form.title) }}</label>
+            <span class="field">{{ form_widget(form.title,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.title) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.description) }}</label>
+            <span class="field">{{ form_widget(form.description,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.description) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.slug) }}</label>
+            <span class="field">{{ form_widget(form.slug,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.slug) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.minCandidates) }}</label>
+            <span class="field">{{ form_widget(form.minCandidates,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.minCandidates) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.maxCandidates) }}</label>
+            <span class="field">{{ form_widget(form.maxCandidates,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.maxCandidates) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.dateStart) }}</label>
+            <span class="field">{{ form_widget(form.dateStart,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.dateStart) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.dateEnd) }}</label>
+            <span class="field">{{ form_widget(form.dateEnd,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.dateEnd) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.datePublished) }}</label>
+            <span class="field">{{ form_widget(form.datePublished,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.datePublished) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.publishResults) }}</label>
+            <span class="field">{{ form_widget(form.publishResults,  {'attr': {'class': 'uniformselect' }}) }} {{ form_errors(form.publishResults) }}</span>
+        </p>
+
+        <p class="stdformbutton">
+            <button class="btn btn-primary">Submit Button</button>
+            <button type="reset" class="btn">Reset Button</button>
+        </p>
+        {{ form_end(form) }}
     </div>
 {% endblock %}

@@ -18,3 +18,10 @@ services:
   vote_manager:
     class: Votolab\VotolabBundle\Model\VoteManager
     arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
+
+
+  # FORMS
+  votolab_election.form.type.project:
+      class: Votolab\VotolabBundle\Form\Type\ElectionFormType
+      tags:
+          - { name: form.type, alias: election }
