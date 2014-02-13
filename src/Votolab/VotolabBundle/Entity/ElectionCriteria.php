@@ -23,7 +23,7 @@ class ElectionCriteria
 
     /**
      * @var Election
-     * @ORM\ManyToOne(targetEntity="Election")
+     * @ORM\ManyToOne(targetEntity="Election", inversedBy="electionCriterias")
      */
     private $election;
 
