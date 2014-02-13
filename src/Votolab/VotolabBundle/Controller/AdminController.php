@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Votolab\VotolabBundle\Entity\Election;
 use Votolab\VotolabBundle\Form\Handler\ElectionFormHandler;
 use Votolab\VotolabBundle\Form\Model\ElectionFormClass;
-use Symfony\Component\Form\Form;
 
 class AdminController extends Controller
 {
@@ -72,6 +71,6 @@ class AdminController extends Controller
     {
         $electionsManager = $this->get('election_manager');
         $electionsManager->removeElection($election);
-        $this->redirect($this->generateUrl('votolab_admin'));
+        return $this->redirect($this->generateUrl('votolab_admin'));
     }
 }

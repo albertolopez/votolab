@@ -24,7 +24,7 @@ class Vote
 
     /**
      * @var Election
-     * @ORM\ManyToOne(targetEntity="Election")
+     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Election")
      */
     private $election;
 
@@ -36,7 +36,7 @@ class Vote
 
     /**
      * @var ElectionCriteria
-     * @ORM\ManyToOne(targetEntity="ElectionCriteria")
+     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria")
      */
     private $criterion;
 
