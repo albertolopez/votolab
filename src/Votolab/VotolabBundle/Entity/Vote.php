@@ -29,6 +29,12 @@ class Vote
     private $election;
 
     /**
+     * @var Candidate
+     * @ORM\ManyToOne(targetEntity="Candidate")
+     */
+    private $candidate;
+
+    /**
      * @var User
      * @ORM\ManyToOne(targetEntity="Votolab\UserBundle\Entity\User")
      */
@@ -79,6 +85,29 @@ class Vote
     public function getElection()
     {
         return $this->election;
+    }
+
+    /**
+     * Set candidate
+     *
+     * @param Candidate $candidate
+     * @return Candidate
+     */
+    public function setCandidate(Candidate $candidate)
+    {
+        $this->candidate = $candidate;
+
+        return $this;
+    }
+
+    /**
+     * Get candidate
+     *
+     * @return Candidate
+     */
+    public function getCandidate()
+    {
+        return $this->candidate;
     }
 
     /**

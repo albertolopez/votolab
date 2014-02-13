@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="title-logo">
+        <h2>Resultados de la elección</h2>
+        <button class="logOut">Log Out</button>
+    </div>
+    <div class="listWrapper">
+        <div class="list">
+            {% for candidate in tally %}
+                {% if loop.index%2==0 %}
+                    {{ include ('VotolabBundle:Elections:candidate.html.twig') }}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <span class="separator"></span>
+{% endblock %}
+{% block viewScripts %}
+    <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/views/election.js') }}"></script>
+{% endblock %}

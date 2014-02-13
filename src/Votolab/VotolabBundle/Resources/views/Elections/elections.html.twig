@@ -11,4 +11,15 @@
         </div>
         {% endfor %}
     </div>
+    <div class="title-logo">
+        <h2>Elecciones pasadas</h2>
+    </div>
+    <div class="list">
+        {%  for election in electionsPast %}
+        <div>
+            <h3><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
+            <p>{{ election.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
