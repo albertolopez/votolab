@@ -1,152 +1,173 @@
-html{
-    background:#ffffff;
+html {
+    background: #FFFFFF;
     font-family: Helvetica, Arial, Sans-Serif !important;
     color: #666666;
 }
-header{
+
+header {
     width: auto;
     margin: 50px auto 0;
 }
-    header h1{
-        width: 960px;
-        margin: 0 auto;
-    }
-    header img{
-        width: 350px;
-        margin:0 0 0 305px;
-    }
-h2{
+
+header h1 {
+    width: 960px;
+    margin: 0 auto;
+}
+
+header img {
+    width: 350px;
+    margin: 0 0 0 305px;
+}
+
+h2 {
     width: 960px;
     margin: 15px auto 0;
-    background: #39bad9;
+    background: #39BAD9;
     padding: 25px;
-    color:#ffffff;
+    color: #FFFFFF;
     text-align: center;
     font-weight: lighter;
     text-transform: uppercase;
     font-size: 1.5rem;
 }
-.separator{
+
+.separator {
     width: 960px;
     height: 10px;
     margin: 10px auto;
-    background: #39bad9;
+    background: #39BAD9;
 }
-form{
-    width:960px;
-    background: #f9f9f9;
+
+form {
+    width: 960px;
+    background: #F9F9F9;
     margin: 10px auto 0;
     padding: 25px;
 }
-    form div{
-        width: 50%;
-        float: left;
-    }
-        form div:last-child label{
-            display: inline-block;
-        }
-    form label{
-        display: block;
-        font-size: 0.9rem;
-        margin-bottom: 0.25rem;
-    }
-        form input[type=text],
-        form input[type=password]{
-            border: 1px solid #f1f1f1;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-            width: 95%;
-            padding:0.5rem;
-            margin-right: 10px;
-        }
-        form input[type=submit]{
-            width: 100%;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-            background: #39bad9;
-            color: #ffffff;
-            text-transform: uppercase;
-            cursor: pointer;
-            border: none;
-            padding:0.75rem;
-            font-size: 1rem;
-        }
-        form input[type=submit]:hover{
-            background: #999999;
-            color: #ffffff;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-.copy{
+
+form div {
+    width: 50%;
+    float: left;
+}
+
+form div:last-child label {
+    display: inline-block;
+}
+
+form label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+form input[type=text],
+form input[type=password] {
+    border: 1px solid #F1F1F1;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    width: 95%;
+    padding: 0.5rem;
+    margin-right: 10px;
+}
+
+form input[type=submit] {
+    width: 100%;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #39BAD9;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+form input[type=submit]:hover {
+    background: #999999;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.copy {
     text-align: center;
     font-size: 0.8em;
     margin: 20px auto;
-    color: #cccccc;
+    color: #CCCCCC;
     display: block;
-    clear:both;
+    clear: both;
 }
-div.listWrapper{
+
+div.listWrapper {
     width: 1010px;
     margin: 10px auto 0;
 }
+
 div.left,
-div.right{
+div.right {
     float: left;
-    width:49.5%;
+    width: 49.5%;
 }
-div.right{
+
+div.right {
     float: right;
 }
 
-div.list{
+div.list {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
     margin: 0px auto 10px;
 }
 
-div.list .candidate{
+div.list .candidate {
     display: block;
-    background-color: #f9f9f9 !important;
+    background-color: #F9F9F9 !important;
     float: none;
     margin-bottom: 10px;
     padding: 10px 10px 20px 10px;
 }
 
-.list div img{
+.list div img {
     float: left;
     width: 60px;
     height: auto;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background-color: #ffffff;
-    margin:10px 0px 10px 10px;
+    background-color: #FFFFFF;
+    margin: 10px 0px 10px 10px;
 }
-.list div div{
+
+.list div div {
     float: left;
-    margin-left:15px;
+    margin-left: 15px;
     width: 80%
 }
-.list div div h3{
+
+.list div div h3 {
     float: left;
     width: 100%;
-    margin:10px 0 6px 0;
+    margin: 10px 0 6px 0;
 }
-.list div div h3 a{
-    color: #39bad9;
+
+.list div div h3 a {
+    color: #39BAD9;
     text-decoration: none;
     font-family: "times new roman", serif;
     font-size: 1.5rem;
 }
-.list div div h3 a:hover{
-    color:#666666;
+
+.list div div h3 a:hover {
+    color: #666666;
 }
+
 .list div div p,
-.list div div span{
+.list div div span {
     float: left;
     width: 100%;
-    margin:3px 0 0 0;
+    margin: 3px 0 0 0;
     font-style: italic;
 }
 
@@ -156,7 +177,7 @@ div.list .candidate{
 
 .br-widget a {
     display: block;
-    width: 70px;
+    width: 50px;
     height: 16px;
     float: left;
     background-color: #E3E3E3;
@@ -169,8 +190,7 @@ div.list .candidate{
 }
 
 .br-widget .br-current-rating {
-    font-size: 20px;
-    line-height: 2;
+    line-height: 1.1;
     float: left;
     padding: 0 20px 0 20px;
     color: #646464;

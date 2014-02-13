@@ -4,9 +4,9 @@
     "use strict";
     var
         barlovento = function (namespace, as, giveMe5) {
-            var ui={
-                componentSettings:{
-                    tinymce:{
+            var ui = {
+                componentSettings: {
+                    tinymce: {
                         toolbar: 'link',
                         plugins: 'link'
                     }
@@ -15,7 +15,7 @@
             var objects = {
 
             };
-            var R = $('[data-alias="' + namespace.ALIAS + '"]'), e, key, value, dataValue, result, obj,component;
+            var R = $('[data-alias="' + namespace.ALIAS + '"]'), e, key, value, dataValue, result, obj, component;
             R.find('[data-key]').each(function (index, element) {
                 e = $(element);
                 key = e.attr('data-key');
@@ -58,11 +58,11 @@
                     objects[obj] = {};
                 }
                 objects[obj][key] = value;
-                if(e.is('[data-ui-component]')){
+                if (e.is('[data-ui-component]')) {
                     component = e.attr('data-ui-component');
-                    if(!barlovento.core.isEmpty(namespace.ui.componentSettings[component])){
+                    if (!barlovento.core.isEmpty(namespace.ui.componentSettings[component])) {
                         e[component](namespace.ui.componentSettings[component]);
-                    }else{
+                    } else {
                         e[component](ui.componentSettings[component]);
                     }
 
@@ -70,23 +70,23 @@
 
             });
             var procObjects = {};
-            for (var obj in objects){
-                if(!barlovento.core.isEmpty(namespace.Models) && !barlovento.core.isEmpty(namespace.Models[obj])){
+            for (var obj in objects) {
+                if (!barlovento.core.isEmpty(namespace.Models) && !barlovento.core.isEmpty(namespace.Models[obj])) {
                     procObjects[obj] = new namespace.Models[obj](objects[obj]);
-                }else{
-                    procObjects[obj]=objects[obj];
+                } else {
+                    procObjects[obj] = objects[obj];
                 }
             }
             namespace.loadedObjects = procObjects;
             if (!namespace.binded) {
                 R.find('[data-action]').each($.proxy(function (index, element) {
-                    var $this = $(element),actionName=$this.attr('data-action');
-                    if ($this.checkScope($this,this)) {
-                        $this.on('click.'+actionName, $.proxy(function (event) {
+                    var $this = $(element), actionName = $this.attr('data-action');
+                    if ($this.checkScope($this, this)) {
+                        $this.on('click.' + actionName, $.proxy(function (event) {
                             barlovento(this);
                             var fn = this.actions[actionName],
                                 args = this.loadedObjects[$this.attr('data-object')];
-                            $this.data('action',actionName);
+                            $this.data('action', actionName);
                             fn.call(this, $this, args);
                         }, namespace));
                     } else if ($this) {
@@ -194,7 +194,7 @@
         },
         __init: function (namespace) {
             jQuery.fn.extend({
-                on: function (types, selector, data, fn, /*INTERNAL*/ one) {
+                con: function (types, selector, data, fn, /*INTERNAL*/ one) {
                     var type, origFn;
                     // Types can be a map of types/handlers
                     if (typeof types === "object") {
@@ -248,10 +248,10 @@
                     });
                 },
 
-                removeAction: function(actionName){
-                    $(this).off('click.'+actionName);
+                removeAction: function (actionName) {
+                    $(this).off('click.' + actionName);
                 },
-                checkScope: function($this,$scope){
+                checkScope: function ($this, $scope) {
                     return $this.parents('[data-alias]').attr('data-alias') === $scope.ALIAS ||
                         $this.attr('data-alias') === $scope.ALIAS;
                 }
