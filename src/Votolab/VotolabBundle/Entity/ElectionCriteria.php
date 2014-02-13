@@ -48,6 +48,27 @@ class ElectionCriteria
      */
     private $max;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Vote", mappedBy="criterion", cascade={"remove"})
+     */
+    private $votes;
+
+
+    /**
+     * @param mixed $votes
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
 
     /**
      * Get id

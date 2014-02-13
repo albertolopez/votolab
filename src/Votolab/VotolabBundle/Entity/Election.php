@@ -87,12 +87,88 @@ class Election
 
     /**
      * @ORM\ManyToMany(targetEntity="Votolab\UserBundle\Entity\User", mappedBy="elections")
-     * @ORM\JoinTable(name="election_users")
      **/
     private $voters;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Candidate", mappedBy="election", cascade={"remove"})
+     */
+    private $candidates;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Vote", mappedBy="election", cascade={"remove"})
+     */
+    private $votes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria", mappedBy="election", cascade={"remove"})
+     */
+    private $electionCriteria;
+
     public function __construct() {
         $this->voters = new ArrayCollection();
+        $this->candidates = new ArrayCollection();
+        $this->electionCriteria = new ArrayCollection();
+        $this->votes = new ArrayCollection();
+    }
+
+    /**
+     * @param mixed $votes
+     */
+    public function setVotes(array $votes)
+    {
+        $this->votes = $votes;
+    }
+
+    /**
+     * @return array
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+
+    /**
+     * @param array $criteria
+     */
+    public function setElectionCriteria(array $criteria)
+    {
+        $this->electionCriteria = $criteria;
+    }
+
+    /**
+     * @return array
+     */
+    public function getElectionCriteria()
+    {
+        return $this->electionCriteria;
+    }
+
+    public function addElectionCriteria(ElectionCriteria $criteria)
+    {
+        $this->electionCriteria[] = $criteria;
+    }
+
+
+    /**
+     * @param array $candidates
+     */
+    public function setCandidates(array $candidates)
+    {
+        $this->candidates = $candidates;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCandidates()
+    {
+        return $this->candidates;
+    }
+
+    public function addCandidate(Candidate $candidate)
+    {
+        $this->candidates[] = $candidate;
     }
 
     /**
