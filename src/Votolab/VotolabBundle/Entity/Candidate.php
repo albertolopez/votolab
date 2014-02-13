@@ -22,7 +22,7 @@ class Candidate
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Election")
+     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Election", inversedBy="candidates")
      */
     private $election;
 
