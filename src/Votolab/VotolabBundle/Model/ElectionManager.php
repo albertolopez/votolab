@@ -17,6 +17,12 @@ class ElectionManager extends ManagerAbstract
         return $query->getResult();
     }
 
+    public function findForUserPast($user)
+    {
+        $query = $this->em->getRepository('VotolabBundle:Election')->findForUserPast($user);
+        return $query->getResult();
+    }
+
     public function findAllElections()
     {
         return $this->em->getRepository('VotolabBundle:Election')->findAll();
@@ -26,6 +32,14 @@ class ElectionManager extends ManagerAbstract
     {
         $query = $this->em->getRepository('VotolabBundle:Election')->isVoterForElection($user, $election);
         return $query->getResult();
+    }
+
+    public function getElectionTally($election)
+    {
+        $query = $this->em->getRepository('VotolabBundle:Election')->getElectionTally($election);
+        $result = $query->getResult();
+        return $result;
+
     }
 
     public function createElection()
