@@ -103,12 +103,12 @@ class Election
     /**
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria", mappedBy="election", cascade={"remove"})
      */
-    private $electionCriteria;
+    private $electionCriterias;
 
     public function __construct() {
         $this->voters = new ArrayCollection();
         $this->candidates = new ArrayCollection();
-        $this->electionCriteria = new ArrayCollection();
+        $this->electionCriterias = new ArrayCollection();
         $this->votes = new ArrayCollection();
     }
 
@@ -133,7 +133,7 @@ class Election
      */
     public function setElectionCriteria(array $criteria)
     {
-        $this->electionCriteria = $criteria;
+        $this->electionCriterias = $criteria;
     }
 
     /**
@@ -141,12 +141,12 @@ class Election
      */
     public function getElectionCriteria()
     {
-        return $this->electionCriteria;
+        return $this->electionCriterias;
     }
 
     public function addElectionCriteria(ElectionCriteria $criteria)
     {
-        $this->electionCriteria[] = $criteria;
+        $this->electionCriterias[] = $criteria;
     }
 
 

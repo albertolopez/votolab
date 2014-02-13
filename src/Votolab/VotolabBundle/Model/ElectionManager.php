@@ -70,10 +70,4 @@ class ElectionManager extends ManagerAbstract
         $this->em->persist($criteria);
         $this->em->flush();
     }
-
-    public function removeElection(Election $election)
-    {
-        $this->em->remove($election);
-        $this->em->flush();
-    }
 }

@@ -24,7 +24,7 @@ class Vote
 
     /**
      * @var Election
-     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Election")
+     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Election", inversedBy="votes")
      */
     private $election;
 
