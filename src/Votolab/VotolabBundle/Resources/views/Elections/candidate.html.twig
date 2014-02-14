@@ -12,9 +12,9 @@
         <span>{{ candidate.biography }}</span>
         <ul class="criteria">
             {% for criterion in criteria %}
-                <li>{{ criterion.criterion }}:
+                <li>
+                    <p>{{ criterion.criterion }}:</p>
                     <select data-rating>
-                        <option value="0">hola</option>
                         <option value="1">asfsadf</option>
                         <option value="asfdasd">2</option>
                         <option value="3">3</option>
@@ -22,6 +22,7 @@
                         <option value="5">5</option>
                     </select>
                 </li>
+
             {% endfor %}
         </ul>
     </div>
