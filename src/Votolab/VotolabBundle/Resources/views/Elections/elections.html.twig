@@ -1,9 +1,12 @@
 {% extends '::base.html.twig' %}
 {% block body %}
     <div class="title-logo">
-        <h2>Elecciones abiertas</h2>
+        <header>
+            <h2>Elecciones abiertas</h2>
+            <button class="logOut">Log Out</button>
+        </header>
     </div>
-    <div class="list">
+    <div class="elections">
         {%  for election in elections %}
         <div>
             <h3><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
@@ -12,9 +15,13 @@
         {% endfor %}
     </div>
     <div class="title-logo">
-        <h2>Elecciones pasadas</h2>
+        <header>
+            <h2>Elecciones pasadas</h2>
+            <button class="logOut">Log Out</button>
+
+        </header>
     </div>
-    <div class="list">
+    <div class="elections">
         {%  for election in electionsPast %}
         <div>
             <h3><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
