@@ -4,6 +4,7 @@ namespace Votolab\VotolabBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Votolab\VotolabBundle\Entity\Candidate;
 use Votolab\VotolabBundle\Entity\Election;
@@ -79,39 +80,53 @@ class AdminController extends Controller
 
 
     ///////////////////////////// CANDIDATES /////////////////////////////////////////
+
     /**
      * @template
      */
-    public function addCandidateAction(Request $request)
+    public function listCandidatesAction(Election $election)
     {
-        $candidate = new Candidate();
-        return $this->createOrEditCandidate($request, $candidate);
+        return array('candidates' => $election->getCandidates(), 'election' => $election);
     }
 
     /**
      * @template
      */
-    public function editCandidateAction(Request $request, Candidate $candidate)
+    public function addCandidateAction(Request $request, Election $election)
     {
-        return $this->createOrEditCandidate($request, $candidate);
+        $candidate = new Candidate();
+        return $this->createOrEditCandidate($request, $election, $candidate);
+    }
+
+    /**
+     * @template
+     * @ParamConverter("election", options={"mapping": {"slug": "slug"}})
+     */
+    public function editCandidateAction(Request $request, Election $election, Candidate $candidate)
+    {
+        return $this->createOrEditCandidate($request, $election, $candidate);
     }
 
     /**
      * @param Request $request
      * @param Candidate $candidate
+     * @param \Votolab\VotolabBundle\Entity\Election $election
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    private function createOrEditCandidate(Request $request, Candidate $candidate)
+    private function createOrEditCandidate(Request $request, Election $election, Candidate $candidate)
     {
+        $candidate->setElection($election);
         $form = $this->createForm('candidate', new CandidateFormClass($candidate));
         if ($request->getMethod() == "POST") {
             $formHandler = new CandidateFormHandler($form, $request, $this->get('candidate_manager'));
             if ($formHandler->process()) {
                 $this->get('session')->getFlashBag()->set(
                     'notice',
-                    "El candidato <b>{$form->getData()->title}</b> ha sido creado"
+                    "El candidato <b>{$form->getData()->name}</b> ha sido creado"
                 );
-                return $this->redirect($this->generateUrl('votolab_admin'));
+                return $this->redirect(
+                    $this->generateUrl('votolab_list_candidates', array('slug' => $election->getSlug()))
+                );
             }
         }
 
@@ -119,16 +134,17 @@ class AdminController extends Controller
             'VotolabBundle:Admin:addCandidate.html.twig',
             array(
                 'candidate' => $candidate,
+                'election' => $election,
                 'form' => $form->createView(),
             )
         );
     }
 
-    public function deleteCandidateAction(Candidate $candidate)
+    public function deleteCandidateAction(Election $election, Candidate $candidate)
     {
         $electionsManager = $this->get('candidate_manager');
         $electionsManager->removeElection($candidate);
-        return $this->redirect($this->generateUrl('votolab_admin'));
+        return $this->redirect($this->generateUrl('votolab_list_candidates', array('slug' => $election->getSlug())));
     }
 
 }

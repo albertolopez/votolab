@@ -27,3 +27,19 @@ votolab_edit_election:
 votolab_delete_election:
     pattern:  /admin/election/del/{slug}
     defaults: { _controller: VotolabBundle:Admin:deleteElections }
+
+votolab_list_candidates:
+    pattern:  /admin/election/{slug}/candidate/list
+    defaults: { _controller: VotolabBundle:Admin:listCandidates }
+
+votolab_add_candidate:
+    pattern:  /admin/election/{slug}/candidate/add
+    defaults: { _controller: VotolabBundle:Admin:addCandidate }
+
+votolab_edit_candidate:
+    pattern:  /admin/election/{slug}/candidate/edit/{id}
+    defaults: { _controller: VotolabBundle:Admin:editCandidate }
+
+votolab_delete_candidate:
+    pattern:  /admin/election/{slug}/candidate/del/{id}
+    defaults: { _controller: VotolabBundle:Admin:deleteCandidate }

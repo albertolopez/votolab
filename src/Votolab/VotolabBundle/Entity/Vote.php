@@ -42,7 +42,7 @@ class Vote
 
     /**
      * @var ElectionCriteria
-     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria")
+     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria", inversedBy="votes")
      */
     private $criterion;
 

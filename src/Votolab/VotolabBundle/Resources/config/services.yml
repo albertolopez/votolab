@@ -25,3 +25,8 @@ services:
       class: Votolab\VotolabBundle\Form\Type\ElectionFormType
       tags:
           - { name: form.type, alias: election }
+
+  votolab_candidate.form.type.project:
+      class: Votolab\VotolabBundle\Form\Type\CandidateFormType
+      tags:
+          - { name: form.type, alias: candidate }
