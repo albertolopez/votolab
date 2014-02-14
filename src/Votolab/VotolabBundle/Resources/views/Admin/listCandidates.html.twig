@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="title-logo">
+        <h2>Admin</h2>
+    </div>
+    <div>
+        <div><a href="{{ path('votolab_add_candidate', {'slug': election.slug}) }}">Añadir Candidatos</a></div>
+        <table>
+            <thead>
+                <th>Nombre</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+            {% for candidate in candidates %}
+                <tr>
+                    <td>{{ candidate.name }}</td>
+                    <td><a href="{{ path('votolab_edit_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Editar</a></td>
+                    <td><a href="{{ path('votolab_delete_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Borrar</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
