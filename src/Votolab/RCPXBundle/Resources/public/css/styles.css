@@ -18,13 +18,18 @@ header img {
     width: 350px;
     margin: 0 0 0 305px;
 }
-
-h2 {
+.title-logo header{
     width: 960px;
     margin: 15px auto 0;
     background: #39BAD9;
-    padding: 25px;
+    padding: 32px 25px;
+    display: block;
+    position: relative;
+}
+
+h2 {
     color: #FFFFFF;
+
     text-align: center;
     font-weight: lighter;
     text-transform: uppercase;
@@ -114,11 +119,16 @@ div.right {
     float: right;
 }
 
-div.list {
+div.list,
+div.elections{
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
     margin: 0px auto 10px;
+}
+div.elections{
+    width:1010px;
+    margin: 0 auto;
 }
 
 div.list .candidate {
@@ -146,20 +156,27 @@ div.list .candidate {
     width: 80%
 }
 
-.list div div h3 {
+.list div div h3,
+.elections div h3{
     float: left;
     width: 100%;
     margin: 10px 0 6px 0;
 }
+.elections div h3,
+.elections div p{
+    margin-left: 10px;
+}
 
-.list div div h3 a {
+.list div div h3 a,
+.elections div h3 a{
     color: #39BAD9;
     text-decoration: none;
     font-family: "times new roman", serif;
     font-size: 1.5rem;
 }
 
-.list div div h3 a:hover {
+.list div div h3 a:hover,
+.elections div h3 a:hover{
     color: #666666;
 }
 
@@ -168,7 +185,6 @@ div.list .candidate {
     float: left;
     width: 100%;
     margin: 3px 0 0 0;
-    font-style: italic;
 }
 
 .br-widget {
@@ -194,4 +210,70 @@ div.list .candidate {
     float: left;
     padding: 0 20px 0 20px;
     color: #646464;
+}
+div.elections{
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box;
+    margin: 0px auto 10px;
+    width:1010px;
+    margin: 0 auto 0;
+}
+
+div.elections > div{
+    display: block;
+    background-color: #F9F9F9 !important;
+    float: none;
+    margin: 10px 0;
+    padding: 10px 10px 20px 10px;
+}
+.logOut{
+    position: absolute;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: none;
+    background: #ffffff;
+    padding: 7px 20px;
+    width: auto;
+    right: 16px;
+    top: 31px;
+    text-transform: uppercase;
+}
+.logOut:hover{
+    background-color: #666666;
+    color: #ffffff;
+}
+iframe{
+    border:5px solid #ffffff;
+    width: 375px !important;
+    height: 282px !important;
+}
+.criteria{
+    margin: 13px 0 0 0;
+    float: left;
+}
+.criteria p{
+    font-weight: bold;
+    color: #39BAD9;
+    margin-left: 10px;
+}
+.criteria .br-widget{
+    margin-left: 0;
+    margin-top: 15px;
+}
+
+.criteria .br-widget .br-current-rating{
+    background-color: #39BAD9;
+    color: #ffffff;
+    width: auto;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    padding:5px 10px;
+    margin: -7px 0 0 271px;
+    border:1px solid #ffffff;
+    position: absolute;
+}
+.criteria .br-widget a.br-selected{
+    background-color: #39BAD9;
+
 }
