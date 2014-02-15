@@ -39,10 +39,7 @@ class ElectionsController extends Controller
         $candidates = $repository->findByElection($election);
         shuffle($candidates);
 
-        $repositoryCriteria = $this->getDoctrine()->getRepository('VotolabBundle:ElectionCriteria');
-        $criteria = $repositoryCriteria->findByElection($election);
-
-        return array('election' => $election, 'candidates' => $candidates, 'criteria' => $criteria);
+        return array('election' => $election, 'candidates' => $candidates, 'criteria' => $election->getElectionCriteria());
     }
 
     /**
@@ -64,12 +61,9 @@ class ElectionsController extends Controller
         $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
         $candidates = $repository->findByElection($election);
 
-        $repositoryCriteria = $this->getDoctrine()->getRepository('VotolabBundle:ElectionCriteria');
-        $criteria = $repositoryCriteria->findByElection($election);
-
         $tally = $electionManager->getElectionTally($election);
 
-        return array('election' => $election, 'candidates' => $candidates, 'criteria' => $criteria, 'tally' => $tally);
+        return array('election' => $election, 'candidates' => $candidates, 'criteria' => $election->getElectionCriteria(), 'tally' => $tally);
     }
 
     /**
