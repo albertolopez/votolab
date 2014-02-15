@@ -62,8 +62,9 @@ class ElectionRepository extends EntityRepository
                 WHERE voteAvg.election_id = :election
                 GROUP BY c.id
 
-                ) calculation ORDER BY wilson DESC', $rsm
-            )->setParameter('election', $election);
+                ) calculation
+                 ORDER BY wilson DESC', $rsm
+            )->setParameter('election', $election->getId());
     }
 
 }

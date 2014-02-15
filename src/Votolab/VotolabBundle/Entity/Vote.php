@@ -30,7 +30,7 @@ class Vote
 
     /**
      * @var Candidate
-     * @ORM\ManyToOne(targetEntity="Candidate")
+     * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Candidate", inversedBy="votes")
      */
     private $candidate;
 
