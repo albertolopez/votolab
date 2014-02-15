@@ -8,9 +8,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Votolab\VotolabBundle\Entity\Candidate;
 use Votolab\VotolabBundle\Entity\Election;
+use Votolab\VotolabBundle\Entity\ElectionCriteria;
 use Votolab\VotolabBundle\Form\Handler\CandidateFormHandler;
+use Votolab\VotolabBundle\Form\Handler\CriteriaFormHandler;
 use Votolab\VotolabBundle\Form\Handler\ElectionFormHandler;
 use Votolab\VotolabBundle\Form\Model\CandidateFormClass;
+use Votolab\VotolabBundle\Form\Model\CriteriaFormClass;
 use Votolab\VotolabBundle\Form\Model\ElectionFormClass;
 
 class AdminController extends Controller
@@ -140,11 +143,85 @@ class AdminController extends Controller
         );
     }
 
+    /**
+     * @ParamConverter("election", options={"mapping": {"slug": "slug"}})
+     */
     public function deleteCandidateAction(Election $election, Candidate $candidate)
     {
         $electionsManager = $this->get('candidate_manager');
         $electionsManager->removeElection($candidate);
         return $this->redirect($this->generateUrl('votolab_list_candidates', array('slug' => $election->getSlug())));
+    }
+
+    ///////////////////////////// CANDIDATES /////////////////////////////////////////
+
+    /**
+     * @template
+     */
+    public function listCriteriasAction(Election $election)
+    {
+        return array('criterias' => $election->getElectionCriteria(), 'election' => $election);
+    }
+
+    /**
+     * @template
+     */
+    public function addCriteriaAction(Request $request, Election $election)
+    {
+        $criteria = new ElectionCriteria();
+        return $this->createOrEditCriteria($request, $election, $criteria);
+    }
+
+    /**
+     * @template
+     * @ParamConverter("election", options={"mapping": {"slug": "slug"}})
+     */
+    public function editCriteriaAction(Request $request, Election $election, ElectionCriteria $criteria)
+    {
+        return $this->createOrEditCriteria($request, $election, $criteria);
+    }
+
+    /**
+     * @param Request $request
+     * @param ElectionCriteria $criteria
+     * @param \Votolab\VotolabBundle\Entity\Election $election
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    private function createOrEditCriteria(Request $request, Election $election, ElectionCriteria $criteria)
+    {
+        $criteria->setElection($election);
+        $form = $this->createForm('criteria', new CriteriaFormClass($criteria));
+        if ($request->getMethod() == "POST") {
+            $formHandler = new CriteriaFormHandler($form, $request, $this->get('criteria_manager'));
+            if ($formHandler->process()) {
+                $this->get('session')->getFlashBag()->set(
+                    'notice',
+                    "El criterio <b>{$form->getData()->criterion}</b> ha sido creado"
+                );
+                return $this->redirect(
+                    $this->generateUrl('votolab_list_criterias', array('slug' => $election->getSlug()))
+                );
+            }
+        }
+
+        return $this->render(
+            'VotolabBundle:Admin:addCriteria.html.twig',
+            array(
+                'criteria' => $criteria,
+                'election' => $election,
+                'form' => $form->createView(),
+            )
+        );
+    }
+
+    /**
+     * @ParamConverter("election", options={"mapping": {"slug": "slug"}})
+     */
+    public function deleteCriteriaAction(Election $election, ElectionCriteria $criteria)
+    {
+        $criteriaManager = $this->get('criteria_manager');
+        $criteriaManager->removeElection($criteria);
+        return $this->redirect($this->generateUrl('votolab_list_criterias', array('slug' => $election->getSlug())));
     }
 
 }

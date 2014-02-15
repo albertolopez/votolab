@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="title-logo">
+        <h2>Añadir criterios</h2>
+    </div>
+    <div>
+        {{ form_start(form, {'attr': {'class': 'stdform' }}) }}
+        {{ form_errors(form) }}
+        <p>
+            <label>{{ form_label(form.criterion) }}</label>
+            <span class="field">{{ form_widget(form.criterion,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.criterion) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.min) }}</label>
+            <span class="field">{{ form_widget(form.min,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.min) }}</span>
+        </p>
+        <p>
+            <label>{{ form_label(form.max) }}</label>
+            <span class="field">{{ form_widget(form.max,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.max) }}</span>
+        </p>
+        <p class="stdformbutton">
+            <button class="btn btn-primary">Submit Button</button>
+            <button type="reset" class="btn">Reset Button</button>
+        </p>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
