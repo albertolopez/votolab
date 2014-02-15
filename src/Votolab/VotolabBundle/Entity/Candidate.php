@@ -27,6 +27,11 @@ class Candidate
     private $election;
 
     /**
+     * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Vote", mappedBy="candidate", cascade={"remove"})
+     */
+    private $votes;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -64,6 +69,24 @@ class Candidate
     {
         return $this->id;
     }
+
+    /**
+     * @param mixed $votes
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+
+
 
     /**
      * Set election
