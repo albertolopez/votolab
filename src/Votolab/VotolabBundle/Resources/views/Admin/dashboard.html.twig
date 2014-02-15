@@ -14,6 +14,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
             </thead>
             <tbody>
             {% for election in elections %}
@@ -22,7 +23,8 @@
                     <td>{{ election.dateStart|date("d/m/Y") }}</td>
                     <td>{{ election.dateEnd|date("d/m/Y") }}</td>
                     <td>{{ election.voters|length }}</td>
-                    <td><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">candidatos</a></td>
+                    <td><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">Candidatos</a></td>
+                    <td><a href="{{ path('votolab_list_criterias', {'slug': election.slug}) }}">Criterios</a></td>
                     <td><a href="{{ path('votolab_edit_election', {'slug': election.slug}) }}">Editar</a></td>
                     <td><a href="{{ path('votolab_delete_election', {'slug': election.slug}) }}">Borrar</a></td>
                 </tr>

@@ -19,6 +19,9 @@ services:
     class: Votolab\VotolabBundle\Model\VoteManager
     arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
 
+  criteria_manager:
+    class: Votolab\VotolabBundle\Model\CriteriaManager
+    arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
 
   # FORMS
   votolab_election.form.type.project:
@@ -30,3 +33,8 @@ services:
       class: Votolab\VotolabBundle\Form\Type\CandidateFormType
       tags:
           - { name: form.type, alias: candidate }
+
+  votolab_criteria.form.type.project:
+      class: Votolab\VotolabBundle\Form\Type\CriteriaFormType
+      tags:
+          - { name: form.type, alias: criteria }
