@@ -37,8 +37,8 @@ class ElectionManager extends ManagerAbstract
     public function getElectionTally($election)
     {
         $query = $this->em->getRepository('VotolabBundle:Election')->getElectionTally($election);
-        $result = $query->getResult();
-        return $result;
+        $query->execute();
+        return $query->fetchAll();
 
     }
 

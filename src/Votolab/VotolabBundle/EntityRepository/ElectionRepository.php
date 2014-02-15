@@ -48,8 +48,9 @@ class ElectionRepository extends EntityRepository
     public function getElectionTally($election)
     {
         $rsm = new ResultSetMapping();
-        return $this->getEntityManager()
-            ->createNativeQuery(
+        $query =$this->getEntityManager()
+            ->getConnection()
+            ->prepare(
                 '
                 SELECT *, 1 + 4*((x + z*z/(2*n) - z*sqrt(x*(1-x)/n + z*z/(4*n*n)))/(1 + z*z/n)) as wilson
                 FROM (
@@ -64,7 +65,9 @@ class ElectionRepository extends EntityRepository
 
                 ) calculation
                  ORDER BY wilson DESC', $rsm
-            )->setParameter('election', $election->getId());
+            );
+        $query->bindValue('election', $election->getId());
+        return $query;
     }
 
 }
