@@ -39,7 +39,7 @@ class CriteriaManager extends ManagerAbstract
         return new ElectionCriteria();
     }
 
-    public function removeElection(ElectionCriteria $criteria)
+    public function remove(ElectionCriteria $criteria)
     {
         $this->em->remove($criteria);
         $this->em->flush();

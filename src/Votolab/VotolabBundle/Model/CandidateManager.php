@@ -38,7 +38,7 @@ class CandidateManager extends ManagerAbstract
         $this->em->flush();
     }
 
-    public function removeElection(Candidate $election)
+    public function remove(Candidate $election)
     {
         $this->em->remove($election);
         $this->em->flush();

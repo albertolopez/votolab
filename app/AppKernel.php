@@ -10,6 +10,9 @@ class AppKernel extends Kernel
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
@@ -22,6 +25,7 @@ class AppKernel extends Kernel
             new Votolab\VotolabBundle\VotolabBundle(),
             new Votolab\RCPXBundle\RCPXBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
