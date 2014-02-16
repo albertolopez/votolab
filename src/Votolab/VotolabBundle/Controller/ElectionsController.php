@@ -4,6 +4,8 @@ namespace Votolab\VotolabBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\SecurityExtraBundle\Annotation\SecureParam;
+use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
 use Votolab\VotolabBundle\Entity\Election;
 
 class ElectionsController extends Controller
@@ -24,17 +26,10 @@ class ElectionsController extends Controller
 
     /**
      * @template
+     * @SecureParam(name="election", permissions="CAN_VIEW_ELECTION")
      */
     public function electionAction(Election $election)
     {
-        $user = $this->getUser();
-        $electionManager = $this->get('election_manager');
-
-        $isVoter = $electionManager->isVoterForElection($user, $election);
-        if (empty($isVoter)) {
-            return $this->redirect($this->generateUrl('votolab_elections'));
-        }
-
         $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
         $candidates = $repository->findByElection($election);
         shuffle($candidates);
@@ -44,23 +39,16 @@ class ElectionsController extends Controller
 
     /**
      * @template
+     * @SecureParam(name="election", permissions="CAN_VIEW_ELECTION")
      */
     public function tallyAction(Election $election)
     {
         if ($election->getDateEnd() > new \DateTime('now')) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
-        $user = $this->getUser();
         $electionManager = $this->get('election_manager');
-
-        $isVoter = $electionManager->isVoterForElection($user, $election);
-        if (empty($isVoter)) {
-            return $this->redirect($this->generateUrl('votolab_elections'));
-        }
-
         $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
         $candidates = $repository->findByElection($election);
-
         $tally = $electionManager->getElectionTally($election);
 
         return array('election' => $election, 'candidates' => $candidates, 'criteria' => $election->getElectionCriteria(), 'tally' => $tally);

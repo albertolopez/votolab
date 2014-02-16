@@ -77,7 +77,7 @@ class AdminController extends Controller
     public function deleteElectionsAction(Election $election)
     {
         $electionsManager = $this->get('election_manager');
-        $electionsManager->removeElection($election);
+        $electionsManager->remove($election);
         return $this->redirect($this->generateUrl('votolab_admin'));
     }
 
@@ -149,7 +149,7 @@ class AdminController extends Controller
     public function deleteCandidateAction(Election $election, Candidate $candidate)
     {
         $electionsManager = $this->get('candidate_manager');
-        $electionsManager->removeElection($candidate);
+        $electionsManager->remove($candidate);
         return $this->redirect($this->generateUrl('votolab_list_candidates', array('slug' => $election->getSlug())));
     }
 
@@ -220,7 +220,7 @@ class AdminController extends Controller
     public function deleteCriteriaAction(Election $election, ElectionCriteria $criteria)
     {
         $criteriaManager = $this->get('criteria_manager');
-        $criteriaManager->removeElection($criteria);
+        $criteriaManager->remove($criteria);
         return $this->redirect($this->generateUrl('votolab_list_criterias', array('slug' => $election->getSlug())));
     }
 

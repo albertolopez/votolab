@@ -74,14 +74,9 @@ class ElectionManager extends ManagerAbstract
         $this->em->flush();
     }
 
-    public function createElectionCriteria()
+    public function remove(Election $election)
     {
-        return new ElectionCriteria();
-    }
-
-    public function persistCriteria(ElectionCriteria $criteria)
-    {
-        $this->em->persist($criteria);
+        $this->em->remove($election);
         $this->em->flush();
     }
 }

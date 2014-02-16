@@ -7,6 +7,8 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
 
 services:
+
+  # MANAGERS
   election_manager:
     class: Votolab\VotolabBundle\Model\ElectionManager
     arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
@@ -22,6 +24,14 @@ services:
   criteria_manager:
     class: Votolab\VotolabBundle\Model\CriteriaManager
     arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
+
+
+  # VOTERS
+  can_view_election_voter:
+          class: Votolab\VotolabBundle\Voters\CanViewElectionVoter
+          arguments: [@election_manager]
+          tags:
+              - { name: security.voter }
 
   # FORMS
   votolab_election.form.type.project:
