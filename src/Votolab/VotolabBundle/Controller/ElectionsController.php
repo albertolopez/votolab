@@ -30,11 +30,12 @@ class ElectionsController extends Controller
      */
     public function electionAction(Election $election)
     {
-        $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
-        $candidates = $repository->findByElection($election);
-        shuffle($candidates);
-
-        return array('election' => $election, 'candidates' => $candidates, 'criteria' => $election->getElectionCriteria());
+        $candidateManager = $this->get('candidate_manager');
+        return array(
+            'election' => $election,
+            'candidates' => $candidateManager->findByElectionOrderRandom($election),
+            'criteria' => $election->getElectionCriteria()
+        );
     }
 
     /**
@@ -46,12 +47,15 @@ class ElectionsController extends Controller
         if ($election->getDateEnd() > new \DateTime('now')) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
+        $candidateManager = $this->get('candidate_manager');
         $electionManager = $this->get('election_manager');
-        $repository = $this->getDoctrine()->getRepository('VotolabBundle:Candidate');
-        $candidates = $repository->findByElection($election);
-        $tally = $electionManager->getElectionTally($election);
 
-        return array('election' => $election, 'candidates' => $candidates, 'criteria' => $election->getElectionCriteria(), 'tally' => $tally);
+        return array(
+            'election' => $election,
+            'candidates' => $candidateManager->findByElectionOrderRandom($election),
+            'criteria' => $election->getElectionCriteria(),
+            'tally' => $electionManager->getElectionTally($election)
+        );
     }
 
     /**
