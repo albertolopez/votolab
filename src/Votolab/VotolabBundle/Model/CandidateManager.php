@@ -3,6 +3,7 @@
 namespace Votolab\VotolabBundle\Model;
 
 use Votolab\VotolabBundle\Entity\Candidate;
+use Votolab\VotolabBundle\Entity\Election;
 use Votolab\VotolabBundle\Form\Model\CandidateFormClass;
 
 /**
@@ -42,5 +43,12 @@ class CandidateManager extends ManagerAbstract
     {
         $this->em->remove($election);
         $this->em->flush();
+    }
+
+    public function findByElectionOrderRandom(Election $election)
+    {
+        $candidates = $this->em->getRepository('VotolabBundle:Candidate')->findByElection($election);
+        shuffle($candidates);
+        return $candidates;
     }
 }

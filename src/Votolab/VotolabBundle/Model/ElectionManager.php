@@ -28,18 +28,17 @@ class ElectionManager extends ManagerAbstract
         return $this->em->getRepository('VotolabBundle:Election')->findAll();
     }
 
-    public function isVoterForElection($user, $election)
+    public function isVoterForElection($user, Election $election)
     {
         $query = $this->em->getRepository('VotolabBundle:Election')->isVoterForElection($user, $election);
         return $query->getResult();
     }
 
-    public function getElectionTally($election)
+    public function getElectionTally(Election $election)
     {
         $query = $this->em->getRepository('VotolabBundle:Election')->getElectionTally($election);
         $query->execute();
         return $query->fetchAll();
-
     }
 
     public function createElection()
