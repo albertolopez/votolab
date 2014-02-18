@@ -1,32 +1,41 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-    <div class="title-logo">
-        <h2>Añadir candidato</h2>
-    </div>
-    <div>
-        {{ form_start(form, {'attr': {'class': 'stdform' }}) }}
-        {{ form_errors(form) }}
-        <p>
-            <label>{{ form_label(form.name) }}</label>
-            <span class="field">{{ form_widget(form.name,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.name) }}</span>
-        </p>
-        <p>
-            <label>{{ form_label(form.biography) }}</label>
-            <span class="field">{{ form_widget(form.biography,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.biography) }}</span>
-        </p>
-        <p>
-            <label>{{ form_label(form.video) }}</label>
-            <span class="field">{{ form_widget(form.video,  {'attr': {'class': 'input-xxlarge' }}) }} {{ form_errors(form.video) }}</span>
-        </p>
-        <p>
-            <label>{{ form_label(form.gender) }}</label>
-            <span class="field">{{ form_widget(form.gender,  {'attr': {'class': 'uniformselect' }}) }} {{ form_errors(form.gender) }}</span>
-        </p>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Añadir / Editar candidato</div>
+        <div class="panel-body">
+            <div>
+                {{ form_start(form, {'attr': {'class': 'form-horizontal' }}) }}
+                {{ form_errors(form) }}
+                <p>
+                    <label>{{ form_label(form.name) }}</label>
+                    <span class="field">{{ form_widget(form.name,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.name) }}</span>
+                </p>
 
-        <p class="stdformbutton">
-            <button class="btn btn-primary">Submit Button</button>
-            <button type="reset" class="btn">Reset Button</button>
-        </p>
-        {{ form_end(form) }}
+                <p>
+                    <label>{{ form_label(form.biography) }}</label>
+                    <span class="field">{{ form_widget(form.biography,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.biography) }}</span>
+                </p>
+
+                <p>
+                    <label>{{ form_label(form.video) }}</label>
+                    <span class="field">{{ form_widget(form.video,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.video) }}</span>
+                </p>
+
+                <p>
+                    <label>{{ form_label(form.gender) }}</label>
+                    <span class="field">{{ form_widget(form.gender,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.gender) }}</span>
+                </p>
+
+                <p class="stdformbutton">
+                    <button class="btn btn-primary">Submit Button</button>
+                    <button type="reset" class="btn">Reset Button</button>
+                </p>
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
 {% endblock %}

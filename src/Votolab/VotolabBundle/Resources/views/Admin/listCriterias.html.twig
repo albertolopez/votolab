@@ -1,25 +1,32 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-    <div class="title-logo">
-        <h2>Admin</h2>
-    </div>
-    <div>
-        <div><a href="{{ path('votolab_add_criteria', {'slug': election.slug}) }}">Añadir Criterios</a></div>
-        <table>
-            <thead>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Listado de Candidatos
+            <a type="button" class="btn btn-default btn-sm pull-right"
+               href="{{ path('votolab_add_criteria', {'slug': election.slug}) }}">
+                <span class="glyphicon glyphicon-plus"></span> Añadir Criterio
+            </a>
+        </div>
+        <div class="panel-body">
+
+            <table class="table">
+                <thead>
                 <th>Nombre</th>
                 <th></th>
                 <th></th>
-            </thead>
-            <tbody>
-            {% for criteria in criterias %}
-                <tr>
-                    <td>{{ criteria.criterion }}</td>
-                    <td><a href="{{ path('votolab_edit_criteria', {'slug': election.slug, 'id': criteria.id}) }}">Editar</a></td>
-                    <td><a href="{{ path('votolab_delete_criteria', {'slug': election.slug, 'id': criteria.id}) }}">Borrar</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for criteria in criterias %}
+                    <tr>
+                        <td>{{ criteria.criterion }}</td>
+                        <td><a href="{{ path('votolab_edit_criteria', {'slug': election.slug, 'id': criteria.id}) }}">Editar</a>
+                        </td>
+                        <td><a href="{{ path('votolab_delete_criteria', {'slug': election.slug, 'id': criteria.id}) }}">Borrar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}
