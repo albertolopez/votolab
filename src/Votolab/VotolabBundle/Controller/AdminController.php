@@ -59,7 +59,7 @@ class AdminController extends Controller
             if ($formHandler->process()) {
                 $this->get('session')->getFlashBag()->set(
                     'notice',
-                    "La elección <b>{$form->getData()->title}</b> ha sido creada"
+                    "La elección {$form->getData()->title} ha sido creada/modificada"
                 );
                 return $this->redirect($this->generateUrl('votolab_admin'));
             }
@@ -125,7 +125,7 @@ class AdminController extends Controller
             if ($formHandler->process()) {
                 $this->get('session')->getFlashBag()->set(
                     'notice',
-                    "El candidato <b>{$form->getData()->name}</b> ha sido creado"
+                    "El candidato {$form->getData()->name} ha sido creado/modificado"
                 );
                 return $this->redirect(
                     $this->generateUrl('votolab_list_candidates', array('slug' => $election->getSlug()))
@@ -196,7 +196,7 @@ class AdminController extends Controller
             if ($formHandler->process()) {
                 $this->get('session')->getFlashBag()->set(
                     'notice',
-                    "El criterio <b>{$form->getData()->criterion}</b> ha sido creado"
+                    "El criterio {$form->getData()->criterion} ha sido creado/modificado"
                 );
                 return $this->redirect(
                     $this->generateUrl('votolab_list_criterias', array('slug' => $election->getSlug()))
