@@ -5,7 +5,6 @@ namespace Votolab\VotolabBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\SecureParam;
-use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
 use Votolab\VotolabBundle\Entity\Election;
 
 class ElectionsController extends Controller
