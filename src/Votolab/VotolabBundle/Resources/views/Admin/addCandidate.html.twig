@@ -1,5 +1,11 @@
 {% extends '::base.html.twig' %}
 {% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('votolab_admin') }}">Elecciones</a></li>
+        <li><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">Candidatos</a></li>
+        <li class="active">Añadir / Editar candidato en {{ election.title }}</li>
+    </ol>
+
     <div class="panel panel-primary">
         <div class="panel-heading">Añadir / Editar candidato</div>
         <div class="panel-body">
