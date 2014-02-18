@@ -1,5 +1,8 @@
 {% extends '::base.html.twig' %}
 {% block body %}
+    <ol class="breadcrumb">
+        <li class="active">Elecciones</li>
+    </ol>
     <div class="panel panel-primary">
         <div class="panel-heading">Listado de Elecciones
             <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_add_election') }}">
