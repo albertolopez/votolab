@@ -1,12 +1,18 @@
 {% extends '::base.html.twig' %}
 {% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('votolab_elections') }}">Elecciones</a></li>
+        <li class="active">{{ election.title }}</li>
+    </ol>
     <div class="panel panel-primary">
-        <div class="panel-heading">Elige a un candidato para valorar</div>
+        <div class="panel-heading">Elige a un candidato para valorar en <b>{{ election.title }}</b></div>
         <div class="panel-body">
             <div class="well-sm">
-                {% for candidate in candidates %}
-                    {{ include ('VotolabBundle:Elections:candidate.html.twig') }}
-                {% endfor %}
+                <div class="row">
+                    {% for candidate in candidates %}
+                        <div class="col-md-6">{{ include ('VotolabBundle:Elections:candidate.html.twig') }}</div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

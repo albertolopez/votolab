@@ -25,7 +25,7 @@
                 <tbody>
                 {% for election in elections %}
                     <tr>
-                        <td>{{ election.title }}</td>
+                        <td><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a></td>
                         <td>{{ election.dateStart|date("d/m/Y") }}</td>
                         <td>{{ election.dateEnd|date("d/m/Y") }}</td>
                         <td>{{ election.voters|length }}</td>
