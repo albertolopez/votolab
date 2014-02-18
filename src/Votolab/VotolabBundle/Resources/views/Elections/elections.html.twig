@@ -1,32 +1,31 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-    <div class="title-logo">
-        <header>
-            <h2>Elecciones abiertas</h2>
-            <button class="logOut">Log Out</button>
-        </header>
-    </div>
-    <div class="elections">
-        {%  for election in elections %}
-        <div>
-            <h3><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
-            <p>{{ election.description }}</p>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="title-logo">
-        <header>
-            <h2>Elecciones pasadas</h2>
-            <button class="logOut">Log Out</button>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Elecciones abiertas</div>
+        <div class="panel-body">
+            <div class="elections">
+                {% for election in elections %}
+                    <div class="well well-sm">
+                        <h3><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a>
+                        </h3>
 
-        </header>
-    </div>
-    <div class="elections">
-        {%  for election in electionsPast %}
-        <div>
-            <h3><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
-            <p>{{ election.description }}</p>
+                        <p>{{ election.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
+    </div>
+    <div class="panel panel-danger">
+        <div class="panel-heading">Elecciones pasadas</div>
+        <div class="panel-body">
+            <div class="elections">
+                {% for election in electionsPast %}
+                    <div class="well well-sm">
+                        <h3><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
+                        <p>{{ election.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

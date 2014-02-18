@@ -1,28 +1,15 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-    <div class="title-logo">
-        <header>
-            <h2>Elige a un candidato para valorar</h2>
-            <button class="logOut">Log Out</button>
-        </header>
-    </div>
-    <div class="listWrapper">
-        <div class="list left">
-            {% for candidate in candidates %}
-                {% if loop.index%2==0 %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Elige a un candidato para valorar</div>
+        <div class="panel-body">
+            <div class="well-sm">
+                {% for candidate in candidates %}
                     {{ include ('VotolabBundle:Elections:candidate.html.twig') }}
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div class="list right">
-            {% for candidate in candidates %}
-                {% if loop.index%2==1 %}
-                    {{ include ('VotolabBundle:Elections:candidate.html.twig') }}
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
-    <span class="separator"></span>
 {% endblock %}
 {% block viewScripts %}
     <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
