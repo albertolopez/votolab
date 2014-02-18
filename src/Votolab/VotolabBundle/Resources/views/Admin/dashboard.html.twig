@@ -2,7 +2,7 @@
 {% block body %}
     <div class="panel panel-primary">
         <div class="panel-heading">Listado de Elecciones
-            <a type="button" class="btn btn-default btn-sm pull-right" href="{{ path('votolab_add_election') }}">
+            <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_add_election') }}">
                 <span class="glyphicon glyphicon-plus"></span> Añadir Elección
             </a>
         </div>
@@ -28,8 +28,8 @@
                         <td>{{ election.voters|length }}</td>
                         <td><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">Candidatos</a></td>
                         <td><a href="{{ path('votolab_list_criterias', {'slug': election.slug}) }}">Criterios</a></td>
-                        <td><a href="{{ path('votolab_edit_election', {'slug': election.slug}) }}">Editar</a></td>
-                        <td><a href="{{ path('votolab_delete_election', {'slug': election.slug}) }}">Borrar</a></td>
+                        <td><a type="button" class="btn btn-primary btn-sm" href="{{ path('votolab_edit_election', {'slug': election.slug}) }}"><span class="glyphicon glyphicon-edit"></span> Editar</a></td>
+                        <td><a type="button" class="btn btn btn-danger btn-sm" href="{{ path('votolab_delete_election', {'slug': election.slug}) }}"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
