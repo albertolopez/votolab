@@ -1,9 +1,7 @@
-<div class="{{ cycle(["first", "last"], loop.index) }} candidate clearfix"
-     data-candidate="{{ candidate.id }}">
+<div class="candidate well well-sm" data-candidate="{{ candidate.id }}">
     <a href="#">
         <img src="{{ asset('images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
     </a>
-
     <div>
         <h3><a href="">{{ candidate.name }}</a></h3>
     </div>
