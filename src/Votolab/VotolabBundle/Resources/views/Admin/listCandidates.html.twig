@@ -1,22 +1,27 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-    <div class="title-logo">
-        <h2>Admin</h2>
+    <div class="panel panel-primary">
+    <div class="panel-heading">Listado de Candidatos
+        <a type="button" class="btn btn-default btn-sm pull-right"
+           href="{{ path('votolab_add_candidate', {'slug': election.slug}) }}">
+            <span class="glyphicon glyphicon-plus"></span> Añadir Candidato
+        </a>
     </div>
-    <div>
-        <div><a href="{{ path('votolab_add_candidate', {'slug': election.slug}) }}">Añadir Candidatos</a></div>
-        <table>
+    <div class="panel-body">
+        <table class="table">
             <thead>
-                <th>Nombre</th>
-                <th></th>
-                <th></th>
+            <th>Nombre</th>
+            <th></th>
+            <th></th>
             </thead>
             <tbody>
             {% for candidate in candidates %}
                 <tr>
                     <td>{{ candidate.name }}</td>
-                    <td><a href="{{ path('votolab_edit_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Editar</a></td>
-                    <td><a href="{{ path('votolab_delete_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Borrar</a></td>
+                    <td><a href="{{ path('votolab_edit_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Editar</a>
+                    </td>
+                    <td><a href="{{ path('votolab_delete_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Borrar</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
