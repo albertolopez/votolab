@@ -2,7 +2,7 @@
 {% block body %}
     <div class="panel panel-primary">
     <div class="panel-heading">Listado de Candidatos
-        <a type="button" class="btn btn-default btn-sm pull-right"
+        <a type="button" class="btn btn-success btn-sm pull-right"
            href="{{ path('votolab_add_candidate', {'slug': election.slug}) }}">
             <span class="glyphicon glyphicon-plus"></span> Añadir Candidato
         </a>
@@ -18,9 +18,9 @@
             {% for candidate in candidates %}
                 <tr>
                     <td>{{ candidate.name }}</td>
-                    <td><a href="{{ path('votolab_edit_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Editar</a>
+                    <td><a type="button" class="btn btn-primary btn-sm" href="{{ path('votolab_edit_candidate', {'slug': election.slug, 'id': candidate.id}) }}"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                     </td>
-                    <td><a href="{{ path('votolab_delete_candidate', {'slug': election.slug, 'id': candidate.id}) }}">Borrar</a>
+                    <td><a type="button" class="btn btn btn-danger btn-sm" href="{{ path('votolab_delete_candidate', {'slug': election.slug, 'id': candidate.id}) }}"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
                     </td>
                 </tr>
             {% endfor %}
