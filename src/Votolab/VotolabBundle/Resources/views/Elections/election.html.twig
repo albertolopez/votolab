@@ -5,7 +5,13 @@
         <li class="active">{{ election.title }}</li>
     </ol>
     <div class="panel panel-primary">
-        <div class="panel-heading">Elige a un candidato para valorar en <b>{{ election.title }}</b></div>
+        <div class="panel-heading">Elige a un candidato para valorar en <b>{{ election.title }}</b>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_admin') }}">
+                    <span class="glyphicon glyphicon-plus"></span> Admin panel
+                </a>
+            {% endif %}
+        </div>
         <div class="panel-body">
             <div class="well-sm">
                 <div class="row">
