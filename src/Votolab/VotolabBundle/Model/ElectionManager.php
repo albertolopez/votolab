@@ -62,9 +62,14 @@ class ElectionManager extends ManagerAbstract
         $election->setMaxCandidates($electionFormClass->maxCandidates);
         $election->setMinCandidates($electionFormClass->minCandidates);
         $election->setPublishResults($electionFormClass->publishResults);
-        $this->em->persist($election);
-        $this->em->flush();
+        $this->persist($election);
         return true;
+    }
+
+    public function publish(Election $election)
+    {
+        $election->setPublishResults(true);
+        $this->persist($election);
     }
 
     public function persist(Election $election)

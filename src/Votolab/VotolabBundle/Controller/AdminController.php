@@ -9,12 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Votolab\VotolabBundle\Entity\Candidate;
 use Votolab\VotolabBundle\Entity\Election;
 use Votolab\VotolabBundle\Entity\ElectionCriteria;
+use Votolab\VotolabBundle\Event\ElectionEvent;
 use Votolab\VotolabBundle\Form\Handler\CandidateFormHandler;
 use Votolab\VotolabBundle\Form\Handler\CriteriaFormHandler;
 use Votolab\VotolabBundle\Form\Handler\ElectionFormHandler;
 use Votolab\VotolabBundle\Form\Model\CandidateFormClass;
 use Votolab\VotolabBundle\Form\Model\CriteriaFormClass;
 use Votolab\VotolabBundle\Form\Model\ElectionFormClass;
+use Votolab\VotolabBundle\VotolabEvents;
 
 class AdminController extends Controller
 {
@@ -78,6 +80,16 @@ class AdminController extends Controller
     {
         $electionsManager = $this->get('election_manager');
         $electionsManager->remove($election);
+        return $this->redirect($this->generateUrl('votolab_admin'));
+    }
+
+    public function publishElectionAction(Election $election)
+    {
+        $event = new ElectionEvent($election);
+        $electionsManager = $this->get('election_manager');
+        $electionsManager->publish($election);
+        $dispatcher = $this->get('event_dispatcher');
+        $dispatcher->dispatch(VotolabEvents::ELECTION_PUBLISHED, $event);
         return $this->redirect($this->generateUrl('votolab_admin'));
     }
 
