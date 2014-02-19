@@ -1,0 +1,12 @@
+elections: elecciones
+election: elección
+candidates: candidatos
+criterias: criterios
+admin:
+    list_elections: Lista de elecciones
+    add_elections: Añadir Elección
+    date_start: fecha de inicio
+    date_end: fecha de fin
+    votes: votos
+    edit: editar
+    delete: borrar
