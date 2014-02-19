@@ -25,26 +25,32 @@ services:
     class: Votolab\VotolabBundle\Model\CriteriaManager
     arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
 
+  # EVENT LISTENERS
+  votolab.election_published_send_email:
+    class: Votolab\VotolabBundle\EventListener\PublishResultsElectionListener
+    arguments: ["@mailer"]
+    tags:
+        - { name: kernel.event_subscriber }
 
   # VOTERS
   can_view_election_voter:
-          class: Votolab\VotolabBundle\Voters\CanViewElectionVoter
-          arguments: [@election_manager]
-          tags:
-              - { name: security.voter }
+    class: Votolab\VotolabBundle\Voters\CanViewElectionVoter
+    arguments: [@election_manager]
+    tags:
+        - { name: security.voter }
 
   # FORMS
-  votolab_election.form.type.project:
-      class: Votolab\VotolabBundle\Form\Type\ElectionFormType
-      tags:
-          - { name: form.type, alias: election }
+  votolab.election.form.type:
+    class: Votolab\VotolabBundle\Form\Type\ElectionFormType
+    tags:
+        - { name: form.type, alias: election }
 
-  votolab_candidate.form.type.project:
-      class: Votolab\VotolabBundle\Form\Type\CandidateFormType
-      tags:
-          - { name: form.type, alias: candidate }
+  votolab.candidate.form.type:
+    class: Votolab\VotolabBundle\Form\Type\CandidateFormType
+    tags:
+        - { name: form.type, alias: candidate }
 
-  votolab_criteria.form.type.project:
-      class: Votolab\VotolabBundle\Form\Type\CriteriaFormType
-      tags:
-          - { name: form.type, alias: criteria }
+  votolab.criteria.form.type:
+    class: Votolab\VotolabBundle\Form\Type\CriteriaFormType
+    tags:
+        - { name: form.type, alias: criteria }
