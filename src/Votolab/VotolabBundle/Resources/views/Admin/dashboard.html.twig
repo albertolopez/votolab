@@ -26,6 +26,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
                 </thead>
                 <tbody>
                 {% for election in elections %}
@@ -36,6 +37,7 @@
                         <td>{{ election.voters|length }}</td>
                         <td><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">{{ 'candidates'|trans|capitalize }}</a></td>
                         <td><a href="{{ path('votolab_list_criterias', {'slug': election.slug}) }}">{{ 'criterias'|trans|capitalize }}</a></td>
+                        <td><a type="button" class="btn btn-success btn-sm" href="{{ path('votolab_publish_election', {'slug': election.slug}) }}"><span class="glyphicon glyphicon-certificate"></span> Publicar</a></td>
                         <td><a type="button" class="btn btn-primary btn-sm" href="{{ path('votolab_edit_election', {'slug': election.slug}) }}"><span class="glyphicon glyphicon-edit"></span> {{ 'admin.edit'|trans|capitalize }}</a></td>
                         <td><a type="button" class="btn btn btn-danger btn-sm" href="{{ path('votolab_delete_election', {'slug': election.slug}) }}"><span class="glyphicon glyphicon-trash"></span> {{ 'admin.delete'|trans|capitalize }}</a></td>
                     </tr>

@@ -24,6 +24,10 @@ votolab_edit_election:
     pattern:  /admin/election/edit/{slug}
     defaults: { _controller: VotolabBundle:Admin:editElections }
 
+votolab_publish_election:
+    pattern:  /admin/election/publish/{slug}
+    defaults: { _controller: VotolabBundle:Admin:publishElection }
+
 votolab_delete_election:
     pattern:  /admin/election/del/{slug}
     defaults: { _controller: VotolabBundle:Admin:deleteElections }

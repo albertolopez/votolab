@@ -90,6 +90,10 @@ class AdminController extends Controller
         $electionsManager->publish($election);
         $dispatcher = $this->get('event_dispatcher');
         $dispatcher->dispatch(VotolabEvents::ELECTION_PUBLISHED, $event);
+        $this->get('session')->getFlashBag()->set(
+            'notice',
+            "La elección {$election->getTitle()} ha sido publicada"
+        );
         return $this->redirect($this->generateUrl('votolab_admin'));
     }
 
