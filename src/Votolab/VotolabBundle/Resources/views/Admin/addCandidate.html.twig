@@ -1,13 +1,13 @@
 {% extends '::base.html.twig' %}
 {% block body %}
     <ol class="breadcrumb">
-        <li><a href="{{ path('votolab_admin') }}">Elecciones</a></li>
-        <li><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">Candidatos</a></li>
-        <li class="active">Añadir / Editar candidato en {{ election.title }}</li>
+        <li><a href="{{ path('votolab_admin') }}">{{ 'elections'|trans|capitalize }}</a></li>
+        <li><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">{{ 'candidates'|trans|capitalize }}</a></li>
+        <li class="active">{{ 'addCandidates.add_edit_candidate_in'|trans }} {{ election.title }}</li>
     </ol>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Añadir / Editar candidato</div>
+        <div class="panel-heading">{{ 'addCandidates.add_edit_candidate'|trans|capitalize }} </div>
         <div class="panel-body">
             <div>
                 {{ form_start(form, {'attr': {'class': 'form-horizontal' }}) }}
@@ -37,8 +37,8 @@
                 </p>
 
                 <p class="stdformbutton">
-                    <button class="btn btn-primary">Submit Button</button>
-                    <button type="reset" class="btn">Reset Button</button>
+                    <button class="btn btn-primary">{{ 'submit'|trans|capitalize}}</button>
+                    <button type="reset" class="btn">{{ 'reset'|trans|capitalize}}</button>
                 </p>
                 {{ form_end(form) }}
             </div>

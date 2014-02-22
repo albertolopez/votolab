@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 {% block body %}
     <ol class="breadcrumb">
-        <li><a href="{{ path('votolab_elections') }}">Elecciones</a></li>
+        <li><a href="{{ path('votolab_elections') }}">{{ 'elections'|trans|capitalize}}</a></li>
         <li class="active">{{ election.title }}</li>
     </ol>
     <div class="panel panel-primary">
-        <div class="panel-heading">Elige a un candidato para valorar en <b>{{ election.title }}</b>
+        <div class="panel-heading">{{ 'editElections.choose_a_candidate_to_valore_in'|trans|capitalize}} <b>{{ election.title }}</b>
             {% if is_granted('ROLE_ADMIN') %}
                 <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_admin') }}">
-                    <span class="glyphicon glyphicon-plus"></span> Admin panel
+                    <span class="glyphicon glyphicon-plus"></span> {{ 'admin_panel'|trans|capitalize}}
                 </a>
             {% endif %}
         </div>

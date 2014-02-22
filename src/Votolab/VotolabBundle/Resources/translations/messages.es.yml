@@ -1,7 +1,13 @@
 elections: elecciones
 election: elección
 candidates: candidatos
+candidate: candidato
 criterias: criterios
+criterion: criterio
+admin_panel: panel de administracción
+in: en
+submit: enviar
+reset: cancelar
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección
@@ -10,3 +16,39 @@ admin:
     votes: votos
     edit: editar
     delete: borrar
+    publish: publicar
+listCandidates:
+    candidates_list: Listado de Candidatos
+    add_candidate: Añadir Candidato
+    name: nombre
+    biography: biografia
+    votes: votos
+    video: video
+    edit: editar
+    delete: borrar
+addCandidates:
+    add_edit_candidate_in: Añadir / Editar Candidato en
+    add_edit_candidate: Añadir / Editar Candidato
+listCriterias:
+    criterias_list: Listado de Criterios
+    add_criterio: Añadir Criterio
+    name: nombre
+    minimun: mínimo
+    maximun: máximo
+    edit: editar
+    delete: borrar
+addCriterias:
+    add_edit_criterion_in: Añadir / Editar Criterio en
+    add_edit_criterion: Añadir / Editar Criterio
+listElections:
+    open_elections: Elecciones abiertas
+    past_elections: Elecciones pasadas
+editElections:
+    choose_a_candidate_to_valore_in: elige a un candidato para valorar en
+addElections:
+    add_edit: Añadir / Editar Elección
+tally:
+    election_result: Resultados de la elección
+    log_out: salir
+
+
