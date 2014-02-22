@@ -1,15 +1,15 @@
 {% extends '::base.html.twig' %}
 {% block body %}
     <ol class="breadcrumb">
-        <li class="active">Elecciones</li>
+        <li class="active">{{ 'elections'|trans|capitalize }}</li>
     </ol>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Elecciones abiertas
+        <div class="panel-heading">{{ 'listElections.open_elections'|trans }}
 
         {% if is_granted('ROLE_ADMIN') %}
             <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_admin') }}">
-                <span class="glyphicon glyphicon-plus"></span> Admin panel
+                <span class="glyphicon glyphicon-plus"></span> {{ 'admin_panel'|trans|capitalize }}
             </a>
         {% endif %}
         </div>
@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="panel panel-danger">
-        <div class="panel-heading">Elecciones pasadas</div>
+        <div class="panel-heading">{{ 'listElections.past_elections'|trans }}</div>
         <div class="panel-body">
             <div class="elections">
                 {% for election in electionsPast %}

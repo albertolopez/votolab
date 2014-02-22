@@ -1,8 +1,8 @@
 {% extends '::base.html.twig' %}
 {% block body %}
     <ol class="breadcrumb">
-        <li><a href="{{ path('votolab_admin') }}">Elecciones</a></li>
-        <li class="active">Criterios</li>
+        <li><a href="{{ path('votolab_admin') }}">{{ 'elections'|trans|capitalize}}</a></li>
+        <li class="active">{{ 'criterias'|trans|capitalize}}</li>
     </ol>
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="alert alert-success">
@@ -10,19 +10,19 @@
         </div>
     {% endfor %}
     <div class="panel panel-primary">
-        <div class="panel-heading">Listado de Criterios
+        <div class="panel-heading">{{ 'listCriterias.criterias_list'|trans}}
             <a type="button" class="btn btn-success btn-sm pull-right"
                href="{{ path('votolab_add_criteria', {'slug': election.slug}) }}">
-                <span class="glyphicon glyphicon-plus"></span> Añadir Criterio
+                <span class="glyphicon glyphicon-plus"></span>{{ 'listCriterias.add_criterio'|trans}}
             </a>
         </div>
         <div class="panel-body">
 
             <table class="table">
                 <thead>
-                <th>Nombre</th>
-                <th>Mínimo</th>
-                <th>Máximo</th>
+                <th>{{ 'listCriterias.name'|trans|capitalize}}</th>
+                <th>{{ 'listCriterias.minimun'|trans|capitalize}}</th>
+                <th>{{ 'listCriterias.maximun'|trans|capitalize}}</th>
                 <th></th>
                 <th></th>
                 </thead>
@@ -32,9 +32,9 @@
                         <td>{{ criteria.criterion }}</td>
                         <td>{{ criteria.min }}</td>
                         <td>{{ criteria.max }}</td>
-                        <td><a type="button" class="btn btn-primary btn-sm" href="{{ path('votolab_edit_criteria', {'slug': election.slug, 'id': criteria.id}) }}"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                        <td><a type="button" class="btn btn-primary btn-sm" href="{{ path('votolab_edit_criteria', {'slug': election.slug, 'id': criteria.id}) }}"><span class="glyphicon glyphicon-edit"></span> {{ 'listCriterias.edit'|trans|capitalize}}</a>
                         </td>
-                        <td><a type="button" class="btn btn btn-danger btn-sm" href="{{ path('votolab_delete_criteria', {'slug': election.slug, 'id': criteria.id}) }}"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+                        <td><a type="button" class="btn btn btn-danger btn-sm" href="{{ path('votolab_delete_criteria', {'slug': election.slug, 'id': criteria.id}) }}"><span class="glyphicon glyphicon-trash"></span> {{ 'listCriterias.delete'|trans|capitalize}}</a>
                         </td>
                     </tr>
                 {% endfor %}

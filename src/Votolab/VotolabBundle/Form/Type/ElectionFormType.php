@@ -88,6 +88,7 @@ class ElectionFormType extends AbstractType
                 'choice',
                 array(
                     'choices' => array('1' => 'Sí', '0' => 'No'),
+                    'label' => 'Publicar Resultados',
                     'required' => true
                 )
             );
