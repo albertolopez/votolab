@@ -1,7 +1,20 @@
 html {
     background: #FFFFFF;
-    font-family: Helvetica, Arial, Sans-Serif !important;
+    font-family: "Trebuchet MS",Helvetica,sans-serif !important;
     color: #666666;
+}
+
+body {
+    font-family: "Trebuchet MS",Helvetica,sans-serif !important;
+}
+
+a, a:visited {
+    color: #3ABAD9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 header {
@@ -34,6 +47,11 @@ h2 {
     font-weight: lighter;
     text-transform: uppercase;
     font-size: 1.5rem;
+}
+
+h3 {
+    font-family: 'Play',sans-serif !important;
+    font-weight: 700;
 }
 
 .separator {
@@ -175,7 +193,13 @@ iframe{
     clear: both;
 }
 
+.panel-primary > .panel-heading {
+    background-color: #3ABAD9;
+    border-color: #3ABAD9;
+}
+
 .panel-heading .btn {
+    color: #FFFFFF;
     top: -5px;
     position: relative;
 }
