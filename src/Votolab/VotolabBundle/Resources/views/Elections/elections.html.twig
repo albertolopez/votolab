@@ -17,7 +17,9 @@
             <div class="elections">
                 {% for election in elections %}
                     <div class="well well-sm">
-                        <h3><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a>
+                        <h3>
+                            <a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a>
+                            <span class="label label-danger pull-right">{{ election.dateStart|date("d/m/Y") }}</span>
                         </h3>
 
                         <p>{{ election.description }}</p>
@@ -32,7 +34,10 @@
             <div class="elections">
                 {% for election in electionsPast %}
                     <div class="well well-sm">
-                        <h3><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a></h3>
+                        <h3>
+                            <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
+                            <span class="label label-danger pull-right">{{ election.dateStart|date("d/m/Y") }}</span>
+                        </h3>
                         <p>{{ election.description }}</p>
                     </div>
                 {% endfor %}
