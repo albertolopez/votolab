@@ -203,3 +203,7 @@ iframe{
     top: -5px;
     position: relative;
 }
+
+.top-buffer {
+    margin-top:20px;
+}

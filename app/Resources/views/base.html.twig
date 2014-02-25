@@ -18,15 +18,35 @@
     <![endif]-->
 </head>
 <body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <ul class="nav navbar-nav navbar-collapse">
+            <a class="navbar-brand" href="{{ path('rcpx_homepage') }}">
+                <img src="{{ asset('bundles/rcpx/images/partidox-redciudadana.png') }}" class="img-responsive"/>
+            </a>
+        </ul>
+        <ul class="nav navbar-right navbar-nav">
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a type="button" class="btn navbar-btn " type="button" href="{{ path('votolab_admin') }}">
+                        <span class="glyphicon glyphicon-plus"></span> {{ 'admin_panel'|trans|capitalize }}
+                    </a>
+                </li>
+            {% endif %}
+            <li>
+                <a type="button" class="btn btn-default navbar-btn" type="button" href="{{ path('fos_user_security_logout') }}">
+                    <span class="glyphicon glyphicon-log-out"></span> {{ 'logout'|trans|capitalize }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
-<header>
-    <h1>
-        <a href="{{ path('rcpx_homepage') }}"><img src="{{ asset('bundles/rcpx/images/partidox-redciudadana.png') }}" class="img-responsive" /></a>
-    </h1>
-</header>
-{% block body %}{% endblock %}
-<div class="footer">Red Ciudadana - Partido X </div>
-</div> <!-- /container -->
+    {% block body %}{% endblock %}
+    <div class="footer">Red Ciudadana - Partido X</div>
+</div>
+<!-- /container -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="{{ asset('bundles/rcpx/js/barlovento.js') }}"></script>
