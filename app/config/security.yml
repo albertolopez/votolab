@@ -20,7 +20,7 @@ security:
                 default_target_path: /elections
                 always_use_default_target_path: true
             logout:
-                target: /login
+                target: /
             anonymous:    true
 
     access_control:
