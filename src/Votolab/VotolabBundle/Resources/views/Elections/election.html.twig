@@ -6,15 +6,13 @@
     </ol>
     <div class="panel panel-primary">
         <div class="panel-heading">{{ 'editElections.choose_a_candidate_to_valore_in'|trans|capitalize}} <b>{{ election.title }}</b>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_admin') }}">
-                    <span class="glyphicon glyphicon-plus"></span> {{ 'admin_panel'|trans|capitalize}}
-                </a>
-            {% endif %}
         </div>
         <div class="panel-body">
             <div class="well-sm">
                 <div class="row">
+                    <div class="col-md-12">{{ election.description }}</div>
+                </div>
+                <div class="row top-buffer">
                     {% for candidate in candidates %}
                         <div class="col-md-6">{{ include ('VotolabBundle:Elections:candidate.html.twig') }}</div>
                     {% endfor %}

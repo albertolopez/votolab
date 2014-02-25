@@ -5,13 +5,8 @@
     </ol>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">{{ 'listElections.open_elections'|trans }}
-
-        {% if is_granted('ROLE_ADMIN') %}
-            <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_admin') }}">
-                <span class="glyphicon glyphicon-plus"></span> {{ 'admin_panel'|trans|capitalize }}
-            </a>
-        {% endif %}
+        <div class="panel-heading">
+            {{ 'listElections.open_elections'|trans }}
         </div>
         <div class="panel-body">
             <div class="elections">
@@ -19,7 +14,10 @@
                     <div class="well well-sm">
                         <h3>
                             <a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a>
-                            <span class="label label-danger pull-right">{{ election.dateStart|date("d/m/Y") }}</span>
+                            <span class="label label-danger pull-right">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                {{ election.dateStart|date("d/m/Y") }}
+                            </span>
                         </h3>
 
                         <p>{{ election.description }}</p>
@@ -36,8 +34,12 @@
                     <div class="well well-sm">
                         <h3>
                             <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
-                            <span class="label label-danger pull-right">{{ election.dateStart|date("d/m/Y") }}</span>
+                            <span class="label label-danger pull-right">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                {{ election.dateStart|date("d/m/Y") }}
+                            </span>
                         </h3>
+
                         <p>{{ election.description }}</p>
                     </div>
                 {% endfor %}

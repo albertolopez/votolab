@@ -8,6 +8,7 @@ admin_panel: panel de administracción
 in: en
 submit: enviar
 reset: cancelar
+logout: salir
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección
