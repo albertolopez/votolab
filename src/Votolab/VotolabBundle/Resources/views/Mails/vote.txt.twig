@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+    <div class="panel panel-primary">
+    <div class="panel-heading">{{ 'voteEmail.your_vote_has_been_registered'|trans|capitalize}}
+    </div>
+    <div class="panel-body">
+        <div>
+            {{ 'voteEmail.we_registered_your_vote_to'|trans|capitalize}} <h4>{{ candidate.name }}</h4>
+        </div>
+        <div>
+            {{ 'voteEmail.your_valoration_was'|trans|capitalize}}
+            <table>
+                {% for vote in votes %}
+                    <tr>
+                        <td>
+                            {{ vote.criterion }}
+                        </td>
+                        <td>
+                            {{ vote.vote }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

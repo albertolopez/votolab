@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('votolab_admin') }}">{{ 'elections'|trans|capitalize}}</a></li>
+        <li class="active">{{ 'criterias'|trans|capitalize}}</li>
+    </ol>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{ 'listTallies.votes_list'|trans|capitalize}}
+            <a type="button" class="btn btn-success btn-sm pull-right" href="{{ path('votolab_elections') }}">
+                {{ 'back'|trans|capitalize }}
+            </a>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <th>{{ 'candidate'|trans|capitalize}}</th>
+                <th>{{ 'criterion'|trans|capitalize}}</th>
+                <th>{{ 'listTallies.punctuation'|trans|capitalize}}</th>
+                </thead>
+                <tbody>
+                {% for vote in votes %}
+                    <tr>
+                        <td>{{ vote.candidate.name }}</td>
+                        <td>{{ vote.criterion.criterion }}</td>
+                        <td>{{ vote.vote }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -9,6 +9,8 @@ in: en
 submit: enviar
 reset: cancelar
 logout: salir
+back: volver
+to_vote: votar
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección
@@ -51,5 +53,10 @@ addElections:
 tally:
     election_result: Resultados de la elección
     log_out: salir
-
-
+listTallies:
+    votes_list: listado de votos
+    punctuation: puntuación
+voteEmail:
+    your_vote_has_been_registered: tu voto ha sido registrado.
+    we_registered_your_vote_to: hemos registrado tu voto a
+    your_valoration_was: tu valoración fue
