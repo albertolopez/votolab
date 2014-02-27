@@ -38,6 +38,9 @@
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 {{ election.dateStart|date("d/m/Y") }}
                             </span>
+                            <span class="pull-right">
+                                <a href="{{ path('votolab_list_tallies', {'slug': election.slug}) }}"><span class="glyphicon glyphicon-certificate"></span> {{ 'listTallies.votes_list'|trans|capitalize }}</a>
+                            </span>
                         </h3>
 
                         <p>{{ election.description }}</p>

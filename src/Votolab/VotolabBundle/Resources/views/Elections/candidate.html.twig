@@ -20,8 +20,10 @@
                         <option value="5">5</option>
                     </select>
                 </li>
-
             {% endfor %}
+            <a type="button" class="btn btn-success pull-right" href="{{ path('votolab_vote', {'slug': election.slug, 'id': candidate.id}) }}">
+                {{ 'to_vote'|trans|capitalize }}
+            </a>
         </ul>
     </div>
 </div>

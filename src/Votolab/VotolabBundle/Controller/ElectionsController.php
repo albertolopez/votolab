@@ -59,9 +59,62 @@ class ElectionsController extends Controller
 
     /**
      * @template
+     * @SecureParam(name="election", permissions="CAN_VIEW_ELECTION")
      */
-    public function voteAction()
+    public function listTalliesAction(Election $election)
     {
+        if ($election->getDateEnd() > new \DateTime('now')) {
+            return $this->redirect($this->generateUrl('votolab_elections'));
+        }
 
+        $voteManager = $this->get('vote_manager');
+
+        return array(
+            'votes' => $voteManager->findByElection($election)
+        );
     }
+
+    /**
+     * @template
+     * @SecureParam(name="election", permissions="CAN_VIEW_ELECTION")
+     */
+    public function viewTallyAction(Election $election, User $user, Candidate $candidate)
+    {
+        //$candidateManager = $this->get('candidate_manager');
+        //$electionManager = $this->get('election_manager');
+        //Election $election;
+        $votes = "";
+
+        return array(
+            'election' => $election,
+            'candidate' => $candidate,
+            'votes' => $votes
+        );
+    }
+
+    /**
+     * @template
+     */
+    public function voteAction(Election $election, Candidate $candidate)
+    {
+        //TODO:
+        //sendVoteEmail($candidate, $user, $votes);
+    }
+
+    private function sendVoteEmail(Candidate $candidate, User $user, $votes)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Voto Emitido')
+            ->setFrom('send@example.com')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'VotolabBundle:Mails:vote.txt.twig',
+                    array('user'=> $user, 'candidate' => $candidate, 'votes' => $votes)
+                )
+            )
+        ;
+        $this->mailer->send($message);
+    }
+
 }
