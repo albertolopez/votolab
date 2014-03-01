@@ -13,8 +13,9 @@
     <div class="row login">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-            <h2>Listas abiertas ciudadanas</h2>
+            <h2>{{ "listas_abiertas"|trans }}</h2>
             {{ render(controller("FOSUserBundle:Security:login")) }}
+            <a href="{{ path('fos_user_resetting_request') }}">{{ 'forgot_password'|trans }}</a>
         </div>
     </div>
 
