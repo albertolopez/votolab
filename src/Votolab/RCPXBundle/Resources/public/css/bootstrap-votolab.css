@@ -64,38 +64,13 @@ h3 {
     text-transform: uppercase;
 }
 
-form {
-    background: #F9F9F9;
+form.securityForm {
+    background: none repeat scroll 0 0 #F9F9F9;
     margin: 10px auto 0;
     padding: 25px;
 }
 
-form div {
-    width: 50%;
-    float: left;
-}
-
-form div:last-child label {
-    display: inline-block;
-}
-
-form label {
-    display: block;
-    margin-bottom: 0.25rem;
-}
-
-form input[type=text],
-form input[type=password] {
-    border: 1px solid #F1F1F1;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    width: 95%;
-    padding: 0.5rem;
-    margin-right: 10px;
-}
-
-form input[type=submit] {
-    width: 100%;
+.securityButton {
     -webkit-border-radius: 3px;
     border-radius: 3px;
     background: #39BAD9;
@@ -105,9 +80,10 @@ form input[type=submit] {
     border: none;
     padding: 0.75rem;
     font-size: 1.6rem;
+    margin-top:20px;
 }
 
-form input[type=submit]:hover {
+.securityButton:hover {
     background: #999999;
     color: #FFFFFF;
     text-transform: uppercase;

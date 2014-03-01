@@ -1,5 +1,21 @@
 {% extends '::base.html.twig' %}
 
+{% block navbar %}
+    <header>
+        <h1>
+            <img src="{{ asset('bundles/rcpx/images/partidox-redciudadana-big.png') }}" class="img-responsive"/>
+        </h1>
+    </header>
+{% endblock %}
+
+
 {% block body %}
-    {{ block('fos_user_content') }}
+    <div class="row login">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <h2>{{ 'listas_abiertas'|trans }}</h2>
+            {{ block('fos_user_content') }}
+        </div>
+    </div>
+
 {% endblock %}
