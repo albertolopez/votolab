@@ -16,21 +16,25 @@
         <span class="container-fluid">{{ candidate.video|embed|raw }}</span>
         <span class="container-fluid">{{ candidate.biography }}</span>
         <h4 class="container-fluid">{{ 'vote_candidate'|trans|capitalize }} {{ candidate.name }}</h4>
-        <ul class="criteria container-fluid col-md-12">
-            {% for criterion in criteria %}
-                <li class="top-buffer">
-                    <p>{{ criterion.criterion }}:</p>
-                    <select data-rating>
-                        <option value=""></option>
-                        {% for i in criterion.min..criterion.max %}
-                            <option value="{{ i }}">{{ i }}</option>
-                        {% endfor %}
-                    </select>
-                </li>
-            {% endfor %}
-        </ul>
-        <button type="button" class="btn btn-success btn-lg btn-block col-md-12 top-buffer" id="submitVote">
-            {{ 'to_vote'|trans|capitalize }}
-        </button>
+
+        <form action="">
+            <ul class="criteria container-fluid col-md-12">
+                {% for criterion in criteria %}
+                    <li class="top-buffer form-group">
+                        <p>{{ criterion.criterion }}:</p>
+                        <select data-rating="{{ criterion.id }}" class="criterion">
+                            <option value=""></option>
+                            {% for i in criterion.min..criterion.max %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="control-label hide input-error">{{ 'required_field'|trans|capitalize }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="btn btn-success btn-lg btn-block col-md-12 top-buffer" id="submitVote">
+                {{ 'to_vote'|trans|capitalize }}
+            </button>
+        </form>
     </div>
 </div>

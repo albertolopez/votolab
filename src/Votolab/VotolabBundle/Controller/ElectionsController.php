@@ -99,6 +99,7 @@ class ElectionsController extends Controller
      */
     public function voteAction(Election $election, Candidate $candidate)
     {
+        $tmp = $election;
         //TODO:
         //sendVoteEmail($candidate, $user, $votes);
     }

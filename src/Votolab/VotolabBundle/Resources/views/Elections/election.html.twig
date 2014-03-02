@@ -4,7 +4,7 @@
         <li><a href="{{ path('votolab_elections') }}">{{ 'elections'|trans|capitalize}}</a></li>
         <li class="active">{{ election.title }}</li>
     </ol>
-    <div class="panel panel-primary election">
+    <div class="panel panel-primary election" data-election="{{ election.slug }}">
         <div class="panel-heading"><h2>{{ election.title }}</h2></div>
         <div class="panel-body">
             <div class="well-sm">
@@ -22,5 +22,6 @@
 {% endblock %}
 {% block viewScripts %}
     <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('bundles/rcpx/js/views/election.js') }}"></script>
 {% endblock %}
