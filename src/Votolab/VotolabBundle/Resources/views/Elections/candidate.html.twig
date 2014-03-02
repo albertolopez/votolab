@@ -4,13 +4,12 @@
 <div class="col-md-9">
     <div>
         <div class="container-fluid">
-        <button type="button" class="pull-right btn btn-default read-more" data-toggle="collapse" data-target="#moreInfo-{{ candidate.id }}">
-            <span class="glyphicon glyphicon-plus"></span> {{ 'read_more'|trans|capitalize }}
-        </button>
-        <h3>{{ candidate.name }}</h3>
-
+            <button type="button" class="pull-right btn btn-default read-more" data-toggle="collapse"
+                    data-target="#moreInfo-{{ candidate.id }}">
+                <span class="glyphicon glyphicon-plus"></span> {{ 'read_more'|trans|capitalize }}
+            </button>
+            <h3>{{ candidate.name }}</h3>
         </div>
-
         <p class="competence top-buffer container-fluid">{{ candidate.competence }}</p>
     </div>
     <div class="moreInfo container-fluid collapse" id="moreInfo-{{ candidate.id }}">
@@ -22,6 +21,7 @@
                 <li class="top-buffer">
                     <p>{{ criterion.criterion }}:</p>
                     <select data-rating>
+                        <option value=""></option>
                         {% for i in criterion.min..criterion.max %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
@@ -29,9 +29,8 @@
                 </li>
             {% endfor %}
         </ul>
-        <a type="button" class="btn btn-success btn-block col-md-12 top-buffer"
-           href="{{ path('votolab_vote', {'slug': election.slug, 'id': candidate.id}) }}">
+        <button type="button" class="btn btn-success btn-lg btn-block col-md-12 top-buffer" id="submitVote">
             {{ 'to_vote'|trans|capitalize }}
-        </a>
+        </button>
     </div>
 </div>
