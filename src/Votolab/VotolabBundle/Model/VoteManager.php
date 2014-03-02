@@ -25,13 +25,25 @@ class VoteManager extends ManagerAbstract
     {
         //$votes = $this->em->getRepository('VotolabBundle:Vote')->findByElection($election, array('candidate' => 'ASC'));
         //return $votes;
+        //$q = $this->em->createQuery('select v from Votolab\VotolabBundle\Entity\Vote v
+        //    left join v.candidate c
+        //    where v.election = :election order by c.name asc');
+        //$q->setParameter('election' , $election);
+
+        //return $q->getResult();
+
         $q = $this->em->createQuery('select v from Votolab\VotolabBundle\Entity\Vote v
             left join v.candidate c
             where v.election = :election order by c.name asc');
         $q->setParameter('election' , $election);
 
-        return $q->getResult();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $q,
+            $this->get('request')->query->get('page', 1),
+            10);
 
+        return array('pagination' => $pagination);
     }
 
 }
