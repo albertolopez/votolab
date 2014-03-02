@@ -69,5 +69,7 @@ votolab_delete_criteria:
     defaults: { _controller: VotolabBundle:Admin:deleteCriteria }
 
 votolab_vote:
-    pattern:  /election/{slug}/vote/{id}
+    pattern:  /election/{slug}/vote
     defaults: { _controller: VotolabBundle:Elections:vote }
+    options:
+        expose: true
