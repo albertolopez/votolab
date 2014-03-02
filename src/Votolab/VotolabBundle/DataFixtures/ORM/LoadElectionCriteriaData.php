@@ -32,8 +32,8 @@ class LoadElectionCriteriaData extends AbstractFixture implements FixtureInterfa
 
             $criteria->setElection($this->getReference('election-' . rand(0, 29)));
             $criteria->setCriterion($faker->sentence());
-            $criteria->setMin($faker->randomNumber());
-            $criteria->setMax($faker->randomNumber());
+            $criteria->setMin(1);
+            $criteria->setMax(5);
             $criteriaManager->persist($criteria);
             $this->addReference('criteria-' . $i, $criteria);
         }
