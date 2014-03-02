@@ -27,12 +27,16 @@ class LoadCandidateData extends AbstractFixture implements FixtureInterface, Ord
         $candidateManager = $this->container->get('candidate_manager');
 
         $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Faker\Provider\Image($faker));
+        $xml = simplexml_load_file('http://gdata.youtube.com/feeds/base/standardfeeds/most_popular');
         for ($i = 0; $i < 150; $i++) {
             $candidate = $candidateManager->createCandidate();
             $candidate->setName($faker->name);
             $candidate->setBiography($faker->paragraph());
-            $candidate->setVideo($faker->url);
+            $candidate->setVideo(str_replace('&feature=youtube_gdata', '', $xml->entry[($i % 10)]->link[0]['href']));
             $candidate->setGender($faker->boolean());
+            $candidate->setPicture($faker->imageUrl(100, 100, 'people'));
+            $candidate->setCompetence($faker->text());
             $candidate->setElection($this->getReference('election-' . rand(0, 29)));
             $candidateManager->persist($candidate);
             $this->addReference('candidate-' . $i, $candidate);

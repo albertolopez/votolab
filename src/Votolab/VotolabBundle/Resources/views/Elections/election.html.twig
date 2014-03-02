@@ -5,8 +5,7 @@
         <li class="active">{{ election.title }}</li>
     </ol>
     <div class="panel panel-primary">
-        <div class="panel-heading">{{ 'editElections.choose_a_candidate_to_valore_in'|trans|capitalize}} <b>{{ election.title }}</b>
-        </div>
+        <div class="panel-heading"><b>{{ election.title }}</b></div>
         <div class="panel-body">
             <div class="well-sm">
                 <div class="row">
@@ -14,7 +13,7 @@
                 </div>
                 <div class="row top-buffer">
                     {% for candidate in candidates %}
-                        <div class="col-md-6">{{ include ('VotolabBundle:Elections:candidate.html.twig') }}</div>
+                        <div class="col-md-12 candidate well well-sm" data-candidate="{{ candidate.id }}">{{ include ('VotolabBundle:Elections:candidate.html.twig') }}</div>
                     {% endfor %}
                 </div>
             </div>
