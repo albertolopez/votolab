@@ -27,10 +27,10 @@ class LoadElectionCriteriaData extends AbstractFixture implements FixtureInterfa
         $criteriaManager = $this->container->get('criteria_manager');
 
         $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 90; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             $criteria = $criteriaManager->createElectionCriteria();
 
-            $criteria->setElection($this->getReference('election-' . rand(0, 29)));
+            $criteria->setElection($this->getReference('election-' . rand(0, 9)));
             $criteria->setCriterion($faker->sentence());
             $criteria->setMin(1);
             $criteria->setMax(5);

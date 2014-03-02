@@ -1,11 +1,7 @@
-html {
-    background: #FFFFFF;
-    font-family: "Trebuchet MS",Helvetica,sans-serif !important;
-    color: #666666;
-}
-
 body {
-    font-family: "Trebuchet MS",Helvetica,sans-serif !important;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    color: 	#4F4F4F;
 }
 
 a, a:visited {
@@ -96,6 +92,7 @@ form.securityForm {
 
 .candidate {
     margin-bottom: 10px;
+    padding-bottom: 30px;
 }
 
 
@@ -136,6 +133,7 @@ ul.criteria {
 .criteria p{
     font-weight: bold;
     color: #39BAD9;
+    margin-bottom: 5px;
 }
 .criteria .br-widget{
     margin-left: 0;

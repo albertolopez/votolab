@@ -10,7 +10,7 @@ submit: enviar
 reset: cancelar
 logout: salir
 back: volver
-to_vote: votar
+to_vote: enviar
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección
