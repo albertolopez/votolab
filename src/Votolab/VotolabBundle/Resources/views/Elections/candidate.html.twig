@@ -1,17 +1,22 @@
 <div class="col-md-3">
-    <a href="#">
-        <img class="img-rounded" src="{{ asset(candidate.picture) }}" alt="{{ candidate.name }}"/>
-    </a>
+    <img class="img-rounded" src="{{ asset(candidate.picture) }}" alt="{{ candidate.name }}"/>
 </div>
 <div class="col-md-9">
     <div>
-        <h3><a href="#">{{ candidate.name }}</a></h3>
+        <div class="container-fluid">
+        <button type="button" class="pull-right btn btn-default read-more" data-toggle="collapse" data-target="#moreInfo-{{ candidate.id }}">
+            <span class="glyphicon glyphicon-plus"></span> {{ 'read_more'|trans|capitalize }}
+        </button>
+        <h3>{{ candidate.name }}</h3>
 
-        <p class="competence">{{ candidate.competence }}</p>
+        </div>
+
+        <p class="competence top-buffer container-fluid">{{ candidate.competence }}</p>
     </div>
-    <div class="moreInfo" data-panel style="display:none">
+    <div class="moreInfo container-fluid collapse" id="moreInfo-{{ candidate.id }}">
         <span class="container-fluid">{{ candidate.video|embed|raw }}</span>
         <span class="container-fluid">{{ candidate.biography }}</span>
+        <h4 class="container-fluid">{{ 'vote_candidate'|trans|capitalize }} {{ candidate.name }}</h4>
         <ul class="criteria container-fluid col-md-12">
             {% for criterion in criteria %}
                 <li class="top-buffer">
@@ -24,7 +29,7 @@
                 </li>
             {% endfor %}
         </ul>
-        <a type="button" class="btn btn-success col-md-12 top-buffer"
+        <a type="button" class="btn btn-success btn-block col-md-12 top-buffer"
            href="{{ path('votolab_vote', {'slug': election.slug, 'id': candidate.id}) }}">
             {{ 'to_vote'|trans|capitalize }}
         </a>
