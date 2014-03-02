@@ -32,12 +32,12 @@ class LoadCandidateData extends AbstractFixture implements FixtureInterface, Ord
         for ($i = 0; $i < 150; $i++) {
             $candidate = $candidateManager->createCandidate();
             $candidate->setName($faker->name);
-            $candidate->setBiography($faker->paragraph());
+            $candidate->setBiography($faker->text(1000));
             $candidate->setVideo(str_replace('&feature=youtube_gdata', '', $xml->entry[($i % 10)]->link[0]['href']));
             $candidate->setGender($faker->boolean());
-            $candidate->setPicture($faker->imageUrl(100, 100, 'people'));
+            $candidate->setPicture($faker->imageUrl(227, 200, 'people'));
             $candidate->setCompetence($faker->text());
-            $candidate->setElection($this->getReference('election-' . rand(0, 29)));
+            $candidate->setElection($this->getReference('election-' . rand(0, 9)));
             $candidateManager->persist($candidate);
             $this->addReference('candidate-' . $i, $candidate);
         }

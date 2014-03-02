@@ -29,7 +29,7 @@ class LoadElectionData extends AbstractFixture implements FixtureInterface, Orde
         $em = $this->container->get('doctrine')->getEntityManager();
 
         $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $startDate = $faker->dateTimeThisMonth;
             $election = $electionManager->createElection();
             $election->setTitle($faker->sentence());
