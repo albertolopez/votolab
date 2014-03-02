@@ -161,9 +161,7 @@ ul.criteria {
     margin-top: 15px;
 }
 
-.criteria .br-widget .br-current-rating{
-    background-color: #39BAD9;
-    color: #ffffff;
+.criteria .br-widget .br-current-rating, .criteria .br-widget .br-current-rating-active{
     width: auto;
     -webkit-border-radius: 15px;
     border-radius: 15px;
@@ -171,6 +169,12 @@ ul.criteria {
     margin: -7px 0 0 725px;
     border:1px solid #ffffff;
     position: absolute;
+    font-weight: bold;
+}
+
+.criteria .br-widget .br-current-rating-active{
+    background-color: #39BAD9;
+    color: #ffffff;
 }
 .criteria .br-widget a.br-selected{
     background-color: #39BAD9;
