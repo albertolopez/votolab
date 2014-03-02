@@ -59,6 +59,19 @@ class Candidate
      */
     private $gender;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture", type="string", length=510)
+     */
+    private $picture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="competence", type="string", length=255)
+     */
+    private $competence;
 
     /**
      * Get id
@@ -92,13 +105,10 @@ class Candidate
      * Set election
      *
      * @param Election $election
-     * @return Candidate
      */
     public function setElection(Election $election)
     {
         $this->election = $election;
-
-        return $this;
     }
 
     /**
@@ -138,13 +148,10 @@ class Candidate
      * Set biography
      *
      * @param string $biography
-     * @return Candidate
      */
     public function setBiography($biography)
     {
         $this->biography = $biography;
-
-        return $this;
     }
 
     /**
@@ -161,13 +168,10 @@ class Candidate
      * Set video
      *
      * @param string $video
-     * @return Candidate
      */
     public function setVideo($video)
     {
         $this->video = $video;
-
-        return $this;
     }
 
     /**
@@ -184,13 +188,10 @@ class Candidate
      * Set gender
      *
      * @param boolean $gender
-     * @return Candidate
      */
     public function setGender($gender)
     {
         $this->gender = $gender;
-
-        return $this;
     }
 
     /**
@@ -201,5 +202,45 @@ class Candidate
     public function getGender()
     {
         return $this->gender;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set competence
+     *
+     * @param string $competence
+     */
+    public function setCompetence($competence)
+    {
+        $this->competence = $competence;
+    }
+
+    /**
+     * Get competence
+     *
+     * @return string
+     */
+    public function getCompetence()
+    {
+        return $this->competence;
     }
 }

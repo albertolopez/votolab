@@ -54,3 +54,8 @@ services:
     class: Votolab\VotolabBundle\Form\Type\CriteriaFormType
     tags:
         - { name: form.type, alias: criteria }
+
+  votolab.twig.votolab_extension:
+        class: Votolab\VotolabBundle\Twig\VotolabExtension
+        tags:
+            - { name: twig.extension }

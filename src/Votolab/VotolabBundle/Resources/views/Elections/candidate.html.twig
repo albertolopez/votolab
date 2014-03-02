@@ -1,29 +1,33 @@
-<div class="candidate well well-sm" data-candidate="{{ candidate.id }}">
-    <a href="#">
-        <img class="img-rounded img-responsive" src="{{ asset('bundles/rcpx/images/partidox-redciudadana.png') }}" alt="{{ candidate.name }}"/>
-    </a>
-    <div>
-        <h3><a href="#">{{ candidate.name }}</a></h3>
+    <div class="col-md-2">
+        <a href="#" class="col-md-offset-2">
+            <img class="img-rounded" src="{{ asset(candidate.picture) }}" alt="{{ candidate.name }}"/>
+        </a>
     </div>
-    <div class="moreInfo" data-panel>
-        <span>{{ candidate.video|raw }}</span>
-        <span>{{ candidate.biography }}</span>
-        <ul class="criteria">
-            {% for criterion in criteria %}
-                <li>
-                    <p>{{ criterion.criterion }}:</p>
-                    <select data-rating>
-                        <option value="1">asfsadf</option>
-                        <option value="asfdasd">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </li>
-            {% endfor %}
-            <a type="button" class="btn btn-success pull-right" href="{{ path('votolab_vote', {'slug': election.slug, 'id': candidate.id}) }}">
-                {{ 'to_vote'|trans|capitalize }}
-            </a>
-        </ul>
+    <div class="col-md-10">
+        <div>
+            <h3><a href="#">{{ candidate.name }}</a></h3>
+            <p class="competence">{{ candidate.competence }}</p>
+        </div>
+        <div class="moreInfo" data-panel style="display:none">
+            <span>{{ candidate.video|embed|raw }}</span>
+            <span>{{ candidate.biography }}</span>
+            <ul class="criteria">
+                {% for criterion in criteria %}
+                    <li>
+                        <p>{{ criterion.criterion }}:</p>
+                        <select data-rating>
+                            <option value="1">asfsadf</option>
+                            <option value="asfdasd">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </li>
+                {% endfor %}
+                <a type="button" class="btn btn-success pull-right"
+                   href="{{ path('votolab_vote', {'slug': election.slug, 'id': candidate.id}) }}">
+                    {{ 'to_vote'|trans|capitalize }}
+                </a>
+            </ul>
+        </div>
     </div>
-</div>

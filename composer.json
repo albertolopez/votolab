@@ -39,7 +39,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "fzaninotto/faker":"dev-master",
         "friendsofsymfony/jsrouting-bundle": "@stable",
-        "jms/security-extra-bundle": "dev-master"
+        "jms/security-extra-bundle": "dev-master",
+        "mpratt/embera": "~1.0"
     },
     "scripts": {
         "post-install-cmd": [

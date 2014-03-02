@@ -46,6 +46,10 @@ h3 {
     font-weight: 700;
 }
 
+.candidate h3 {
+    margin-top: 0;
+}
+
 .separator {
     width: 960px;
     height: 10px;
@@ -90,12 +94,8 @@ form.securityForm {
     cursor: pointer;
 }
 
-div.list .candidate {
-    display: block;
-    background-color: #F9F9F9 !important;
-    float: none;
+.candidate {
     margin-bottom: 10px;
-    padding: 10px 10px 20px 10px;
 }
 
 
@@ -124,12 +124,10 @@ div.list .candidate {
     color: #646464;
 }
 
-iframe{
-    border:5px solid #ffffff;
-    width: 375px !important;
-    height: 282px !important;
+ul.criteria {
+    list-style-type: none;
+    padding-left: 0;
 }
-
 
 .criteria{
     margin: 13px 0 0 0;
@@ -138,7 +136,6 @@ iframe{
 .criteria p{
     font-weight: bold;
     color: #39BAD9;
-    margin-left: 10px;
 }
 .criteria .br-widget{
     margin-left: 0;
@@ -159,6 +156,11 @@ iframe{
 .criteria .br-widget a.br-selected{
     background-color: #39BAD9;
 
+}
+
+.competence {
+    color: #666666;
+    font-style: italic;
 }
 
 .footer {
