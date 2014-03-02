@@ -69,11 +69,25 @@ class ElectionsController extends Controller
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
 
-        $voteManager = $this->get('vote_manager');
+        //$voteManager = $this->get('vote_manager');
 
-        return array(
-            'votes' => $voteManager->findByElection($election)
-        );
+        //return array(
+        //    'votes' => $voteManager->findByElection($election)
+        //);
+
+        $em = $this->get('doctrine.orm.entity_manager');
+        $q = $em->createQuery('select v from Votolab\VotolabBundle\Entity\Vote v
+            left join v.candidate c
+            where v.election = :election order by c.name asc');
+        $q->setParameter('election' , $election);
+
+        $paginator = $this->get('knp_paginator');
+        $votes = $paginator->paginate(
+            $q,
+            $this->get('request')->query->get('page', 1),
+            $this->container->getParameter('page_range'));
+
+        return $this->render('VotolabBundle:Elections:listTallies.html.twig', array('votes' => $votes));
     }
 
     /**

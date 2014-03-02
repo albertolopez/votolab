@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Votolab\VotolabBundle\VotolabBundle(),
             new Votolab\RCPXBundle\RCPXBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
         );
 
