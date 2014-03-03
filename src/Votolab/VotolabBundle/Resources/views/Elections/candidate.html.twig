@@ -15,26 +15,33 @@
     <div class="moreInfo container-fluid collapse" id="moreInfo-{{ candidate.id }}">
         <span class="container-fluid">{{ candidate.video|embed|raw }}</span>
         <span class="container-fluid">{{ candidate.biography }}</span>
-        <h4 class="container-fluid">{{ 'vote_candidate'|trans|capitalize }} {{ candidate.name }}</h4>
 
-        <form action="">
-            <ul class="criteria container-fluid col-md-12">
-                {% for criterion in criteria %}
-                    <li class="top-buffer form-group">
-                        <p>{{ criterion.criterion }}:</p>
-                        <select data-rating="{{ criterion.id }}" class="criterion">
-                            <option value=""></option>
-                            {% for i in criterion.min..criterion.max %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                        <span class="control-label hide input-error">{{ 'required_field'|trans|capitalize }}</span>
-                    </li>
-                {% endfor %}
-            </ul>
-            <button type="button" class="btn btn-success btn-lg btn-block col-md-12 top-buffer" id="submitVote">
-                {{ 'to_vote'|trans|capitalize }}
-            </button>
-        </form>
+        <div id="valueCandidate-{{ candidate.id }}">
+            <h4 class="container-fluid">{{ 'vote_candidate'|trans|capitalize }} {{ candidate.name }}</h4>
+
+            <form action="">
+                <ul class="criteria container-fluid col-md-12">
+                    {% for criterion in criteria %}
+                        <li class="top-buffer form-group">
+                            <p>{{ criterion.criterion }}:</p>
+                            <select data-criterion="{{ criterion.id }}" name="{{ criterion.id }}" class="criterion">
+                                <option value=""></option>
+                                {% for i in criterion.min..criterion.max %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="control-label hide input-error">{{ 'required_field'|trans|capitalize }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="submitVote btn btn-success btn-lg btn-block col-md-12 top-buffer"
+                        data-loading-text="{{ 'voting'|trans|capitalize }}...">
+                    {{ 'to_vote'|trans|capitalize }}
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="alert alert-warning hide top-buffer" id="valueCandidateSuccess-{{ candidate.id }}">
+        <strong>{{ 'vote_sent'|trans|capitalize }}</strong>
     </div>
 </div>
