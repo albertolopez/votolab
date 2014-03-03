@@ -1,13 +1,15 @@
 $(function () {
-    $('[data-rating]').barrating('show', {
+    $('[data-criterion]').barrating('show', {
         showSelectedRating: true,
         onSelect: function (value, text) {
             $(this).siblings('.br-current-rating').addClass('br-current-rating-active');
         }
     });
-    $("button#submitVote").click(function () {
+    $("button.submitVote").click(function () {
+
+
         var valid = true;
-        $.each($(this).parents('form').find('[data-rating]'), function () {
+        $.each($(this).parents('form').find('[data-criterion]'), function () {
             var criterion = $(this).parent('.form-group');
             if (!$(this).val()) {
                 criterion.addClass('has-error');
@@ -19,16 +21,32 @@ $(function () {
         })
         if (valid === true) {
             var candidate = $(this).parents('[data-candidate]').data('candidate');
-            var ratings = $(this).parents('[data-ratings]').data('rating');
-            console.log( $( this ).parents('form').serialize() );
+            var ratings = [];
+            $.each($(this).parents('form').find('[data-criterion]'), function (index, value) {
+                var criterionVote = {};
+                criterionVote.index = $(this).attr('name');
+                criterionVote.value = $(this).val();
+                ratings.push(criterionVote);
+            })
+
+            var btn = $(this);
+            btn.button('loading');
             $.ajax({
                 type: "POST",
                 url: Routing.generate('votolab_vote', {slug: $('[data-election]').data('election')}),
                 data: {
-                    candidate: candidate,
-                    ratings: ratings
+                    ratings: ratings,
+                    candidate: candidate
+                },
+                success: function (data) {
+                    btn.hide('slow', function () {
+                        $('#valueCandidateSuccess-' + candidate).removeClass('hide');
+                        $('[data-candidate="' + candidate + '"]').css('background-color', '#DFF0D8');
+                    })
                 }
-            })
+            }).always(function () {
+                btn.button('reset')
+            });
         }
     });
 });

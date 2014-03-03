@@ -5,9 +5,12 @@ namespace Votolab\VotolabBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\SecureParam;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Votolab\UserBundle\Entity\User;
 use Votolab\VotolabBundle\Entity\Candidate;
 use Votolab\VotolabBundle\Entity\Election;
+use Votolab\VotolabBundle\Entity\Vote;
 
 class ElectionsController extends Controller
 {
@@ -111,9 +114,24 @@ class ElectionsController extends Controller
     /**
      * @template
      */
-    public function voteAction(Election $election, Candidate $candidate)
+    public function voteAction(Request $request, Election $election, Candidate $candidate)
     {
-        $tmp = $election;
+        $ratings = $request->get('ratings');
+        foreach ($ratings as $rating) {
+            $em = $this->container->get('doctrine')->getEntityManager();
+            $electionCriteria = $em->getRepository('VotolabBundle:ElectionCriteria')->find($rating['index']);
+            $vote = new Vote();
+            $vote->setElection($election);
+            $vote->setCandidate($candidate);
+            $vote->setCriterion($electionCriteria);
+            $vote->setVote($rating['value']);
+            $vote->setUser($this->getUser());
+            $em->persist($vote);
+            $em->flush();
+
+            $response = array("success" => true);
+            return new Response(json_encode($response));
+        }
         //TODO:
         //sendVoteEmail($candidate, $user, $votes);
     }
