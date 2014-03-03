@@ -5,9 +5,8 @@ $(function () {
             $(this).siblings('.br-current-rating').addClass('br-current-rating-active');
         }
     });
-    $("button.submitVote").click(function () {
-
-
+    $("button.submitVote").on('click', function (event) {
+        event.preventDefault();
         var valid = true;
         $.each($(this).parents('form').find('[data-criterion]'), function () {
             var criterion = $(this).parent('.form-group');
@@ -18,7 +17,7 @@ $(function () {
             } else {
                 criterion.find('.input-error').addClass('hide');
             }
-        })
+        });
         if (valid === true) {
             var candidate = $(this).parents('[data-candidate]').data('candidate');
             var ratings = [];
@@ -27,7 +26,7 @@ $(function () {
                 criterionVote.index = $(this).attr('name');
                 criterionVote.value = $(this).val();
                 ratings.push(criterionVote);
-            })
+            });
 
             var btn = $(this);
             btn.button('loading');
@@ -45,8 +44,8 @@ $(function () {
                     })
                 }
             }).always(function () {
-                btn.button('reset')
-            });
+                    btn.button('reset');
+                });
         }
     });
 });
