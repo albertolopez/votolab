@@ -38,6 +38,12 @@ $(function () {
                     candidate: candidate
                 },
                 success: function (data) {
+                    var target = $(this).parents('form').find('[data-criterion]');
+                    target.each(function (index, element) {
+                        $(element).barrating('destroy');
+                        $(element).barrating('show', {showSelectedRating: true, readonly: true});
+                    });
+
                     btn.hide('slow', function () {
                         $('#valueCandidateSuccess-' + candidate).removeClass('hide');
                         $('[data-candidate="' + candidate + '"]').css('background-color', '#DFF0D8');
