@@ -4,6 +4,7 @@ candidates: candidatos
 candidate: candidato
 criterias: criterios
 criterion: criterio
+voters: votantes
 admin_panel: panel de administracción
 in: en
 submit: enviar
@@ -65,3 +66,18 @@ voteEmail:
     your_vote_has_been_registered: tu voto ha sido registrado.
     we_registered_your_vote_to: hemos registrado tu voto a
     your_valoration_was: tu valoración fue
+listVoters:
+    add_edit_voter_in: Añadir / Editar Votante en
+    add_voter: Añadir Votante
+    import_voters_list: Importar lista de votantes
+    voters_list: Listado de Votantes
+    username: nombre de usuario
+    email: email
+    edit: editar
+    delete: borrar
+addVoters:
+    add_edit_voter_in: Añadir / Editar Votante en
+    add_edit_voter: Añadir / Editar Votante
+importVoters:
+    import_voters_list: Importar lista de votantes
+    voters_list: lista de votantes

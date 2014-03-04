@@ -55,6 +55,16 @@ services:
     tags:
         - { name: form.type, alias: criteria }
 
+  votolab.voter.form.type:
+    class: Votolab\VotolabBundle\Form\Type\VoterFormType
+    tags:
+        - { name: form.type, alias: user }
+
+  votolab.importvoters.form.type:
+    class: Votolab\VotolabBundle\Form\Type\ImportVotersFormType
+    tags:
+        - { name: form.type, alias: importvoters }
+
   votolab.twig.votolab_extension:
         class: Votolab\VotolabBundle\Twig\VotolabExtension
         tags:

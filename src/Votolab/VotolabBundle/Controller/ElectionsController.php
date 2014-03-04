@@ -12,6 +12,7 @@ use Votolab\VotolabBundle\Entity\Candidate;
 use Votolab\VotolabBundle\Entity\Election;
 use Votolab\VotolabBundle\Entity\Vote;
 
+
 class ElectionsController extends Controller
 {
 
@@ -117,6 +118,7 @@ class ElectionsController extends Controller
     public function voteAction(Request $request, Election $election, Candidate $candidate)
     {
         $ratings = $request->get('ratings');
+        sendVoteEmail($election, $candidate);
         foreach ($ratings as $rating) {
             $em = $this->container->get('doctrine')->getEntityManager();
             $electionCriteria = $em->getRepository('VotolabBundle:ElectionCriteria')->find($rating['index']);
@@ -132,21 +134,20 @@ class ElectionsController extends Controller
             $response = array("success" => true);
             return new Response(json_encode($response));
         }
-        //TODO:
-        //sendVoteEmail($candidate, $user, $votes);
     }
 
-    private function sendVoteEmail(Candidate $candidate, User $user, $votes)
+    /**
+     * @template
+     */
+    private function sendVoteEmail(Election $election, Candidate $candidate)
     {
+
+        $user = $this->getUser();
         $message = \Swift_Message::newInstance()
             ->setSubject('Voto Emitido')
-            ->setFrom('send@example.com')
+            ->setFrom($this->container->getParameter('mailer_user'))
             ->setTo($user->getEmail())
-            ->setBody(
-                $this->renderView(
-                    'VotolabBundle:Mails:vote.txt.twig',
-                    array('user'=> $user, 'candidate' => $candidate, 'votes' => $votes)
-                )
+            ->setBody('Tu voto ha sido registrado.'
             )
         ;
         $this->mailer->send($message);

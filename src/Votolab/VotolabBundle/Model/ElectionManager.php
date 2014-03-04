@@ -5,6 +5,7 @@ namespace Votolab\VotolabBundle\Model;
 use Votolab\VotolabBundle\Entity\Election;
 use Votolab\VotolabBundle\Entity\ElectionCriteria;
 use Votolab\VotolabBundle\Form\Model\ElectionFormClass;
+use Votolab\UserBundle\Entity\User;
 
 /**
  * election_manager
@@ -81,6 +82,14 @@ class ElectionManager extends ManagerAbstract
     public function remove(Election $election)
     {
         $this->em->remove($election);
+        $this->em->flush();
+    }
+
+    public function removeVoter(Election $election, User $user)
+    {
+        $election->getVoters()->removeElement($user);
+        $user->getElections()->removeElement($election);
+        $this->em->persist($election);
         $this->em->flush();
     }
 }

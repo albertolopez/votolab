@@ -68,6 +68,26 @@ votolab_delete_criteria:
     pattern:  /admin/election/{slug}/criteria/del/{id}
     defaults: { _controller: VotolabBundle:Admin:deleteCriteria }
 
+votolab_list_voters:
+    pattern:  /admin/election/{slug}/voter/list
+    defaults: { _controller: VotolabBundle:Admin:listVoters }
+
+votolab_add_voter:
+    pattern:  /admin/election/{slug}/voter/add
+    defaults: { _controller: VotolabBundle:Admin:addVoter }
+
+votolab_edit_voter:
+    pattern:  /admin/election/{slug}/voter/edit/{id}
+    defaults: { _controller: VotolabBundle:Admin:editVoter }
+
+votolab_import_voter:
+    pattern:  /admin/election/{slug}/voter/import
+    defaults: { _controller: VotolabBundle:Admin:importVoter }
+
+votolab_delete_voter:
+    pattern:  /admin/election/{slug}/voter/del/{id}
+    defaults: { _controller: VotolabBundle:Admin:deleteVoter }
+
 votolab_vote:
     pattern:  /election/{slug}/vote
     defaults: { _controller: VotolabBundle:Elections:vote }

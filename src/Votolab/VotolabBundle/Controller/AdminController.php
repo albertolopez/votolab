@@ -13,10 +13,15 @@ use Votolab\VotolabBundle\Event\ElectionEvent;
 use Votolab\VotolabBundle\Form\Handler\CandidateFormHandler;
 use Votolab\VotolabBundle\Form\Handler\CriteriaFormHandler;
 use Votolab\VotolabBundle\Form\Handler\ElectionFormHandler;
+use Votolab\VotolabBundle\Form\Handler\VoterFormHandler;
+use Votolab\VotolabBundle\Form\Handler\ImportVotersFormHandler;
 use Votolab\VotolabBundle\Form\Model\CandidateFormClass;
 use Votolab\VotolabBundle\Form\Model\CriteriaFormClass;
 use Votolab\VotolabBundle\Form\Model\ElectionFormClass;
+use Votolab\VotolabBundle\Form\Model\VoterFormClass;
+use Votolab\VotolabBundle\Form\Model\ImportVotersFormClass;
 use Votolab\VotolabBundle\VotolabEvents;
+use Votolab\UserBundle\Entity\User;
 
 class AdminController extends Controller
 {
@@ -238,6 +243,101 @@ class AdminController extends Controller
         $criteriaManager = $this->get('criteria_manager');
         $criteriaManager->remove($criteria);
         return $this->redirect($this->generateUrl('votolab_list_criterias', array('slug' => $election->getSlug())));
+    }
+
+    /**
+     * @template
+     */
+    public function listVotersAction(Election $election)
+    {
+        return array('election' => $election);
+    }
+
+    /**
+     * @template
+     */
+    public function addVoterAction(Request $request, Election $election)
+    {
+        $user = new User();
+        return $this->createOrEditUser($request, $election, $user);
+    }
+
+    /**
+     * @template
+     * @ParamConverter("election", options={"mapping": {"slug": "slug"}})
+     */
+    public function editVoterAction(Request $request, Election $election, User $user)
+    {
+        return $this->createOrEditUser($request, $election, $user);
+    }
+
+    /**
+     * @param Request $request
+     * @param \Votolab\VotolabBundle\Entity\Election $election
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    private function createOrEditUser(Request $request, Election $election, User $user)
+    {
+        $form = $this->createForm('user', new VoterFormClass($user, $election));
+        if ($request->getMethod() == "POST") {
+            $formHandler = new VoterFormHandler($form, $request, $this->get('fos_user.user_manager'));
+            if ($formHandler->process()) {
+                $this->get('session')->getFlashBag()->set(
+                    'notice',
+                    "El usuario {$form->getData()->username} ha sido creado/modificado"
+                );
+                return $this->redirect(
+                    $this->generateUrl('votolab_list_voters', array('slug' => $election->getSlug()))
+                );
+            }
+        }
+
+        return $this->render(
+            'VotolabBundle:Admin:addVoter.html.twig',
+            array(
+                'election' => $election,
+                'form' => $form->createView(),
+            )
+        );
+    }
+
+    /**
+     * @template
+     */
+    public function importVoterAction(Request $request, Election $election)
+    {
+        $form = $this->createForm('importvoters', new ImportVotersFormClass($election));
+        if ($request->getMethod() == "POST") {
+            $formHandler = new ImportVotersFormHandler($form, $request, $this->get('fos_user.user_manager'));
+            if ($formHandler->process()) {
+                $this->get('session')->getFlashBag()->set(
+                    'notice',
+                    "Los votantes han sido incluidos en la elección"
+                );
+                return $this->redirect(
+                    $this->generateUrl('votolab_list_voters', array('slug' => $election->getSlug()))
+                );
+            }
+        }
+
+        return $this->render(
+            'VotolabBundle:Admin:importVoters.html.twig',
+            array(
+                'election' => $election,
+                'form' => $form->createView(),
+            )
+        );
+    }
+
+    /**
+     * @ParamConverter("election", options={"mapping": {"slug": "slug"}})
+     */
+    public function deleteVoterAction(Election $election, User $user)
+    {
+        $electionManager = $this->get('election_manager');
+        $electionManager->removeVoter($election, $user);
+        return $this->redirect($this->generateUrl('votolab_list_voters', array('slug' => $election->getSlug())));
     }
 
 }
