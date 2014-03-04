@@ -5,9 +5,8 @@ $(function () {
             $(this).siblings('.br-current-rating').addClass('br-current-rating-active');
         }
     });
-    $("button.submitVote").click(function () {
-
-
+    $("button.submitVote").on('click', function (event) {
+        event.preventDefault();
         var valid = true;
         $.each($(this).parents('form').find('[data-criterion]'), function () {
             var criterion = $(this).parent('.form-group');
@@ -18,7 +17,7 @@ $(function () {
             } else {
                 criterion.find('.input-error').addClass('hide');
             }
-        })
+        });
         if (valid === true) {
             var candidate = $(this).parents('[data-candidate]').data('candidate');
             var ratings = [];
@@ -27,7 +26,7 @@ $(function () {
                 criterionVote.index = $(this).attr('name');
                 criterionVote.value = $(this).val();
                 ratings.push(criterionVote);
-            })
+            });
 
             var btn = $(this);
             btn.button('loading');
@@ -39,14 +38,20 @@ $(function () {
                     candidate: candidate
                 },
                 success: function (data) {
+                    var target = $(this).parents('form').find('[data-criterion]');
+                    target.each(function (index, element) {
+                        $(element).barrating('destroy');
+                        $(element).barrating('show', {showSelectedRating: true, readonly: true});
+                    });
+
                     btn.hide('slow', function () {
                         $('#valueCandidateSuccess-' + candidate).removeClass('hide');
                         $('[data-candidate="' + candidate + '"]').css('background-color', '#DFF0D8');
                     })
                 }
             }).always(function () {
-                btn.button('reset')
-            });
+                    btn.button('reset');
+                });
         }
     });
 });
