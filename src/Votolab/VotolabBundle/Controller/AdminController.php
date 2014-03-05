@@ -22,6 +22,7 @@ use Votolab\VotolabBundle\Form\Model\VoterFormClass;
 use Votolab\VotolabBundle\Form\Model\ImportVotersFormClass;
 use Votolab\VotolabBundle\VotolabEvents;
 use Votolab\UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 
 class AdminController extends Controller
 {
@@ -285,14 +286,13 @@ class AdminController extends Controller
             if ($formHandler->process()) {
                 $this->get('session')->getFlashBag()->set(
                     'notice',
-                    "El usuario {$form->getData()->username} ha sido creado/modificado"
+                    "El usuario {$form->getData()->email} ha sido creado/modificado"
                 );
                 return $this->redirect(
                     $this->generateUrl('votolab_list_voters', array('slug' => $election->getSlug()))
                 );
             }
         }
-
         return $this->render(
             'VotolabBundle:Admin:addVoter.html.twig',
             array(
