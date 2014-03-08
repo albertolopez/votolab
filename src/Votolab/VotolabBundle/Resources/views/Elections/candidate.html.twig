@@ -34,6 +34,7 @@
                         </li>
                     {% endfor %}
                 </ul>
+                <div class="alert alert-danger col-md-12 top-buffer hide"  id="valueCandidateError-{{ candidate.id }}">{{ 'vote_error'|trans|capitalize }}</div>
                 <button type="button" class="submitVote btn btn-success btn-lg btn-block col-md-12 top-buffer"
                         data-loading-text="{{ 'voting'|trans|capitalize }}...">
                     {{ 'to_vote'|trans|capitalize }}

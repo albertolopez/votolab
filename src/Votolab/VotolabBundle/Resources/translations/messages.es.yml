@@ -17,6 +17,7 @@ read_more: ver más
 required_field: requerido
 voting: enviando
 vote_sent: Tu valoración ha sido recibida correctamente
+vote_error: Valoración no registrada, ha habido un error
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección

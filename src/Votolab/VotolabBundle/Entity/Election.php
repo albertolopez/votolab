@@ -86,21 +86,25 @@ class Election
     private $datePublished;
 
     /**
+     * var User
      * @ORM\ManyToMany(targetEntity="Votolab\UserBundle\Entity\User", mappedBy="elections")
      **/
     private $voters;
 
     /**
+     * var Candidate
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Candidate", mappedBy="election", cascade={"remove"})
      */
     private $candidates;
 
     /**
+     * var Vote
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Vote", mappedBy="election", cascade={"remove"})
      */
     private $votes;
 
     /**
+     * var ElectionCriteria
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria", mappedBy="election", cascade={"remove"})
      */
     private $electionCriterias;

@@ -80,16 +80,19 @@ class ElectionsController extends Controller
         //);
 
         $em = $this->get('doctrine.orm.entity_manager');
-        $q = $em->createQuery('select v from Votolab\VotolabBundle\Entity\Vote v
-            left join v.candidate c
-            where v.election = :election order by c.name asc');
-        $q->setParameter('election' , $election);
+        $q = $em->createQuery(
+            'select v from Votolab\VotolabBundle\Entity\Vote v
+                        left join v.candidate c
+                        where v.election = :election order by c.name asc'
+        );
+        $q->setParameter('election', $election);
 
         $paginator = $this->get('knp_paginator');
         $votes = $paginator->paginate(
             $q,
             $this->get('request')->query->get('page', 1),
-            $this->container->getParameter('page_range'));
+            $this->container->getParameter('page_range')
+        );
 
         return $this->render('VotolabBundle:Elections:listTallies.html.twig', array('votes' => $votes));
     }
@@ -113,12 +116,44 @@ class ElectionsController extends Controller
     }
 
     /**
+     * @param $ratings
+     * @param Election $election
+     * @param $candidate
+     */
+    private function validateVote($ratings, $election, $candidate)
+    {
+        $user = $this->getUser();
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $votes = $em->getRepository('VotolabBundle:Vote')->findBy(array(
+                'election' => $election,
+                'candidate' => $candidate,
+                'user' => $user
+            ));
+        if (count($votes) > $election->getMaxCandidates()) {
+            return false;
+        }
+        foreach($ratings as $rating) {
+            $electionCriteria = $em->getRepository('VotolabBundle:ElectionCriteria')->find($rating['index']);
+            if($rating['value'] > $electionCriteria->getMax() || $rating['value'] < $electionCriteria->getMin()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * @template
+     * @SecureParam(name="election", permissions="CAN_VIEW_ELECTION")
      */
     public function voteAction(Request $request, Election $election, Candidate $candidate)
     {
         $ratings = $request->get('ratings');
-        sendVoteEmail($election, $candidate);
+        if (!$this->validateVote($ratings, $election, $candidate)) {
+            $response = array("error" => true, "message" => 'invalid vote');
+            return new Response(json_encode($response));
+        }
+        //sendVoteEmail($election, $candidate);
         foreach ($ratings as $rating) {
             $em = $this->container->get('doctrine')->getEntityManager();
             $electionCriteria = $em->getRepository('VotolabBundle:ElectionCriteria')->find($rating['index']);
@@ -130,10 +165,10 @@ class ElectionsController extends Controller
             $vote->setUser($this->getUser());
             $em->persist($vote);
             $em->flush();
-
-            $response = array("success" => true);
-            return new Response(json_encode($response));
         }
+
+        $response = array("success" => true);
+        return new Response(json_encode($response));
     }
 
     /**
@@ -147,9 +182,9 @@ class ElectionsController extends Controller
             ->setSubject('Voto Emitido')
             ->setFrom($this->container->getParameter('mailer_user'))
             ->setTo($user->getEmail())
-            ->setBody('Tu voto ha sido registrado.'
-            )
-        ;
+            ->setBody(
+                'Tu voto ha sido registrado.'
+            );
         $this->mailer->send($message);
     }
 
