@@ -52,22 +52,22 @@ class ElectionRepository extends EntityRepository
             ->getConnection()
             ->prepare(
                 '
-                SELECT *, 1 + 4*((x + z*z/(2*n) - z*sqrt(x*(1-x)/n + z*z/(4*n*n)))/(1 + z*z/n)) as wilson
-                FROM (
-
-                SELECT c.*, COUNT(*) AS n, SUM(voteAvg.vote) AS sumaVotos, 1.96 AS z, (SUM(voteAvg.vote)/COUNT(c.id) - 1)/4 AS x
-                FROM Candidate c
-                LEFT JOIN
-                (SELECT AVG(v.vote) AS vote, election_id, candidate_id, user_id, criterion_id FROM Vote v
-                GROUP BY v.election_id, v.candidate_id, v.user_id) voteAvg ON voteAvg.candidate_id = c.id
-                WHERE voteAvg.election_id = :election
+                SELECT c.*, SUM(v.vote) as candidate_votes, (100 * SUM(v.vote)) / max_votes as percentage FROM Candidate c
+                LEFT JOIN Vote v On c.id = v.candidate_id
+                LEFT JOIN (
+                    SELECT MAX(candidate_votes) max_votes FROM (
+                        SELECT SUM(v.vote) as candidate_votes FROM Vote v
+                        WHERE v.election_id = :election
+                        GROUP BY v.candidate_id
+                    ) s
+                ) m ON true = true
+                WHERE v.election_id = :election
                 GROUP BY c.id
-
-                ) calculation
-                 ORDER BY wilson DESC', $rsm
+                ORDER BY percentage DESC
+                ', $rsm
             );
+
         $query->bindValue('election', $election->getId());
         return $query;
     }
-
 }

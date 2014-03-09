@@ -1,21 +1,43 @@
 {% extends '::base.html.twig' %}
+
+{% block viewStylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rcpx/css/jqbar.css') }}">
+{% endblock %}
+
 {% block body %}
-    <div class="title-logo">
-        <h2>{{ 'tally.election_result'|trans|capitalize }}</h2>
-        <button class="logOut">{{ 'tally.log_out'|trans|capitalize }}</button>
-    </div>
-    <div class="listWrapper">
-        <div class="list">
-            {% for candidate in tally %}
-                {% if loop.index%2==0 %}
-                    {{ include ('VotolabBundle:Elections:candidate.html.twig') }}
-                {% endif %}
-            {% endfor %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('votolab_elections') }}">{{ 'elections'|trans|capitalize }}</a></li>
+        <li class="active">{{ election.title }}</li>
+    </ol>
+    <div class="panel panel-primary election" data-election="{{ election.slug }}">
+        <div class="panel-heading"><h2>{{ 'tally_for'|trans|capitalize }} {{ election.title }}</h2></div>
+        <div class="panel-body">
+            <div class="well-sm">
+                <div class="row">
+                    <div class="col-md-12">{{ election.getDescriptionTally() }}</div>
+                </div>
+                <table class="table top-buffer">
+                    {% for candidate in tally %}
+                        <tr>
+                            <td>
+                                <img class="img-rounded" src="{{ asset(candidate.picture)| apply_filter('tally_thumb') }}"
+                                     alt="{{ candidate.name }}"/>
+                            </td>
+                            <td>
+                                <h3>{{ candidate.name }}</h3>
+                            </td>
+                            <td class="percentage" data-percentage="{{ candidate.percentage }}">
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
-    <span class="separator"></span>
 {% endblock %}
+
 {% block viewScripts %}
-    <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
-    <script src="{{ asset('bundles/rcpx/js/views/election.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/jqbar.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/views/tally.js') }}"></script>
 {% endblock %}
+

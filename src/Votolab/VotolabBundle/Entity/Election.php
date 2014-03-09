@@ -44,6 +44,13 @@ class Election
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description_tally", type="text")
+     */
+    private $description_tally;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_start", type="datetime")
@@ -269,6 +276,29 @@ class Election
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set description_tally
+     *
+     * @param string $description_tally
+     * @return Election
+     */
+    public function setDescriptionTally($description_tally)
+    {
+        $this->description_tally = $description_tally;
+
+        return $this;
+    }
+
+    /**
+     * Get description_tally
+     *
+     * @return string
+     */
+    public function getDescriptionTally()
+    {
+        return $this->description_tally;
     }
 
     /**

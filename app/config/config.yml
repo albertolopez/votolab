@@ -74,3 +74,10 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Votolab\UserBundle\Entity\User
+
+# Avalanche Configuration
+avalanche_imagine:
+    filters:
+          tally_thumb:
+                type:    thumbnail
+                options: { size: [30, 30], mode: outbound }

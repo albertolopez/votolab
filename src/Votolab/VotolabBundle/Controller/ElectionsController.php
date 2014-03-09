@@ -52,13 +52,10 @@ class ElectionsController extends Controller
         if ($election->getDateEnd() > new \DateTime('now')) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
-        $candidateManager = $this->get('candidate_manager');
         $electionManager = $this->get('election_manager');
 
         return array(
             'election' => $election,
-            'candidates' => $candidateManager->findByElectionOrderRandom($election),
-            'criteria' => $election->getElectionCriteria(),
             'tally' => $electionManager->getElectionTally($election)
         );
     }

@@ -18,6 +18,7 @@ required_field: requerido
 voting: enviando
 vote_sent: Tu valoración ha sido recibida correctamente
 vote_error: Valoración no registrada, ha habido un error
+tally_for: resultados de
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección

@@ -41,7 +41,8 @@
         "friendsofsymfony/jsrouting-bundle": "@stable",
         "jms/security-extra-bundle": "dev-master",
 		"knplabs/knp-paginator-bundle": "~2.4",       
-        "mpratt/embera": "~1.0"
+        "mpratt/embera": "~1.0",
+        "avalanche123/imagine-bundle": "v2.1"
     },
     "scripts": {
         "post-install-cmd": [
