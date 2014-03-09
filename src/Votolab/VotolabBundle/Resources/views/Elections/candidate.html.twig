@@ -14,7 +14,7 @@
     </div>
     <div class="moreInfo container-fluid collapse" id="moreInfo-{{ candidate.id }}">
         <span class="container-fluid">{{ candidate.video|embed|raw }}</span>
-        <span class="container-fluid">{{ candidate.biography }}</span>
+        <span class="container-fluid">{{ candidate.biography|raw }}</span>
 
         <div id="valueCandidate-{{ candidate.id }}">
             <h4 class="container-fluid">{{ 'vote_candidate'|trans|capitalize }} {{ candidate.name }}</h4>

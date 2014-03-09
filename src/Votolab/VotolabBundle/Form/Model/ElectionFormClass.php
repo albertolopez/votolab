@@ -21,6 +21,11 @@ class ElectionFormClass
      */
     public $description;
     /**
+     * @Assert\NotBlank(message="Introduce una descripción")
+     * @var string
+     */
+    public $description_tally;
+    /**
      * @var string
      * @Assert\NotBlank(message="Introduce una url")
      */
@@ -61,6 +66,7 @@ class ElectionFormClass
         $this->id = $election->getId();
         $this->title = $election->getTitle();
         $this->description = $election->getDescription();
+        $this->description_tally = $election->getDescriptionTally();
         $this->slug = $election->getSlug();
         $this->dateStart = $election->getDateStart();
         $this->dateEnd = $election->getDateEnd();

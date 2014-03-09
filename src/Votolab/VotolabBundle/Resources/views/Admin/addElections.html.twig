@@ -23,6 +23,12 @@
                 </p>
 
                 <p>
+                    <label>{{ form_label(form.description_tally) }}</label>
+                    <span class="field">{{ form_widget(form.description_tally,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.description_tally) }}</span>
+                </p>
+
+                <p>
                     <label>{{ form_label(form.slug) }}</label>
                     <span class="field">{{ form_widget(form.slug,  {'attr': {'class': 'form-control' }}
                         ) }} {{ form_errors(form.slug) }}</span>
@@ -72,4 +78,12 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block viewScripts %}
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script>
+        var tinymce_stylesheet = "{{ asset('bundles/rcpx/css/tinymce_stylesheet.css') }}";
+    </script>
+    <script src="{{ asset('bundles/rcpx/js/views/admin.js') }}"></script>
 {% endblock %}
