@@ -4,6 +4,8 @@ namespace Votolab\VotolabBundle\Form\Model;
 use Votolab\VotolabBundle\Entity\Candidate;
 use Symfony\Component\Validator\Constraints as Assert;
 use Votolab\VotolabBundle\Entity\Election;
+use Votolab\VotolabBundle\Entity\Image;
+use Vlabs\MediaBundle\Annotation\Vlabs;
 
 class CandidateFormClass
 {
@@ -26,7 +28,9 @@ class CandidateFormClass
      */
     public $video;
     /**
-     * @var string
+     * @var Image
+     *
+     * @Vlabs\Media(identifier="image_entity", upload_dir="files/images")
      */
     public $image;
     /**
@@ -44,7 +48,14 @@ class CandidateFormClass
         $this->name = $candidate->getName();
         $this->biography = $candidate->getBiography();
         $this->video = $candidate->getVideo();
+        $this->image = $candidate->getImage();
         $this->gender = $candidate->getGender();
         $this->election = $candidate->getElection();
+    }
+
+
+    public function getImage()
+    {
+        return $this->image;
     }
 }
