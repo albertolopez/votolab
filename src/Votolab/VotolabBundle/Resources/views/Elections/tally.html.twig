@@ -19,14 +19,16 @@
                 <table class="table top-buffer">
                     {% for candidate in tally %}
                         <tr>
-                            <td>
-                                <img class="img-rounded" src="{{ asset(candidate.picture)| apply_filter('tally_thumb') }}"
-                                     alt="{{ candidate.name }}"/>
+                            <td class="col-sm-1">
+                                {{ candidate.image|vlabs_filter('resize', { width : 50, height : 50, keepRatio : true } )|vlabs_media('image', { name : candidate.name, class:'img-rounded' }) }}
                             </td>
-                            <td>
+                            <td class="col-sm-4">
                                 <h3>{{ candidate.name }}</h3>
                             </td>
-                            <td class="percentage" data-percentage="{{ candidate.percentage }}">
+                            <td class="col-sm-1">
+                                {{ candidate.candidate_votes }}
+                            </td>
+                            <td class="percentage " data-percentage="{{ candidate.percentage }}">
                             </td>
                         </tr>
                     {% endfor %}

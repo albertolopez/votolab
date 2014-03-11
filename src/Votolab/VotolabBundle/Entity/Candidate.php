@@ -3,6 +3,8 @@
 namespace Votolab\VotolabBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vlabs\MediaBundle\Annotation\Vlabs;
 
 /**
  * Candidate
@@ -60,11 +62,17 @@ class Candidate
     private $gender;
 
     /**
-     * @var string
+     * @var VlabsFile
      *
-     * @ORM\Column(name="picture", type="string", length=510)
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"}, orphanRemoval=true))
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image", referencedColumnName="id")
+     * })
+     *
+     * @Vlabs\Media(identifier="image_entity", upload_dir="files/images")
+     * @Assert\Valid()
      */
-    private $picture;
+    private $image;
 
     /**
      * @var string
@@ -205,23 +213,23 @@ class Candidate
     }
 
     /**
-     * Set picture
+     * Set image
      *
-     * @param string $picture
+     * @param Image $image
      */
-    public function setPicture($picture)
+    public function setImage(Image $image)
     {
-        $this->picture = $picture;
+        $this->image = $image;
     }
 
     /**
-     * Get picture
+     * Get image
      *
-     * @return string
+     * @return Image $image
      */
-    public function getPicture()
+    public function getImage()
     {
-        return $this->picture;
+        return $this->image;
     }
 
     /**

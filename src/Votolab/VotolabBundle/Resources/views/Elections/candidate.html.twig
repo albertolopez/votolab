@@ -1,5 +1,5 @@
 <div class="col-md-3">
-    <img class="img-rounded" src="{{ asset(candidate.picture) }}" alt="{{ candidate.name }}"/>
+    <img class="img-rounded" src="{{ candidate.image|vlabs_media('default') }}" alt="{{ candidate.name }}"/>
 </div>
 <div class="col-md-9">
     <div>

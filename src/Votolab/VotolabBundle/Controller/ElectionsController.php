@@ -25,7 +25,7 @@ class ElectionsController extends Controller
         $electionManager = $this->get('election_manager');
         return array(
             'elections' => $electionManager->findForUser($user),
-            'electionsPast' => $electionManager->findForUserPast($user)
+            'electionsPast' => $electionManager->findForUserPublished($user)
         );
     }
 
@@ -49,7 +49,7 @@ class ElectionsController extends Controller
      */
     public function tallyAction(Election $election)
     {
-        if ($election->getDateEnd() > new \DateTime('now')) {
+        if ($election->getDateEnd() > new \DateTime('now') || !$election->getPublishResults()) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
         $electionManager = $this->get('election_manager');

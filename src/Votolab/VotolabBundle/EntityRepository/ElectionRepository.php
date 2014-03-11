@@ -22,14 +22,14 @@ class ElectionRepository extends EntityRepository
             )->setParameter('user', $user);
     }
 
-    public function findForUserPast($user)
+    public function findForUserPublished($user)
     {
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT e FROM Votolab\VotolabBundle\Entity\Election e
                                 LEFT JOIN e.voters v
                                 WHERE e.dateEnd < CURRENT_TIMESTAMP()
-                                AND v = :user'
+                                AND v = :user AND e.publishResults = true'
             )->setParameter('user', $user);
     }
 

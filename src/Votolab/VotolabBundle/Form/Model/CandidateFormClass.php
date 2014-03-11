@@ -28,7 +28,7 @@ class CandidateFormClass
     /**
      * @var string
      */
-    public $picture;
+    public $image;
     /**
      * @var integer
      */
@@ -44,7 +44,6 @@ class CandidateFormClass
         $this->name = $candidate->getName();
         $this->biography = $candidate->getBiography();
         $this->video = $candidate->getVideo();
-        $this->picture = $candidate->getPicture();
         $this->gender = $candidate->getGender();
         $this->election = $candidate->getElection();
     }

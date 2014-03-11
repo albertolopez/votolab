@@ -75,9 +75,9 @@ fos_user:
     firewall_name: main
     user_class: Votolab\UserBundle\Entity\User
 
-# Avalanche Configuration
-avalanche_imagine:
-    filters:
-          tally_thumb:
-                type:    thumbnail
-                options: { size: [30, 30], mode: outbound }
+vlabs_media:
+    image_cache:
+        cache_dir: files/c
+    mapping:
+        image_entity:
+          class: Votolab\VotolabBundle\Entity\Image

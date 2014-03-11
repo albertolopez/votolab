@@ -39,12 +39,10 @@ class CandidateFormType extends AbstractType
                 )
             )
             ->add(
-                'picture',
-                'text',
+                'image',
+                'vlabs_file',
                 array(
-                    'required' => true,
-                    'label' => 'picture',
-                    'trim' => true
+                    'required' => false
                 )
             )
             ->add(

@@ -16,12 +16,10 @@ class ElectionFormClass
      */
     public $title;
     /**
-     * @Assert\NotBlank(message="Introduce una descripción")
      * @var string
      */
     public $description;
     /**
-     * @Assert\NotBlank(message="Introduce una descripción")
      * @var string
      */
     public $description_tally;
