@@ -24,7 +24,7 @@ class ElectionFormType extends AbstractType
                 'description',
                 'textarea',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'label' => 'descripción',
                     'trim' => true
                 )
@@ -33,7 +33,7 @@ class ElectionFormType extends AbstractType
                 'description_tally',
                 'textarea',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'label' => 'descripción resultados',
                     'trim' => true
                 )
