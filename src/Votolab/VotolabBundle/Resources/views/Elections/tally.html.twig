@@ -14,7 +14,7 @@
         <div class="panel-body">
             <div class="well-sm">
                 <div class="row">
-                    <div class="col-md-12">{{ election.getDescriptionTally() }}</div>
+                    <div class="col-md-12">{{ election.getDescriptionTally()|raw }}</div>
                 </div>
                 <table class="table top-buffer">
                     {% for candidate in tally %}

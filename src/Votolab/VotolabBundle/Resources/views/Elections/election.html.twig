@@ -9,7 +9,7 @@
         <div class="panel-body">
             <div class="well-sm">
                 <div class="row">
-                    <div class="col-md-12">{{ election.description }}</div>
+                    <div class="col-md-12">{{ election.description|raw }}</div>
                 </div>
                 <div class="row top-buffer">
                     {% for candidate in candidates %}
