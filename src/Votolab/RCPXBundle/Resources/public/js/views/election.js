@@ -1,4 +1,7 @@
 $(function () {
+    $('img').sleepyHead();
+    $('iframe').sleepyHead();
+
     $('[data-criterion]').barrating('show', {
         showSelectedRating: true,
         onSelect: function (value, text) {
@@ -19,8 +22,8 @@ $(function () {
             }
         });
         var candidate = $(this).parents('[data-candidate]').data('candidate');
-        if(!$('#valueCandidateError-' + candidate).hasClass('hide')) {
-           $('#valueCandidateError-' + candidate).addClass('hide');
+        if (!$('#valueCandidateError-' + candidate).hasClass('hide')) {
+            $('#valueCandidateError-' + candidate).addClass('hide');
         }
         if (valid === true) {
             var ratings = [];

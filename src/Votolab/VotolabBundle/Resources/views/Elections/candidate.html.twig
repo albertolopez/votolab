@@ -1,5 +1,5 @@
 <div class="col-md-3">
-    <img class="img-rounded" src="{{ candidate.image|vlabs_media('default') }}" alt="{{ candidate.name }}"/>
+    <img class="img-rounded" data-src="{{ candidate.image|vlabs_media('default') }}" alt="{{ candidate.name }}"/>
 </div>
 <div class="col-md-9">
     <div>
@@ -13,7 +13,7 @@
         <p class="competence top-buffer container-fluid">{{ candidate.competence }}</p>
     </div>
     <div class="moreInfo container-fluid collapse" id="moreInfo-{{ candidate.id }}">
-        <span class="container-fluid">{{ candidate.video|embed|raw }}</span>
+        <span class="container-fluid">{{ candidate.video|embed|lazy|raw }}</span>
         <span class="container-fluid">{{ candidate.biography|raw }}</span>
 
         <div id="valueCandidate-{{ candidate.id }}">

@@ -8,6 +8,7 @@ class VotolabExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('embed', array($this, 'getEmbedCode')),
+            new \Twig_SimpleFilter('lazy', array($this, 'getLazyLoadCode')),
         );
     }
 
@@ -22,6 +23,10 @@ class VotolabExtension extends \Twig_Extension
         return $embedCode;
     }
 
+    public function getLazyLoadCode($html)
+    {
+        return str_replace('src', 'data-src', $html);
+    }
     public function getName()
     {
         return 'votolab_extension';
