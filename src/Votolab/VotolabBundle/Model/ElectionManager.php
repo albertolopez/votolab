@@ -60,6 +60,7 @@ class ElectionManager extends ManagerAbstract
         }
         $election->setTitle($electionFormClass->title);
         $election->setDescription($electionFormClass->description);
+        $election->setDescriptionTally($electionFormClass->description_tally);
         $election->setSlug($electionFormClass->slug);
         $election->setDateEnd($electionFormClass->dateEnd);
         $election->setDateStart($electionFormClass->dateStart);
