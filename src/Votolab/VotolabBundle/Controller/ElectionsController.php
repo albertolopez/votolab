@@ -49,7 +49,7 @@ class ElectionsController extends Controller
      */
     public function tallyAction(Election $election)
     {
-        if ($election->getDateEnd() > new \DateTime('now') || !$election->getPublishResults()) {
+        if (!$this->getUser()->hasRole('ROLE_SUPER_ADMIN') && ($election->getDateEnd() > new \DateTime('now') || !$election->getPublishResults())) {
             return $this->redirect($this->generateUrl('votolab_elections'));
         }
         $electionManager = $this->get('election_manager');

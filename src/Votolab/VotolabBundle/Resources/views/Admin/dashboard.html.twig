@@ -32,7 +32,7 @@
                 <tbody>
                 {% for election in elections %}
                     <tr>
-                        <td><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a></td>
+                        <td><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a></td>
                         <td>{{ election.dateStart|date("d/m/Y") }}</td>
                         <td>{{ election.dateEnd|date("d/m/Y") }}</td>
                         <td>{{ election.voters|length }}</td>
