@@ -25,7 +25,7 @@ class VotolabExtension extends \Twig_Extension
 
     public function getLazyLoadCode($html)
     {
-        return str_replace('src', 'data-src', $html);
+        return str_replace('src', 'data-src', str_replace('http:', '', $html));
     }
     public function getName()
     {
