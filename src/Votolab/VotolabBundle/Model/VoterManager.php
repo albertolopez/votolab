@@ -65,6 +65,7 @@ class VoterManager extends ManagerAbstract{
         {
             if ($email != "")
             {
+                $email = trim($email);
                 $user = NULL;
                 $users = $this->em->getRepository('UserBundle:User')->findBy(array('email' => $email));
                 if (is_null($users) || count($users) == 0){
