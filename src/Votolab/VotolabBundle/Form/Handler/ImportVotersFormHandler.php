@@ -2,9 +2,9 @@
 
 namespace Votolab\VotolabBundle\Form\Handler;
 
-use FOS\UserBundle\Doctrine\UserManager;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Votolab\VotolabBundle\Model\VoterManager;
 
 class ImportVotersFormHandler
 {
@@ -14,7 +14,7 @@ class ImportVotersFormHandler
 
     protected $em;
 
-    public function __construct(FormInterface $form, Request $request, UserManager $manager)
+    public function __construct(FormInterface $form, Request $request, VoterManager $manager)
     {
         $this->form = $form;
         $this->request = $request;

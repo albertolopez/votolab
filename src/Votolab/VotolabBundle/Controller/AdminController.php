@@ -282,7 +282,7 @@ class AdminController extends Controller
     {
         $form = $this->createForm('user', new VoterFormClass($user, $election));
         if ($request->getMethod() == "POST") {
-            $formHandler = new VoterFormHandler($form, $request, $this->get('fos_user.user_manager'));
+            $formHandler = new VoterFormHandler($form, $request, $this->get('voter_manager'));
             if ($formHandler->process()) {
                 $this->get('session')->getFlashBag()->set(
                     'notice',
@@ -309,7 +309,7 @@ class AdminController extends Controller
     {
         $form = $this->createForm('importvoters', new ImportVotersFormClass($election));
         if ($request->getMethod() == "POST") {
-            $formHandler = new ImportVotersFormHandler($form, $request, $this->get('fos_user.user_manager'));
+            $formHandler = new ImportVotersFormHandler($form, $request, $this->get('voter_manager'));
             if ($formHandler->process()) {
                 $this->get('session')->getFlashBag()->set(
                     'notice',

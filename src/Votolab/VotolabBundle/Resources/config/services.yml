@@ -25,6 +25,10 @@ services:
     class: Votolab\VotolabBundle\Model\CriteriaManager
     arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
 
+  voter_manager:
+    class: Votolab\VotolabBundle\Model\VoterManager
+    arguments: [@doctrine.orm.entity_manager,@event_dispatcher]
+
   # EVENT LISTENERS
   votolab.election_published_send_email:
     class: Votolab\VotolabBundle\EventListener\PublishResultsElectionListener
