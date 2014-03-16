@@ -1,4 +1,7 @@
 $(function () {
+    $('img').sleepyHead();
+    $('iframe').sleepyHead();
+
     $('[data-criterion]').barrating('show', {
         showSelectedRating: true,
         onSelect: function (value, text) {
@@ -18,8 +21,11 @@ $(function () {
                 criterion.find('.input-error').addClass('hide');
             }
         });
+        var candidate = $(this).parents('[data-candidate]').data('candidate');
+        if (!$('#valueCandidateError-' + candidate).hasClass('hide')) {
+            $('#valueCandidateError-' + candidate).addClass('hide');
+        }
         if (valid === true) {
-            var candidate = $(this).parents('[data-candidate]').data('candidate');
             var ratings = [];
             $.each($(this).parents('form').find('[data-criterion]'), function (index, value) {
                 var criterionVote = {};
@@ -38,20 +44,26 @@ $(function () {
                     candidate: candidate
                 },
                 success: function (data) {
-                    var target = $(this).parents('form').find('[data-criterion]');
-                    target.each(function (index, element) {
-                        $(element).barrating('destroy');
-                        $(element).barrating('show', {showSelectedRating: true, readonly: true});
-                    });
+                    data = $.parseJSON(data);
+                    if (data.error === true) {
+                        $('#valueCandidateError-' + candidate).removeClass('hide');
+                    } else {
+                        var target = $(this).parents('form').find('[data-criterion]');
+                        target.each(function (index, element) {
+                            $(element).barrating('destroy');
+                            $(element).barrating('show', {showSelectedRating: true, readonly: true});
+                        });
 
-                    btn.hide('slow', function () {
-                        $('#valueCandidateSuccess-' + candidate).removeClass('hide');
-                        $('[data-candidate="' + candidate + '"]').css('background-color', '#DFF0D8');
-                    })
+                        btn.hide('slow', function () {
+                            $('#valueCandidateSuccess-' + candidate).removeClass('hide');
+                            $('[data-candidate="' + candidate + '"]').css('background-color', '#DFF0D8');
+                        })
+                    }
+
                 }
             }).always(function () {
-                    btn.button('reset');
-                });
+                btn.button('reset');
+            });
         }
     });
 });

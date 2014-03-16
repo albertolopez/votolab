@@ -9,7 +9,7 @@
         <div class="panel-body">
             <div class="well-sm">
                 <div class="row">
-                    <div class="col-md-12">{{ election.description }}</div>
+                    <div class="col-md-12">{{ election.description|raw }}</div>
                 </div>
                 <div class="row top-buffer">
                     {% for candidate in candidates %}
@@ -23,4 +23,5 @@
 {% block viewScripts %}
     <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
     <script src="{{ asset('bundles/rcpx/js/views/election.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/jquery.sleepyHead.js') }}"></script>
 {% endblock %}

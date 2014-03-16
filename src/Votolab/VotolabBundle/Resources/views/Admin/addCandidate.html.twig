@@ -45,3 +45,11 @@
         </div>
     </div>
 {% endblock %}
+
+{% block viewScripts %}
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script>
+        var tinymce_stylesheet = "{{ asset('bundles/rcpx/css/tinymce_stylesheet.css') }}";
+    </script>
+    <script src="{{ asset('bundles/rcpx/js/views/admin.js') }}"></script>
+{% endblock %}

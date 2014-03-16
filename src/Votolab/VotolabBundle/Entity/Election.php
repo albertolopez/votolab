@@ -44,6 +44,13 @@ class Election
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description_tally", type="text")
+     */
+    private $description_tally;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_start", type="datetime")
@@ -86,21 +93,25 @@ class Election
     private $datePublished;
 
     /**
+     * var User
      * @ORM\ManyToMany(targetEntity="Votolab\UserBundle\Entity\User", mappedBy="elections")
      **/
     private $voters;
 
     /**
+     * var Candidate
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Candidate", mappedBy="election", cascade={"remove"})
      */
     private $candidates;
 
     /**
+     * var Vote
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\Vote", mappedBy="election", cascade={"remove"})
      */
     private $votes;
 
     /**
+     * var ElectionCriteria
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria", mappedBy="election", cascade={"remove"})
      */
     private $electionCriterias;
@@ -265,6 +276,29 @@ class Election
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set description_tally
+     *
+     * @param string $description_tally
+     * @return Election
+     */
+    public function setDescriptionTally($description_tally)
+    {
+        $this->description_tally = $description_tally;
+
+        return $this;
+    }
+
+    /**
+     * Get description_tally
+     *
+     * @return string
+     */
+    public function getDescriptionTally()
+    {
+        return $this->description_tally;
     }
 
     /**

@@ -33,9 +33,16 @@ class CandidateFormType extends AbstractType
                 'video',
                 'text',
                 array(
-                    'required' => false,
+                    'required' => true,
                     'label' => 'video',
                     'trim' => true
+                )
+            )
+            ->add(
+                'image',
+                'vlabs_file',
+                array(
+                    'required' => false
                 )
             )
             ->add(

@@ -35,6 +35,7 @@ class LoadElectionData extends AbstractFixture implements FixtureInterface, Orde
             $election->setTitle($faker->sentence());
             $election->setSlug($faker->word);
             $election->setDescription($faker->text(500));
+            $election->setDescriptionTally($faker->text(500));
             $election->setDateStart($faker->dateTimeBetween('-30 days', '-10 days'));
             $election->setDateEnd($faker->dateTimeBetween('-10 days', '+10 days'));
             $election->setMinCandidates($faker->randomNumber());

@@ -41,7 +41,10 @@
         "friendsofsymfony/jsrouting-bundle": "@stable",
         "jms/security-extra-bundle": "dev-master",
 		"knplabs/knp-paginator-bundle": "~2.4",       
-        "mpratt/embera": "~1.0"
+        "mpratt/embera": "~1.0",
+        "vlabs/media-bundle": "dev-master",
+        "knplabs/knp-gaufrette-bundle": "dev-master",
+        "knplabs/gaufrette": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

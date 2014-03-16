@@ -18,9 +18,9 @@ class ElectionManager extends ManagerAbstract
         return $query->getResult();
     }
 
-    public function findForUserPast($user)
+    public function findForUserPublished($user)
     {
-        $query = $this->em->getRepository('VotolabBundle:Election')->findForUserPast($user);
+        $query = $this->em->getRepository('VotolabBundle:Election')->findForUserPublished($user);
         return $query->getResult();
     }
 
@@ -39,7 +39,11 @@ class ElectionManager extends ManagerAbstract
     {
         $query = $this->em->getRepository('VotolabBundle:Election')->getElectionTally($election);
         $query->execute();
-        return $query->fetchAll();
+        $tally = $query->fetchAll();
+        foreach ($tally as $key => $candidate) {
+            $tally[$key]['image'] = $this->em->getRepository('VotolabBundle:Image')->find($candidate['image']);
+        }
+        return $tally;
     }
 
     public function createElection()
@@ -56,6 +60,7 @@ class ElectionManager extends ManagerAbstract
         }
         $election->setTitle($electionFormClass->title);
         $election->setDescription($electionFormClass->description);
+        $election->setDescriptionTally($electionFormClass->description_tally);
         $election->setSlug($electionFormClass->slug);
         $election->setDateEnd($electionFormClass->dateEnd);
         $election->setDateStart($electionFormClass->dateStart);
