@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('votolab_admin') }}">{{ 'elections'|trans|capitalize }}</a></li>
+        <li><a href="{{ path('votolab_list_voters', {'slug': election.slug}) }}">{{ 'voters'|trans|capitalize }}</a></li>
+        <li class="active">{{ 'importVoters.import_voters_list'|trans }} {{ election.title }}</li>
+    </ol>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{ 'importVoters.import_voters_list'|trans }} </div>
+        <div class="panel-body">
+            <div>
+                {{ form_start(form, {'attr': {'class': 'form-horizontal' }}) }}
+                {{ form_errors(form) }}
+
+                <p>
+                    <label>{{ form_label(form.voters, 'importVoters.voters_list'|trans|capitalize  ) }}</label>
+                    <span class="field">{{ form_widget(form.voters,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.voters) }}</span>
+                </p>
+
+
+                <p class="stdformbutton">
+                    <button class="btn btn-primary">{{ 'submit'|trans|capitalize}}</button>
+                    <button type="reset" class="btn">{{ 'reset'|trans|capitalize}}</button>
+                </p>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

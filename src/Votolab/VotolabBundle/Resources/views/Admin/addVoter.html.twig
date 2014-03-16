@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('votolab_admin') }}">{{ 'elections'|trans|capitalize }}</a></li>
+        <li><a href="{{ path('votolab_list_voters', {'slug': election.slug}) }}">{{ 'voters'|trans|capitalize }}</a></li>
+        <li class="active">{{ 'addVoters.add_edit_voter_in'|trans }} {{ election.title }}</li>
+    </ol>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{ 'addVoters.add_edit_voter'|trans }} </div>
+        <div class="panel-body">
+            <div>
+                {{ form_start(form, {'attr': {'class': 'form-horizontal' }}) }}
+                {{ form_errors(form) }}
+
+                <p>
+                    <label>{{ form_label(form.email) }}</label>
+                    <span class="field">{{ form_widget(form.email,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.email) }}</span>
+                </p>
+
+                <p class="stdformbutton">
+                    <button class="btn btn-primary">{{ 'submit'|trans|capitalize}}</button>
+                    <button type="reset" class="btn">{{ 'reset'|trans|capitalize}}</button>
+                </p>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

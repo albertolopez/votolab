@@ -79,5 +79,6 @@ addVoters:
     add_edit_voter_in: Añadir / Editar Votante en
     add_edit_voter: Añadir / Editar Votante
 importVoters:
+    attach_file: Adjuntar archivo
     import_voters_list: Importar lista de votantes
     voters_list: lista de votantes

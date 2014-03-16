@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('votolab_admin') }}">{{ 'elections'|trans|capitalize}}</a></li>
+        <li class="active">{{ 'voters'|trans|capitalize}}</li>
+    </ol>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{ 'listVoters.voters_list'|trans}}
+            <a type="button" class="btn btn-success btn-sm pull-right"
+               href="{{ path('votolab_add_voter', {'slug': election.slug}) }}">
+                <span class="glyphicon glyphicon-plus"></span>{{ 'listVoters.add_voter'|trans}}
+            </a>
+            <a type="button" class="btn btn-success btn-sm pull-right"
+               href="{{ path('votolab_import_voter', {'slug': election.slug}) }}">
+                <span class="glyphicon glyphicon-plus"></span>{{ 'listVoters.import_voters_list'|trans}}
+            </a>
+        </div>
+        <div class="panel-body">
+
+            <table class="table">
+                <thead>
+                <th>{{ 'listVoters.username'|trans|capitalize}}</th>
+                <th>{{ 'listVoters.email'|trans|capitalize}}</th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody>
+                {% for voter in election.voters %}
+                    <tr>
+                        <td>{{ voter.username }}</td>
+                        <td>{{ voter.email }}</td>
+                        <td></td>
+                        <td><a type="button" class="btn btn btn-danger btn-sm" href="{{ path('votolab_delete_voter', {'slug': election.slug, 'id': voter.id}) }}"><span class="glyphicon glyphicon-trash"></span> {{ 'listVoters.delete'|trans|capitalize}}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
