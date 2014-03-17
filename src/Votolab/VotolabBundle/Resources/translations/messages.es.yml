@@ -6,6 +6,7 @@ criterias: criterios
 criterion: criterio
 voters: votantes
 admin_panel: panel de administracción
+change_password: cambiar contraseña
 in: en
 submit: enviar
 reset: cancelar

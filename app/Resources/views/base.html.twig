@@ -19,29 +19,35 @@
 </head>
 <body>
 {% block navbar %}
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
-        <ul class="nav navbar-nav navbar-collapse">
-            <a class="navbar-brand" href="{{ path('rcpx_homepage') }}">
-                <img src="{{ asset('bundles/rcpx/images/partidox-redciudadana.png') }}" class="img-responsive"/>
-            </a>
-        </ul>
-        <ul class="nav navbar-right navbar-nav">
-            {% if is_granted('ROLE_ADMIN') %}
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <ul class="nav navbar-nav navbar-collapse">
+                <a class="navbar-brand" href="{{ path('rcpx_homepage') }}">
+                    <img src="{{ asset('bundles/rcpx/images/partidox-redciudadana.png') }}" class="img-responsive"/>
+                </a>
+            </ul>
+            <ul class="nav navbar-right navbar-nav">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a type="button" class="btn navbar-btn " type="button" href="{{ path('votolab_admin') }}">
+                            <span class="glyphicon glyphicon-plus"></span> {{ 'admin_panel'|trans|capitalize }}
+                        </a>
+                    </li>
+                {% endif %}
                 <li>
-                    <a type="button" class="btn navbar-btn " type="button" href="{{ path('votolab_admin') }}">
-                        <span class="glyphicon glyphicon-plus"></span> {{ 'admin_panel'|trans|capitalize }}
+                    <a type="button" class="btn navbar-btn " type="button" href="{{ path('fos_user_change_password') }}">
+                        <span class="glyphicon glyphicon-cog"></span> {{ 'change_password'|trans|capitalize }}
                     </a>
                 </li>
-            {% endif %}
-            <li>
-                <a type="button" class="btn btn-default navbar-btn" type="button" href="{{ path('fos_user_security_logout') }}">
-                    <span class="glyphicon glyphicon-log-out"></span> {{ 'logout'|trans|capitalize }}
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+                <li>
+                    <a type="button" class="btn btn-default navbar-btn" type="button"
+                       href="{{ path('fos_user_security_logout') }}">
+                        <span class="glyphicon glyphicon-log-out"></span> {{ 'logout'|trans|capitalize }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 {% endblock %}
 
 <div class="container">
