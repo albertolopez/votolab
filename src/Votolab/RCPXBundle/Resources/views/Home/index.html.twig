@@ -14,8 +14,40 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <h2>{{ "listas_abiertas"|trans }}</h2>
-            {{ render(controller("FOSUserBundle:Security:login")) }}
-            <a href="{{ path('fos_user_resetting_request') }}">{{ 'forgot_password'|trans }}</a>
+
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="securityForm row" role="form">
+                <p>En este espacio, los dias 23 y 24 de marzo, se habilitará la herramienta para que los Usuarios/as de
+                    la Red Ciudadana Partido X (Usuario= persona proactiva con el proyecto) puedan participar en la
+                    ponderación de los candidatos que consideren idóneos para conformar la lista abierta ciudadana para
+                    la elecciones europeas.</p>
+
+                <p>Esos días los Usuarios/as encontrarán en esta página el formulario para acceder con el nombre de
+                    usuario y contraseña que han recido por correo.</p>
+
+                <p>Recordamos que esta no es la votación. Tampoco es un concurso de popularidad.</p>
+
+                <p>Estamos escogiendo las personas más adecuadas para defender esta hoja de ruta
+                    <a href="http://partidox.org/medidas/">http://partidox.org/medidas/</a> y este programa adaptado a
+                    las europeas LINK AL NUEVO.</p>
+
+                <p>Utilizamos los siguientes criterios de ponderación:</p>
+
+                <ul>
+                    <li>Competencia de la persona en su materia </li>
+                    <li>Capacidad para explicarse en público </li>
+                    <li>Trayectoria demostrada de trabajo por el bien común  </li>
+                    <li>Afinidad con el método y programa de la Red Ciudadana Partido X </li>
+                    <li>Capacidad de hablar de temas que no son los suyos con responsabilidad, humildad y sin
+                        mentir  
+                    </li>
+                    <li>Capacidad de relacionarse </li>
+                    <span>Y </span>
+                    <li>Conocimiento del inglés (o francés u otro idioma en segundo lugar)  </li>
+                    <li>Conocimiento de los mecanismos y las instituciones europeas </li>
+                </ul>
+                </p>
+            </form>
+
         </div>
     </div>
 
