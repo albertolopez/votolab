@@ -25,7 +25,8 @@ class ElectionsController extends Controller
         $electionManager = $this->get('election_manager');
         return array(
             'elections' => $electionManager->findForUser($user),
-            'electionsPast' => $electionManager->findForUserPublished($user)
+            'electionsPast' => $electionManager->findForUserPublished($user),
+            'electionsFuture' => $electionManager->findForUserUpcoming($user),
         );
     }
 

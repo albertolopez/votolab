@@ -54,6 +54,7 @@ addCriterias:
 listElections:
     open_elections: Elecciones abiertas
     past_elections: Elecciones pasadas
+    future_elections: Próximas elecciones
 editElections:
     choose_a_candidate_to_valore_in: elige a un candidato para valorar en
 addElections:

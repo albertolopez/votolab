@@ -4,46 +4,78 @@
         <li class="active">{{ 'elections'|trans|capitalize }}</li>
     </ol>
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            {{ 'listElections.open_elections'|trans }}
-        </div>
-        <div class="panel-body">
-            <div class="elections">
-                {% for election in elections %}
-                    <div class="well well-sm">
-                        <h3>
-                            <a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a>
+
+    {% if electionsFuture is not empty %}
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                {{ 'listElections.future_elections'|trans }}
+            </div>
+            <div class="panel-body">
+                <div class="elections">
+                    {% for election in electionsFuture %}
+                        <div class="well well-sm">
+                            <h3>
+                                {{ election.title }}
                             <span class="label label-danger pull-right">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 {{ election.dateStart|date("d/m/Y") }}
                             </span>
-                        </h3>
+                            </h3>
 
-                        <p>{{ election.description|striptags[:350] ~ '...' }}</p>
-                    </div>
-                {% endfor %}
+                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
-    <div class="panel panel-danger">
-        <div class="panel-heading">{{ 'listElections.past_elections'|trans }}</div>
-        <div class="panel-body">
-            <div class="elections">
-                {% for election in electionsPast %}
-                    <div class="well well-sm">
-                        <h3>
-                            <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
+    {% endif %}
+
+    {% if elections is not empty %}
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                {{ 'listElections.open_elections'|trans }}
+            </div>
+            <div class="panel-body">
+                <div class="elections">
+                    {% for election in elections %}
+                        <div class="well well-sm">
+                            <h3>
+                                <a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a>
                             <span class="label label-danger pull-right">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 {{ election.dateStart|date("d/m/Y") }}
                             </span>
-                        </h3>
+                            </h3>
 
-                        <p>{{ election.description|striptags[:350] ~ '...' }}</p>
-                    </div>
-                {% endfor %}
+                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
+    {% if electionsPast is not empty %}
+        <div class="panel panel-danger">
+            <div class="panel-heading">{{ 'listElections.past_elections'|trans }}</div>
+            <div class="panel-body">
+                <div class="elections">
+                    {% for election in electionsPast %}
+                        <div class="well well-sm">
+                            <h3>
+                                <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
+                            <span class="label label-danger pull-right">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                {{ election.dateStart|date("d/m/Y") }}
+                            </span>
+                            </h3>
+
+                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

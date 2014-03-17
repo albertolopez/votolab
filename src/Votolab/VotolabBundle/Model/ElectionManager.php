@@ -24,6 +24,12 @@ class ElectionManager extends ManagerAbstract
         return $query->getResult();
     }
 
+    public function findForUserUpcoming($user)
+    {
+        $query = $this->em->getRepository('VotolabBundle:Election')->findForUserUpcoming($user);
+        return $query->getResult();
+    }
+
     public function findAllElections()
     {
         return $this->em->getRepository('VotolabBundle:Election')->findAll();

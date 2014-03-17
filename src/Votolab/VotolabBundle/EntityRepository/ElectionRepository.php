@@ -33,6 +33,17 @@ class ElectionRepository extends EntityRepository
             )->setParameter('user', $user);
     }
 
+    public function findForUserUpcoming($user)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT e FROM Votolab\VotolabBundle\Entity\Election e
+                                LEFT JOIN e.voters v
+                                WHERE e.dateStart > CURRENT_TIMESTAMP()
+                                AND v = :user'
+            )->setParameter('user', $user);
+    }
+
     public function isVoterForElection($user, $election)
     {
         return $this->getEntityManager()
