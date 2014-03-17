@@ -27,6 +27,13 @@ class User extends BaseUser
      **/
     private $elections;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="welcomeSent", type="boolean")
+     */
+    private $welcomeSent = false;
+
     public function __construct() {
         parent::__construct();
         $this->elections = new ArrayCollection();
@@ -62,5 +69,21 @@ class User extends BaseUser
     public function getElections()
     {
         return $this->elections;
+    }
+
+    /**
+     * @param mixed $welcomeSent
+     */
+    public function setWelcomeSent($welcomeSent)
+    {
+        $this->welcomeSent = $welcomeSent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWelcomeSent()
+    {
+        return $this->welcomeSent;
     }
 }
