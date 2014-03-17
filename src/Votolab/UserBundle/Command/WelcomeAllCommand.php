@@ -36,7 +36,7 @@ class WelcomeAllCommand extends ContainerAwareCommand
                     ->setBody($container->get('templating')->render('UserBundle:Email:welcome.html.twig', array('email' => $email, 'password' => $password)));
 
                 $container->get('mailer')->send($message);
-                $output->writeln($email . ': Enviado!' . $password);
+                $output->writeln($email . ': Enviado!');
             }
 
         } else {
