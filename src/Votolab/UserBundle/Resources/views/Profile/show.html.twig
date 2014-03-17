@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <ol class="breadcrumb">
+        <li class="active">{{ 'my_profile'|trans|capitalize }}</li>
+    </ol>
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{ 'my_profile'|trans|capitalize }}
+        </div>
+        <div class="panel-body">
+            {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+        </div>
+    </div>
+{% endblock %}
