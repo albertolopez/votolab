@@ -26,6 +26,7 @@ class CandidateManager extends ManagerAbstract
         $candidate->setBiography($electionFormClass->biography);
         $candidate->setGender($electionFormClass->gender);
         $candidate->setName($electionFormClass->name);
+        $candidate->setCompetence($electionFormClass->competence);
         $candidate->setVideo($electionFormClass->video);
         $candidate->setImage($electionFormClass->image);
         $candidate->setElection($electionFormClass->election);

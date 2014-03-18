@@ -62,15 +62,9 @@ class Candidate
     private $gender;
 
     /**
-     * @var VlabsFile
+     * @var string
      *
-     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"}, orphanRemoval=true))
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="image", referencedColumnName="id")
-     * })
-     *
-     * @Vlabs\Media(identifier="image_entity", upload_dir="files/images")
-     * @Assert\Valid()
+     * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
 
@@ -215,9 +209,9 @@ class Candidate
     /**
      * Set image
      *
-     * @param Image $image
+     * @param string $image
      */
-    public function setImage(Image $image)
+    public function setImage($image)
     {
         $this->image = $image;
     }
