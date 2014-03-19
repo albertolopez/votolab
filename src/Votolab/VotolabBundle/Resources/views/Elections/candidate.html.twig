@@ -1,5 +1,5 @@
 <div class="col-md-3">
-    <img class="img-rounded" data-src="{{ candidate.image|vlabs_media('default') }}" alt="{{ candidate.name }}"/>
+    {{ candidate.image|vlabs_filter('resize', { width : 200, height : 200, keepRatio : true } )|vlabs_media('image') }}
 </div>
 <div class="col-md-9">
     <div>

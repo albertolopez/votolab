@@ -42,6 +42,7 @@ class CanViewElectionVoter implements VoterInterface
     {
         foreach ($attributes as $attribute) {
             if ($this->supportsAttribute($attribute) && $this->supportsClass($election)) {
+                $user = $token->getUser();
                 if ($this->electionManager->isVoterForElection($user, $election) || $token->getUser()->hasRole('ROLE_SUPER_ADMIN')) {
                     return VoterInterface::ACCESS_GRANTED;
                 }

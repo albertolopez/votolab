@@ -53,7 +53,7 @@ class CandidateFormClass
         $this->competence = $candidate->getCompetence();
         $this->biography = $candidate->getBiography();
         $this->video = $candidate->getVideo();
-        $this->image = $candidate->getImage();
+        $this->image = $candidate->getImagePath();
         $this->gender = $candidate->getGender();
         $this->election = $candidate->getElection();
     }

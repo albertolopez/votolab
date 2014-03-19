@@ -62,9 +62,13 @@ class Candidate
     private $gender;
 
     /**
-     * @var string
+     * @var VlabsFile
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"}, orphanRemoval=true))
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image", referencedColumnName="id")
+     * })
+     *
      */
     private $image;
 
@@ -78,7 +82,7 @@ class Candidate
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -100,7 +104,6 @@ class Candidate
     {
         return $this->votes;
     }
-
 
 
     /**
@@ -139,7 +142,7 @@ class Candidate
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -159,7 +162,7 @@ class Candidate
     /**
      * Get biography
      *
-     * @return string 
+     * @return string
      */
     public function getBiography()
     {
@@ -179,7 +182,7 @@ class Candidate
     /**
      * Get video
      *
-     * @return string 
+     * @return string
      */
     public function getVideo()
     {
@@ -209,10 +212,25 @@ class Candidate
     /**
      * Set image
      *
-     * @param string $image
+     * @param Image $image
      */
     public function setImage($image)
     {
+        $this->image = $image;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     */
+    public function setImagePath($imagePath)
+    {
+        $image = new Image();
+        $image->setName(str_replace('files/images/', '', $imagePath));
+        $image->setPath($imagePath);
+        $image->setContentType('image/jpeg');
+        $image->setSize(filesize($imagePath));
         $this->image = $image;
     }
 
@@ -224,6 +242,20 @@ class Candidate
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Get image path
+     *
+     * @return string $image
+     */
+    public function getImagePath()
+    {
+        if (!empty($this->image)) {
+            return $this->image->getPath();
+        } else {
+            return null;
+        }
     }
 
     /**
