@@ -23,7 +23,7 @@
                             </span>
                             </h3>
 
-                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                            <p>{{ election.description|striptags|truncate(350,true)|raw }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -49,7 +49,7 @@
                             </span>
                             </h3>
 
-                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                            <p>{{ election.description|striptags|truncate(350,true)|raw }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -71,7 +71,7 @@
                             </span>
                             </h3>
 
-                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                            <p>{{ election.description|striptags|truncate(350,true)|raw }}</p>
                         </div>
                     {% endfor %}
                 </div>

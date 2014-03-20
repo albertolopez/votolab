@@ -30,7 +30,7 @@
             {% for candidate in candidates %}
                 <tr>
                     <td>{{ candidate.name }}</td>
-                    <td>{{ candidate.biography[:65] }}...</td>
+                    <td>{{ candidate.biography|striptags|truncate(65,true)|raw }}</td>
                     <td>{{ candidate.votes|length }}</td>
                     <td><a href="{{ candidate.video }}">{{ 'listCandidates.video'|trans|capitalize}}</a></td>
                     <td><a type="button" class="btn btn-primary btn-sm" href="{{ path('votolab_edit_candidate', {'slug': election.slug, 'id': candidate.id}) }}"><span class="glyphicon glyphicon-edit"></span> {{ 'listCandidates.edit'|trans|capitalize}}</a>
