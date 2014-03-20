@@ -30,6 +30,7 @@ admin:
     edit: editar
     delete: borrar
     publish: publicar
+    tally: resultados
 listCandidates:
     candidates_list: Listado de Candidatos
     add_candidate: Añadir Candidato

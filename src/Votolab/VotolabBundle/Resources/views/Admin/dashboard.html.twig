@@ -21,7 +21,7 @@
                 <th>{{ 'elections'|trans|capitalize }}</th>
                 <th>{{ 'admin.date_start'|trans|capitalize }}</th>
                 <th>{{ 'admin.date_end'|trans|capitalize }}</th>
-                <th>{{ 'admin.votes'|trans|capitalize }}</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -32,10 +32,10 @@
                 <tbody>
                 {% for election in elections %}
                     <tr>
-                        <td><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a></td>
+                        <td><a href="{{ path('votolab_election', {'slug': election.slug}) }}">{{ election.title }}</a></td>
                         <td>{{ election.dateStart|date("d/m/Y") }}</td>
                         <td>{{ election.dateEnd|date("d/m/Y") }}</td>
-                        <td>{{ election.voters|length }}</td>
+                        <td><a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ 'admin.tally'|trans|capitalize }}</a></td>
                         <td><a href="{{ path('votolab_list_candidates', {'slug': election.slug}) }}">{{ 'candidates'|trans|capitalize }}</a></td>
                         <td><a href="{{ path('votolab_list_criterias', {'slug': election.slug}) }}">{{ 'criterias'|trans|capitalize }}</a></td>
                         <td><a href="{{ path('votolab_list_voters', {'slug': election.slug}) }}">{{ 'voters'|trans|capitalize }}</a></td>
