@@ -19,7 +19,7 @@
 </head>
 <body>
 {% block navbar %}
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <nav class="navbar navbar-default navbar-static-top navbar-votolab" role="navigation">
         <div class="container">
             <ul class="nav navbar-nav navbar-collapse">
                 <a class="navbar-brand" href="{{ path('rcpx_homepage') }}">
@@ -34,17 +34,20 @@
                         </a>
                     </li>
                 {% endif %}
-                <li>
-                    <a type="button" class="btn navbar-btn " type="button" href="{{ path('fos_user_change_password') }}">
-                        <span class="glyphicon glyphicon-cog"></span> {{ 'change_password'|trans|capitalize }}
-                    </a>
-                </li>
-                <li>
-                    <a type="button" class="btn btn-default navbar-btn" type="button"
-                       href="{{ path('fos_user_security_logout') }}">
-                        <span class="glyphicon glyphicon-log-out"></span> {{ 'logout'|trans|capitalize }}
-                    </a>
-                </li>
+                {% if is_granted('ROLE_USER') %}
+                    <li>
+                        <a type="button" class="btn navbar-btn " type="button"
+                           href="{{ path('fos_user_change_password') }}">
+                            <span class="glyphicon glyphicon-cog"></span> {{ 'change_password'|trans|capitalize }}
+                        </a>
+                    </li>
+                    <li>
+                        <a type="button" class="btn btn-default navbar-btn" type="button"
+                           href="{{ path('fos_user_security_logout') }}">
+                            <span class="glyphicon glyphicon-log-out"></span> {{ 'logout'|trans|capitalize }}
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

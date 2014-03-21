@@ -4,6 +4,10 @@ votolab_elections:
     options:
         expose: true
 
+votolab_candidatos:
+    pattern:  /candidatos-ep2014
+    defaults: { _controller: VotolabBundle:Elections:ep2014 }
+
 votolab_election:
     pattern:  /election/{slug}
     defaults: { _controller: VotolabBundle:Elections:election }

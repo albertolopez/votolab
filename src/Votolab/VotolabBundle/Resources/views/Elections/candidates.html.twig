@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="panel panel-primary election" data-election="{{ election.slug }}">
+        <div class="panel-heading"><h2>{{ election.title }}</h2>
+
+            <h2><span class="label label-danger">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    {{ election.dateStart|date("d/m/Y") }}
+                    {% if election.dateStart|date("d/m/Y") != election.dateEnd|date("d/m/Y") %}
+                        al {{ election.dateEnd|date("d/m/Y") }}
+                    {% endif %}
+                    </span></h2></div>
+        <div class="panel-body">
+            <div class="well-sm">
+
+                <div class="row top-buffer">
+                    {% for candidate in candidates %}
+                        <div class="col-md-12 candidate well well-sm"
+                             data-candidate="{{ candidate.id }}">{{ include ('VotolabBundle:Elections:candidate-public.html.twig') }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block viewScripts %}
+    <script src="{{ asset('bundles/rcpx/js/jquery.barrating.min.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/views/election.js') }}"></script>
+    <script src="{{ asset('bundles/rcpx/js/jquery.sleepyHead.js') }}"></script>
+{% endblock %}
