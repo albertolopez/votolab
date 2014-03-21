@@ -34,6 +34,13 @@ class User extends BaseUser
      */
     private $welcomeSent = false;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="reminderSent", type="boolean")
+     */
+    private $reminderSent = false;
+
     public function __construct() {
         parent::__construct();
         $this->elections = new ArrayCollection();
@@ -85,5 +92,21 @@ class User extends BaseUser
     public function getWelcomeSent()
     {
         return $this->welcomeSent;
+    }
+
+    /**
+     * @param mixed $reminderSent
+     */
+    public function setReminderSent($reminderSent)
+    {
+        $this->reminderSent = $reminderSent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReminderSent()
+    {
+        return $this->reminderSent;
     }
 }
