@@ -13,6 +13,12 @@ use Votolab\UserBundle\Entity\User;
  */
 class Election
 {
+    const STATUS_DRAFT = 0;
+    const STATUS_PREVIEW = 1;
+    const STATUS_OPEN = 2;
+    const STATUS_CLOSED = 3;
+    const STATUS_PUBLISHED = 4;
+
     /**
      * @var integer
      *
@@ -115,6 +121,13 @@ class Election
      * @ORM\OneToMany(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria", mappedBy="election", cascade={"remove"})
      */
     private $electionCriterias;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status = 0;
 
     public function __construct() {
         $this->voters = new ArrayCollection();
@@ -437,5 +450,25 @@ class Election
     public function getDatePublished()
     {
         return $this->datePublished;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

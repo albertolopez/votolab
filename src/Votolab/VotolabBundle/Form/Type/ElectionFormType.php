@@ -93,11 +93,11 @@ class ElectionFormType extends AbstractType
                 )
             )
             ->add(
-                'publishResults',
+                'status',
                 'choice',
                 array(
-                    'choices' => array('1' => 'Sí', '0' => 'No'),
-                    'label' => 'Publicar Resultados',
+                    'choices' => array('0' => 'Borrador', '1' => 'Previa a votación', '2' => 'Abierta para votar', '3' => 'Cerrado', '4' => 'Publicado'),
+                    'label' => 'status',
                     'required' => true
                 )
             );
