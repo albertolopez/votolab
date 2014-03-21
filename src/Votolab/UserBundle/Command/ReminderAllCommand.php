@@ -21,7 +21,7 @@ class ReminderAllCommand extends ContainerAwareCommand
         $container = $this->getApplication()->getKernel()->getContainer();
         $userManager = $container->get('fos_user.user_manager');
         $em = $container->get('doctrine')->getManager()->getRepository('UserBundle:User');
-        $users = $em->findByRemindeSent(false);
+        $users = $em->findByReminderSent(false);
         if (!empty($users)) {
             foreach ($users as $user) {
                 $email = $user->getEmail();
