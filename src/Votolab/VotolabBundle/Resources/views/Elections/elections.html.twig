@@ -41,7 +41,11 @@
                     {% for election in electionsPast %}
                         <div class="well well-sm">
                             <h3>
-                                <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
+                                {% if election.status == 4 %}
+                                    <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
+                                {% else %}
+                                    {{ election.title }}
+                                {% endif %}
                             <span class="label label-danger pull-right">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 {{ election.dateStart|date("d/m/Y") }}
