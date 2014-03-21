@@ -54,6 +54,11 @@ class ElectionFormClass
     public $maxCandidates = 999;
 
     /**
+     * @var integer
+     */
+    public $status = 0;
+
+    /**
      * @var boolean
      */
     public $publishResults;
@@ -70,6 +75,7 @@ class ElectionFormClass
         $this->dateEnd = $election->getDateEnd();
         $this->minCandidates = $election->getMinCandidates();
         $this->maxCandidates = $election->getMaxCandidates();
+        $this->status = $election->getStatus();
         $this->publishResults = $election->getPublishResults();
         $this->datePublished = $election->getDatePublished();
     }

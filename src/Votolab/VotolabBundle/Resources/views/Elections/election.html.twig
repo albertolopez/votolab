@@ -1,19 +1,29 @@
 {% extends '::base.html.twig' %}
 {% block body %}
     <ol class="breadcrumb">
-        <li><a href="{{ path('votolab_elections') }}">{{ 'elections'|trans|capitalize}}</a></li>
+        <li><a href="{{ path('votolab_elections') }}">{{ 'elections'|trans|capitalize }}</a></li>
         <li class="active">{{ election.title }}</li>
     </ol>
     <div class="panel panel-primary election" data-election="{{ election.slug }}">
-        <div class="panel-heading"><h2>{{ election.title }}</h2></div>
+        <div class="panel-heading"><h2>{{ election.title }}</h2>
+
+            <h2><span class="label label-danger">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    {{ election.dateStart|date("d/m/Y") }}
+                    {% if election.dateStart|date("d/m/Y") != election.dateEnd|date("d/m/Y") %}
+                        al {{ election.dateEnd|date("d/m/Y") }}
+                    {% endif %}
+                    </span></h2></div>
         <div class="panel-body">
             <div class="well-sm">
                 <div class="row">
+
                     <div class="col-md-12">{{ election.description|raw }}</div>
                 </div>
                 <div class="row top-buffer">
                     {% for candidate in candidates %}
-                        <div class="col-md-12 candidate well well-sm" data-candidate="{{ candidate.id }}">{{ include ('VotolabBundle:Elections:candidate.html.twig') }}</div>
+                        <div class="col-md-12 candidate well well-sm"
+                             data-candidate="{{ candidate.id }}">{{ include ('VotolabBundle:Elections:candidate.html.twig') }}</div>
                     {% endfor %}
                 </div>
             </div>

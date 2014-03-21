@@ -21,10 +21,19 @@ class CandidateFormType extends AbstractType
                 )
             )
             ->add(
+                'competence',
+                'text',
+                array(
+                    'required' => true,
+                    'label' => 'competence',
+                    'trim' => true
+                )
+            )
+            ->add(
                 'biography',
                 'textarea',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'label' => 'bio',
                     'trim' => true
                 )
@@ -40,9 +49,11 @@ class CandidateFormType extends AbstractType
             )
             ->add(
                 'image',
-                'vlabs_file',
+                'text',
                 array(
-                    'required' => false
+                    'required' => false,
+                    'label' => 'image',
+                    'trim' => true
                 )
             )
             ->add(

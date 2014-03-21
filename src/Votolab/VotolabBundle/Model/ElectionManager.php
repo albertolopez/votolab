@@ -18,9 +18,9 @@ class ElectionManager extends ManagerAbstract
         return $query->getResult();
     }
 
-    public function findForUserPublished($user)
+    public function findForUserByStatus($user, $status = array())
     {
-        $query = $this->em->getRepository('VotolabBundle:Election')->findForUserPublished($user);
+        $query = $this->em->getRepository('VotolabBundle:Election')->findForUserByStatus($user, $status);
         return $query->getResult();
     }
 
@@ -73,6 +73,7 @@ class ElectionManager extends ManagerAbstract
         $election->setDatePublished($electionFormClass->datePublished);
         $election->setMaxCandidates($electionFormClass->maxCandidates);
         $election->setMinCandidates($electionFormClass->minCandidates);
+        $election->setStatus($electionFormClass->status);
         $election->setPublishResults($electionFormClass->publishResults);
         $this->persist($election);
         return true;

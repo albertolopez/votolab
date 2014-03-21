@@ -2,6 +2,7 @@
 
 namespace Votolab\VotolabBundle\EntityRepository;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\ResultSetMapping;
 
@@ -11,6 +12,7 @@ use Doctrine\ORM\Query\ResultSetMapping;
  */
 class ElectionRepository extends EntityRepository
 {
+
     public function findForUser($user)
     {
         return $this->getEntityManager()
@@ -22,26 +24,15 @@ class ElectionRepository extends EntityRepository
             )->setParameter('user', $user);
     }
 
-    public function findForUserPublished($user)
+    public function findForUserByStatus($user, $status = array())
     {
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT e FROM Votolab\VotolabBundle\Entity\Election e
                                 LEFT JOIN e.voters v
-                                WHERE e.dateEnd < CURRENT_TIMESTAMP()
-                                AND v = :user AND e.publishResults = true'
-            )->setParameter('user', $user);
-    }
-
-    public function findForUserUpcoming($user)
-    {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT e FROM Votolab\VotolabBundle\Entity\Election e
-                                LEFT JOIN e.voters v
-                                WHERE e.dateStart > CURRENT_TIMESTAMP()
-                                AND v = :user'
-            )->setParameter('user', $user);
+                                WHERE v = :user AND e.status IN (:status)'
+            )->setParameter('user', $user)
+            ->setParameter('status', $status, Connection::PARAM_INT_ARRAY);
     }
 
     public function isVoterForElection($user, $election)

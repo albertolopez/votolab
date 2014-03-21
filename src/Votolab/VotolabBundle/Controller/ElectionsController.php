@@ -24,9 +24,8 @@ class ElectionsController extends Controller
         $user = $this->getUser();
         $electionManager = $this->get('election_manager');
         return array(
-            'elections' => $electionManager->findForUser($user),
-            'electionsPast' => $electionManager->findForUserPublished($user),
-            'electionsFuture' => $electionManager->findForUserUpcoming($user),
+            'elections' => $electionManager->findForUserByStatus($user, array(Election::STATUS_OPEN, Election::STATUS_PREVIEW)),
+            'electionsPast' => $electionManager->findForUserByStatus($user, array(Election::STATUS_PUBLISHED, Election::STATUS_CLOSED)),
         );
     }
 
@@ -46,13 +45,10 @@ class ElectionsController extends Controller
 
     /**
      * @template
-     * @SecureParam(name="election", permissions="CAN_VIEW_ELECTION")
+     * @SecureParam(name="election", permissions="CAN_VIEW_TALLY")
      */
     public function tallyAction(Election $election)
     {
-        if (!$this->getUser()->hasRole('ROLE_SUPER_ADMIN') && ($election->getDateEnd() > new \DateTime('now') || !$election->getPublishResults())) {
-            return $this->redirect($this->generateUrl('votolab_elections'));
-        }
         $electionManager = $this->get('election_manager');
 
         return array(
@@ -142,7 +138,7 @@ class ElectionsController extends Controller
 
     /**
      * @template
-     * @SecureParam(name="election", permissions="CAN_VIEW_ELECTION")
+     * @SecureParam(name="election", permissions="CAN_VOTE_ELECTION")
      */
     public function voteAction(Request $request, Election $election, Candidate $candidate)
     {

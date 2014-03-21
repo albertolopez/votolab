@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Votolab\VotolabBundle\Entity\Election;
 use Votolab\VotolabBundle\Model\ElectionManager;
 
-class CanViewElectionVoter implements VoterInterface
+class CanViewTallyVoter implements VoterInterface
 {
     /** @var ElectionManager */
     protected $electionManager;
@@ -25,7 +25,7 @@ class CanViewElectionVoter implements VoterInterface
      */
     public function supportsAttribute($attribute)
     {
-        return 'CAN_VIEW_ELECTION' === $attribute;
+        return 'CAN_VIEW_TALLY' === $attribute;
     }
 
     /**
@@ -44,7 +44,7 @@ class CanViewElectionVoter implements VoterInterface
         foreach ($attributes as $attribute) {
             if ($this->supportsAttribute($attribute) && $this->supportsClass($election)) {
                 $user = $token->getUser();
-                if ((in_array($election->getStatus(), array(Election::STATUS_PREVIEW, Election::STATUS_OPEN)) && $this->electionManager->isVoterForElection($user, $election)) || $token->getUser()->hasRole('ROLE_SUPER_ADMIN')) {
+                if ((in_array($election->getStatus(), array(Election::STATUS_PUBLISHED)) && $this->electionManager->isVoterForElection($user, $election)) || $token->getUser()->hasRole('ROLE_SUPER_ADMIN')) {
                     return VoterInterface::ACCESS_GRANTED;
                 }
             }

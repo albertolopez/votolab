@@ -19,6 +19,12 @@
                 </p>
 
                 <p>
+                    <label>{{ form_label(form.competence) }}</label>
+                    <span class="field">{{ form_widget(form.competence,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.competence) }}</span>
+                </p>
+
+                <p>
                     <label>{{ form_label(form.biography) }}</label>
                     <span class="field">{{ form_widget(form.biography,  {'attr': {'class': 'form-control' }}
                         ) }} {{ form_errors(form.biography) }}</span>
@@ -28,6 +34,13 @@
                     <label>{{ form_label(form.video) }}</label>
                     <span class="field">{{ form_widget(form.video,  {'attr': {'class': 'form-control' }}
                         ) }} {{ form_errors(form.video) }}</span>
+                </p>
+
+
+                <p>
+                    <label>{{ form_label(form.image) }}</label>
+                    <span class="field">{{ form_widget(form.image,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.image) }}</span>
                 </p>
 
                 <p>

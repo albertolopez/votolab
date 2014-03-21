@@ -1,5 +1,5 @@
 <div class="col-md-3">
-    <img class="img-rounded" data-src="{{ candidate.image|vlabs_media('default') }}" alt="{{ candidate.name }}"/>
+    {{ candidate.image|vlabs_filter('resize', { width : 227, height : 200, keepRatio : true } )|vlabs_media('image') }}
 </div>
 <div class="col-md-9">
     <div>
@@ -16,6 +16,7 @@
         <span class="container-fluid">{{ candidate.video|embed|lazy|raw }}</span>
         <span class="container-fluid">{{ candidate.biography|raw }}</span>
 
+        {% if election.status == 2 %}
         <div id="valueCandidate-{{ candidate.id }}">
             <h4 class="container-fluid">{{ 'vote_candidate'|trans|capitalize }} {{ candidate.name }}</h4>
 
@@ -41,6 +42,7 @@
                 </button>
             </form>
         </div>
+        {% endif %}
     </div>
     <div class="alert alert-warning hide top-buffer" id="valueCandidateSuccess-{{ candidate.id }}">
         <strong>{{ 'vote_sent'|trans|capitalize }}</strong>

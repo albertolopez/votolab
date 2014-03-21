@@ -19,6 +19,10 @@ class CandidateFormClass
      */
     public $name;
     /**
+     * @var string
+     */
+    public $competence;
+    /**
      * @Assert\NotBlank(message="Introduce una bio")
      * @var string
      */
@@ -46,9 +50,10 @@ class CandidateFormClass
     {
         $this->id = $candidate->getId();
         $this->name = $candidate->getName();
+        $this->competence = $candidate->getCompetence();
         $this->biography = $candidate->getBiography();
         $this->video = $candidate->getVideo();
-        $this->image = $candidate->getImage();
+        $this->image = $candidate->getImagePath();
         $this->gender = $candidate->getGender();
         $this->election = $candidate->getElection();
     }

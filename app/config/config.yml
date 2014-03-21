@@ -84,3 +84,9 @@ vlabs_media:
     mapping:
         image_entity:
           class: Votolab\VotolabBundle\Entity\Image
+
+services:
+ twig.extension.text:
+     class: Twig_Extensions_Extension_Text
+     tags:
+         - { name: twig.extension }

@@ -5,32 +5,6 @@
     </ol>
 
 
-    {% if electionsFuture is not empty %}
-
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                {{ 'listElections.future_elections'|trans }}
-            </div>
-            <div class="panel-body">
-                <div class="elections">
-                    {% for election in electionsFuture %}
-                        <div class="well well-sm">
-                            <h3>
-                                {{ election.title }}
-                            <span class="label label-danger pull-right">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                                {{ election.dateStart|date("d/m/Y") }}
-                            </span>
-                            </h3>
-
-                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
     {% if elections is not empty %}
 
         <div class="panel panel-primary">
@@ -46,10 +20,13 @@
                             <span class="label label-danger pull-right">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 {{ election.dateStart|date("d/m/Y") }}
+                                {% if election.dateStart|date("d/m/Y") != election.dateEnd|date("d/m/Y") %}
+                                    al {{ election.dateEnd|date("d/m/Y") }}
+                                {% endif %}
                             </span>
                             </h3>
 
-                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                            <p>{{ election.description|striptags|truncate(350,true)|raw }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -64,14 +41,18 @@
                     {% for election in electionsPast %}
                         <div class="well well-sm">
                             <h3>
-                                <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
+                                {% if election.status == 4 %}
+                                    <a href="{{ path('votolab_tally', {'slug': election.slug}) }}">{{ election.title }}</a>
+                                {% else %}
+                                    {{ election.title }}
+                                {% endif %}
                             <span class="label label-danger pull-right">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 {{ election.dateStart|date("d/m/Y") }}
                             </span>
                             </h3>
 
-                            <p>{{ election.description|striptags[:350] ~ '...' }}</p>
+                            <p>{{ election.description|striptags|truncate(350,true)|raw }}</p>
                         </div>
                     {% endfor %}
                 </div>
