@@ -29,7 +29,7 @@ class ReminderAllCommand extends ContainerAwareCommand
                 $userManager->updateUser($user);
                 $message = \Swift_Message::newInstance()
                     ->setSubject('¡Todo preparado para el fogueo de mañana sábado 22 de marzo!')
-                    ->setFrom(array('tech@partidox.org' => 'Red Ciudadana - Partido X'))
+                    ->setFrom(array('red-ciudadana@partidox.org' => 'Red Ciudadana - Partido X'))
                     ->setTo($user->getEmail())
                     ->setBody($container->get('templating')->render('UserBundle:Email:reminder.html.twig'), 'text/html');
 
