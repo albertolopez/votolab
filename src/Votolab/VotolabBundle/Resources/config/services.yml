@@ -43,6 +43,18 @@ services:
     tags:
         - { name: security.voter }
 
+  can_vote_election_voter:
+    class: Votolab\VotolabBundle\Voters\CanVoteElectionVoter
+    arguments: [@election_manager]
+    tags:
+        - { name: security.voter }
+
+  can_view_tally_voter:
+    class: Votolab\VotolabBundle\Voters\CanViewTallyVoter
+    arguments: [@election_manager]
+    tags:
+        - { name: security.voter }
+
   # FORMS
   votolab.election.form.type:
     class: Votolab\VotolabBundle\Form\Type\ElectionFormType
