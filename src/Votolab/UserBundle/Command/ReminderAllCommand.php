@@ -25,8 +25,6 @@ class ReminderAllCommand extends ContainerAwareCommand
         if (!empty($users)) {
             foreach ($users as $user) {
                 $email = $user->getEmail();
-                $password = substr($container->get('fos_user.util.token_generator')->generateToken(), 0, 8);
-                $user->setPlainPassword($password);
                 $user->setReminderSent(true);
                 $userManager->updateUser($user);
                 $message = \Swift_Message::newInstance()
