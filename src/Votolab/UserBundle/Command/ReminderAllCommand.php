@@ -31,7 +31,7 @@ class ReminderAllCommand extends ContainerAwareCommand
                     ->setSubject('¡Todo preparado para el fogueo de mañana sábado 22 de marzo!')
                     ->setFrom(array('tech@partidox.org' => 'Red Ciudadana - Partido X'))
                     ->setTo($user->getEmail())
-                    ->setBody($container->get('templating')->render('UserBundle:Email:reminder.html.twig', array('email' => $email, 'password' => $password)), 'text/html');
+                    ->setBody($container->get('templating')->render('UserBundle:Email:reminder.html.twig'), 'text/html');
 
                 $container->get('mailer')->send($message);
                 $output->writeln($email . ': Enviado!');
