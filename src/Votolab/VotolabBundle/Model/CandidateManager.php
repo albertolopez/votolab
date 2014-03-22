@@ -28,6 +28,7 @@ class CandidateManager extends ManagerAbstract
         $candidate->setName($electionFormClass->name);
         $candidate->setCompetence($electionFormClass->competence);
         $candidate->setVideo($electionFormClass->video);
+        $candidate->setVideo2($electionFormClass->video2);
         $candidate->setImagePath($electionFormClass->image);
         $candidate->setElection($electionFormClass->election);
         $this->em->persist($candidate);

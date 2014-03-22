@@ -48,6 +48,15 @@ class CandidateFormType extends AbstractType
                 )
             )
             ->add(
+                'video2',
+                'text',
+                array(
+                    'required' => true,
+                    'label' => 'video2',
+                    'trim' => true
+                )
+            )
+            ->add(
                 'image',
                 'text',
                 array(

@@ -32,6 +32,10 @@ class CandidateFormClass
      */
     public $video;
     /**
+     * @var string
+     */
+    public $video2;
+    /**
      * @var Image
      *
      * @Vlabs\Media(identifier="image_entity", upload_dir="files/images")
@@ -53,6 +57,7 @@ class CandidateFormClass
         $this->competence = $candidate->getCompetence();
         $this->biography = $candidate->getBiography();
         $this->video = $candidate->getVideo();
+        $this->video2 = $candidate->getVideo2();
         $this->image = $candidate->getImagePath();
         $this->gender = $candidate->getGender();
         $this->election = $candidate->getElection();

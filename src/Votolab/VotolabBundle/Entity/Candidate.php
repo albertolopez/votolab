@@ -55,6 +55,14 @@ class Candidate
     private $video;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="video2", type="text")
+     */
+    private $video2;
+
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="gender", type="boolean")
@@ -187,6 +195,26 @@ class Candidate
     public function getVideo()
     {
         return $this->video;
+    }
+
+    /**
+     * Set video2
+     *
+     * @param string $video2
+     */
+    public function setVideo2($video2)
+    {
+        $this->video2 = $video2;
+    }
+
+    /**
+     * Get video2
+     *
+     * @return string
+     */
+    public function getVideo2()
+    {
+        return $this->video2;
     }
 
     /**

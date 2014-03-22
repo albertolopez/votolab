@@ -14,6 +14,7 @@
     </div>
     <div class="moreInfo container-fluid collapse" id="moreInfo-{{ candidate.id }}">
         <span class="container-fluid">{{ candidate.video|embed|lazy|raw }}</span>
+        <span class="container-fluid">{{ candidate.video2|embed|lazy|raw }}</span>
         <span class="container-fluid">{{ candidate.biography|raw }}</span>
 
         {% if election.status == 2 %}

@@ -41,6 +41,7 @@ class LoadCandidateData extends AbstractFixture implements FixtureInterface, Ord
             $candidate->setName($faker->name);
             $candidate->setBiography($faker->text(1000));
             $candidate->setVideo(str_replace('&feature=youtube_gdata', '', $xml->entry[($i % 10)]->link[0]['href']));
+            $candidate->setVideo2(str_replace('&feature=youtube_gdata', '', $xml->entry[(($i + 1) % 10)]->link[0]['href']));
             $candidate->setGender($faker->boolean());
             $candidate->setImage($image);
             $candidate->setCompetence($faker->text());
