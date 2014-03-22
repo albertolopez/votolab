@@ -10,6 +10,11 @@ $(function () {
     });
     $("button.submitVote").on('click', function (event) {
         event.preventDefault();
+
+        var candidate = $(this).parents('[data-candidate]').data('candidate');
+        $('#valueCandidateSuccess-' + candidate).addClass('hide');
+        $('[data-candidate="' + candidate + '"]').css('background-color', '#F5F5F5');
+
         var valid = true;
         $.each($(this).parents('form').find('[data-criterion]'), function () {
             var criterion = $(this).parent('.form-group');
@@ -21,7 +26,6 @@ $(function () {
                 criterion.find('.input-error').addClass('hide');
             }
         });
-        var candidate = $(this).parents('[data-candidate]').data('candidate');
         if (!$('#valueCandidateError-' + candidate).hasClass('hide')) {
             $('#valueCandidateError-' + candidate).addClass('hide');
         }
@@ -48,16 +52,8 @@ $(function () {
                     if (data.error === true) {
                         $('#valueCandidateError-' + candidate).removeClass('hide');
                     } else {
-                        var target = $(this).parents('form').find('[data-criterion]');
-                        target.each(function (index, element) {
-                            $(element).barrating('destroy');
-                            $(element).barrating('show', {showSelectedRating: true, readonly: true});
-                        });
-
-                        btn.hide('slow', function () {
-                            $('#valueCandidateSuccess-' + candidate).removeClass('hide');
-                            $('[data-candidate="' + candidate + '"]').css('background-color', '#DFF0D8');
-                        })
+                        $('#valueCandidateSuccess-' + candidate).removeClass('hide');
+                        $('[data-candidate="' + candidate + '"]').css('background-color', '#DFF0D8');
                     }
 
                 }

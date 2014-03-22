@@ -24,8 +24,14 @@ class ElectionsController extends Controller
         $user = $this->getUser();
         $electionManager = $this->get('election_manager');
         return array(
-            'elections' => $electionManager->findForUserByStatus($user, array(Election::STATUS_OPEN, Election::STATUS_PREVIEW)),
-            'electionsPast' => $electionManager->findForUserByStatus($user, array(Election::STATUS_PUBLISHED, Election::STATUS_CLOSED)),
+            'elections' => $electionManager->findForUserByStatus(
+                    $user,
+                    array(Election::STATUS_OPEN, Election::STATUS_PREVIEW)
+                ),
+            'electionsPast' => $electionManager->findForUserByStatus(
+                    $user,
+                    array(Election::STATUS_PUBLISHED, Election::STATUS_CLOSED)
+                ),
         );
     }
 
@@ -51,10 +57,13 @@ class ElectionsController extends Controller
         $candidateManager = $this->get('candidate_manager');
         $em = $this->container->get('doctrine')->getManager();
         $election = $em->getRepository('VotolabBundle:Election')->findOneBy(array('slug' => 'europeas-2014'));
-        return $this->render('VotolabBundle:Elections:candidates.html.twig', array(
-            'election' => $election,
-            'candidates' => $candidateManager->findByElectionOrderRandom($election)
-        ));
+        return $this->render(
+            'VotolabBundle:Elections:candidates.html.twig',
+            array(
+                'election' => $election,
+                'candidates' => $candidateManager->findByElectionOrderRandom($election)
+            )
+        );
     }
 
     /**
@@ -131,18 +140,20 @@ class ElectionsController extends Controller
     private function validateVote($ratings, $election, $candidate)
     {
         $user = $this->getUser();
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $votes = $em->getRepository('VotolabBundle:Vote')->findBy(array(
+        $em = $this->container->get('doctrine')->getManager();
+        $votes = $em->getRepository('VotolabBundle:Vote')->findBy(
+            array(
                 'election' => $election,
                 'candidate' => $candidate,
                 'user' => $user
-            ));
+            )
+        );
         if (count($votes) > $election->getMaxCandidates()) {
             return false;
         }
-        foreach($ratings as $rating) {
+        foreach ($ratings as $rating) {
             $electionCriteria = $em->getRepository('VotolabBundle:ElectionCriteria')->find($rating['index']);
-            if($rating['value'] > $electionCriteria->getMax() || $rating['value'] < $electionCriteria->getMin()) {
+            if ($rating['value'] > $electionCriteria->getMax() || $rating['value'] < $electionCriteria->getMin()) {
                 return false;
             }
         }
@@ -161,16 +172,25 @@ class ElectionsController extends Controller
             $response = array("error" => true, "message" => 'invalid vote');
             return new Response(json_encode($response));
         }
-        //sendVoteEmail($election, $candidate);
         foreach ($ratings as $rating) {
-            $em = $this->container->get('doctrine')->getEntityManager();
+            $em = $this->container->get('doctrine')->getManager();
             $electionCriteria = $em->getRepository('VotolabBundle:ElectionCriteria')->find($rating['index']);
-            $vote = new Vote();
-            $vote->setElection($election);
-            $vote->setCandidate($candidate);
-            $vote->setCriterion($electionCriteria);
+            $vote = $em->getRepository('VotolabBundle:Vote')->find(
+                array(
+                    'election' => $election->getId(),
+                    'candidate' => $candidate->getId(),
+                    'user' => $this->getUser()->getId(),
+                    'criterion' => $electionCriteria->getId()
+                )
+            );
+            if (empty($vote)) {
+                $vote = new Vote();
+                $vote->setElection($election);
+                $vote->setCandidate($candidate);
+                $vote->setCriterion($electionCriteria);
+                $vote->setUser($this->getUser());
+            }
             $vote->setVote($rating['value']);
-            $vote->setUser($this->getUser());
             $em->persist($vote);
             $em->flush();
         }
