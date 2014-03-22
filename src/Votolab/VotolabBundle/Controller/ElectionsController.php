@@ -165,15 +165,16 @@ class ElectionsController extends Controller
      * @template
      * @SecureParam(name="election", permissions="CAN_VOTE_ELECTION")
      */
-    public function voteAction(Request $request, Election $election, Candidate $candidate)
+    public function voteAction(Request $request, Election $election)
     {
         $ratings = $request->get('ratings');
+        $em = $this->container->get('doctrine')->getManager();
+        $candidate = $em->getRepository('VotolabBundle:Candidate')->find($request->get('candidateId'));
         if (!$this->validateVote($ratings, $election, $candidate)) {
             $response = array("error" => true, "message" => 'invalid vote');
             return new Response(json_encode($response));
         }
         foreach ($ratings as $rating) {
-            $em = $this->container->get('doctrine')->getManager();
             $electionCriteria = $em->getRepository('VotolabBundle:ElectionCriteria')->find($rating['index']);
             $vote = $em->getRepository('VotolabBundle:Vote')->find(
                 array(

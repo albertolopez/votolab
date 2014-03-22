@@ -45,7 +45,7 @@ $(function () {
                 url: Routing.generate('votolab_vote', {slug: $('[data-election]').data('election')}),
                 data: {
                     ratings: ratings,
-                    candidate: candidate
+                    candidateId: candidate
                 },
                 success: function (data) {
                     data = $.parseJSON(data);
