@@ -42,7 +42,7 @@ class CandidateFormType extends AbstractType
                 'video',
                 'text',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'label' => 'video',
                     'trim' => true
                 )
@@ -51,7 +51,7 @@ class CandidateFormType extends AbstractType
                 'video2',
                 'text',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'label' => 'video2',
                     'trim' => true
                 )
