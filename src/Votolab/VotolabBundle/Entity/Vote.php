@@ -14,34 +14,29 @@ use Votolab\UserBundle\Entity\User;
 class Vote
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var Election
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Election", inversedBy="votes")
      */
     private $election;
 
     /**
      * @var Candidate
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\Candidate", inversedBy="votes")
      */
     private $candidate;
 
     /**
      * @var User
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Votolab\UserBundle\Entity\User")
      */
     private $user;
 
     /**
      * @var ElectionCriteria
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Votolab\VotolabBundle\Entity\ElectionCriteria", inversedBy="votes")
      */
     private $criterion;
@@ -52,17 +47,6 @@ class Vote
      * @ORM\Column(name="vote", type="string", length=255)
      */
     private $vote;
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set election

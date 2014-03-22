@@ -49,7 +49,7 @@ class ElectionsController extends Controller
     public function ep2014Action()
     {
         $candidateManager = $this->get('candidate_manager');
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $em = $this->container->get('doctrine')->getManager();
         $election = $em->getRepository('VotolabBundle:Election')->findOneBy(array('slug' => 'europeas-2014'));
         return $this->render('VotolabBundle:Elections:candidates.html.twig', array(
             'election' => $election,

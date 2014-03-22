@@ -6,16 +6,16 @@
         <div class="container-fluid">
             <button type="button" class="pull-right btn btn-default read-more" data-toggle="collapse"
                     data-target="#moreInfo-{{ candidate.id }}">
-                <span class="glyphicon glyphicon-plus"></span> {{ 'read_more'|trans|capitalize }}
+                <span class="glyphicon glyphicon-plus"></span> {{ 'view_videos'|trans|capitalize }}
             </button>
             <h3>{{ candidate.name }}</h3>
         </div>
         <p class="competence top-buffer container-fluid">{{ candidate.competence }}</p>
+        <p class="container-fluid">{{ candidate.biography|raw }}</p>
     </div>
     <div class="moreInfo container-fluid collapse" id="moreInfo-{{ candidate.id }}">
         <span class="container-fluid">{{ candidate.video|embed|lazy|raw }}</span>
         <span class="container-fluid">{{ candidate.video2|embed|lazy|raw }}</span>
-        <span class="container-fluid">{{ candidate.biography|raw }}</span>
 
     </div>
     <div class="alert alert-warning hide top-buffer" id="valueCandidateSuccess-{{ candidate.id }}">
