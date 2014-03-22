@@ -13,13 +13,13 @@ reset: cancelar
 logout: salir
 back: volver
 to_vote: enviar
-vote_candidate: valora a
+vote_candidate: pondera a
 read_more: ver más
 view_videos: ver videos
 required_field: requerido
 voting: enviando
-vote_sent: Tu valoración ha sido recibida correctamente
-vote_error: Valoración no registrada, ha habido un error
+vote_sent: Tu ponderación ha sido recibida correctamente
+vote_error: Ponderación no registrada, ha habido un error
 tally_for: resultados de
 my_profile: mi perfil
 admin:
@@ -60,7 +60,7 @@ listElections:
     past_elections: Elecciones pasadas
     future_elections: Próximas elecciones
 editElections:
-    choose_a_candidate_to_valore_in: elige a un candidato para valorar en
+    choose_a_candidate_to_valore_in: elige a un candidato para ponderar en
 addElections:
     add_edit: Añadir / Editar Elección
 tally:
@@ -72,7 +72,7 @@ listTallies:
 voteEmail:
     your_vote_has_been_registered: tu voto ha sido registrado.
     we_registered_your_vote_to: hemos registrado tu voto a
-    your_valoration_was: tu valoración fue
+    your_valoration_was: tu ponderación fue
 listVoters:
     add_edit_voter_in: Añadir / Editar Votante en
     add_voter: Añadir Votante
