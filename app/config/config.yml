@@ -84,6 +84,8 @@ vlabs_media:
     mapping:
         image_entity:
           class: Votolab\VotolabBundle\Entity\Image
+    templates:
+         image_responsive: VotolabBundle:Templates:image_responsive.html.twig
 
 services:
  twig.extension.text:
