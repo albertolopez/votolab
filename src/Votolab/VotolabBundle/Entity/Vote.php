@@ -49,6 +49,11 @@ class Vote
     private $vote;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $voted_at;
+
+    /**
      * Set election
      *
      * @param Election $election
@@ -161,5 +166,25 @@ class Vote
     public function getVote()
     {
         return $this->vote;
+    }
+
+    /**
+     * Set voted_at
+     *
+     * @param string $voted_at
+     */
+    public function setVotedAt($voted_at)
+    {
+        $this->voted_at = $voted_at;
+    }
+
+    /**
+     * Get vote
+     *
+     * @return string
+     */
+    public function getVotedAt()
+    {
+        return $this->voted_at;
     }
 }

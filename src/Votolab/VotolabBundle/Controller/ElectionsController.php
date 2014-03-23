@@ -192,6 +192,7 @@ class ElectionsController extends Controller
                 $vote->setUser($this->getUser());
             }
             $vote->setVote($rating['value']);
+            $vote->setVotedAt(new \DateTime(date('Y-m-d H:i:s')));
             $em->persist($vote);
             $em->flush();
         }
