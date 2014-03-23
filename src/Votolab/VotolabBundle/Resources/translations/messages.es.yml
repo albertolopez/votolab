@@ -23,6 +23,9 @@ vote_error: Ponderación no registrada, ha habido un error
 tally_for: resultados de
 my_profile: mi perfil
 competences: competencias
+fogueo: fogueo de
+proposal_video1: Vídeo con el que se propuso a
+proposal_video2: en las listas abiertas
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección

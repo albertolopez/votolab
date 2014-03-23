@@ -14,7 +14,9 @@
         {{ candidate.biography|raw }}
     </div>
     <div class="moreInfo collapse top-buffer row" id="moreInfo-{{ candidate.id }}">
+        <h4 class="bottom-buffer">{{ 'fogueo'|trans|capitalize }} {{ candidate.name }}:</h4>
         <span>{{ candidate.video|embed|lazy|raw }}</span>
+        <h4 class="bottom-buffer top-buffer">{{ 'proposal_video1'|trans|capitalize }} {{ candidate.name }} {{ 'proposal_video2'|trans }}:</h4>
         <span>{{ candidate.video2|embed|lazy|raw }}</span>
 
         {% if election.status == 2 %}
