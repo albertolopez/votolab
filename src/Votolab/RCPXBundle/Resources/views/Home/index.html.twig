@@ -51,14 +51,16 @@
                 </p>
 
                 {{ render(controller("FOSUserBundle:Security:login")) }}
-
+                <p>
+                    <a href="{{ path('fos_user_resetting_request') }}">{{ 'forgot_password'|trans }}</a>
+                </p>
                 <p>Los candidatos que reciban al menos el 25 % ponderado de apoyos de los participantes pasarán a formar parte de las listas definitivas A y B. Cada uno de los participantes podrá  votar a cuantos candidatos desee de cada una de las <strong>Listas 0A y 0B</strong>.</p>
                 <p>Finalmente, se unirán ambas listas, intercalando los candidatos de las listas <strong>A y B</strong>. Con los candidatos de la Lista B ocupando los puestos impares.</p>
                 <p>Aquellos candidatos de la <strong>Lista 0A</strong> que no pasen a la lista definitiva quedarán fuera de las listas abiertas.<p/>
                 <p>Aquellos candidatos de la <strong>Lista 0B</strong> que NO hayan sido  seleccionados para la lista definitiva o que decididiesen no participar  en los Fogueos, se unirán a otras personas activas en la Red Ciudadana  Partido X para que, si así lo desean, puedan presentarse como voluntarias para completar las listas abiertas, <strong>únicamente en caso de que hiciera falta</strong>. Las posiciones de los candidatos en los últimos puestos a rellenar de  la lista se determinarán al azar. Todos los voluntarios deben de cumplir  las mismas condiciones de participación y competencia que se exigen al  resto de los posibles integrantes de las listas.</p>
 
             </div>
-            <a href="{{ path('fos_user_resetting_request') }}">{{ 'forgot_password'|trans }}</a>
+
         </div>
     </div>
 
