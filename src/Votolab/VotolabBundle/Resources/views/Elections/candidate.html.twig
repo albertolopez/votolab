@@ -10,7 +10,7 @@
             </button>
             <h3>{{ candidate.name }}</h3>
         </div>
-        <p class="competence top-buffer">{{ candidate.competence }}</p>
+        <p class="competence top-buffer"><strong>{{ 'competences'|trans|capitalize }}:</strong> {{ candidate.competence }}</p>
         {{ candidate.biography|raw }}
     </div>
     <div class="moreInfo collapse top-buffer row" id="moreInfo-{{ candidate.id }}">
@@ -19,7 +19,7 @@
 
         {% if election.status == 2 %}
             <div id="valueCandidate-{{ candidate.id }}" class="top-buffer">
-                <h4>{{ 'vote_candidate'|trans|capitalize }} {{ candidate.name }}</h4>
+                <h4>{{ 'vote_candidate'|trans|capitalize }}:</h4>
 
                 <form action="">
                     <div>

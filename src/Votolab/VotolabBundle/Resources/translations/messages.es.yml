@@ -13,8 +13,8 @@ reset: cancelar
 logout: salir
 back: volver
 to_vote: enviar
-vote_candidate: pondera a
-read_more: ver más
+vote_candidate: pondera del 1 al 5 (siendo el 5 la máxima puntuación) los siguientes puntos
+read_more: ver vídeos y ponderar
 view_videos: ver videos
 required_field: requerido
 voting: enviando
@@ -22,6 +22,7 @@ vote_sent: Tu ponderación ha sido recibida correctamente
 vote_error: Ponderación no registrada, ha habido un error
 tally_for: resultados de
 my_profile: mi perfil
+competences: competencias
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección
