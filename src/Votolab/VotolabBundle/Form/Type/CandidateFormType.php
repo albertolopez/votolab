@@ -21,10 +21,19 @@ class CandidateFormType extends AbstractType
                 )
             )
             ->add(
+                'original_list',
+                'choice',
+                array(
+                    'choices' => array('lista0A' => 'Lista 0A', 'lista0B' => 'Lista 0B'),
+                    'required' => true,
+                    'label' => 'list'
+                )
+            )
+            ->add(
                 'competence',
                 'text',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'label' => 'competence',
                     'trim' => true
                 )

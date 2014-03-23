@@ -19,6 +19,12 @@
                 </p>
 
                 <p>
+                    <label>{{ form_label(form.original_list) }}</label>
+                    <span class="field">{{ form_widget(form.original_list,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.original_list) }}</span>
+                </p>
+
+                <p>
                     <label>{{ form_label(form.competence) }}</label>
                     <span class="field">{{ form_widget(form.competence,  {'attr': {'class': 'form-control' }}
                         ) }} {{ form_errors(form.competence) }}</span>

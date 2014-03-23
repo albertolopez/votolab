@@ -26,6 +26,8 @@ competences: competencias
 fogueo: fogueo de
 proposal_video1: Vídeo con el que se propuso a
 proposal_video2: en las listas abiertas
+lista0A: LISTA 0A
+lista0B: LISTA 0B
 admin:
     list_elections: Lista de elecciones
     add_elections: Añadir Elección

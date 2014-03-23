@@ -9,6 +9,7 @@
                 <span class="glyphicon glyphicon-plus"></span> {{ 'read_more'|trans|capitalize }}
             </button>
             <h3>{{ candidate.name }}</h3>
+            <span class="label label-success">{{ candidate.getOriginalList()|trans }}</span>
         </div>
         <p class="competence top-buffer"><strong>{{ 'competences'|trans|capitalize }}:</strong> {{ candidate.competence }}</p>
         {{ candidate.biography|raw }}

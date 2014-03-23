@@ -88,6 +88,13 @@ class Candidate
     private $competence;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="original_list", type="string")
+     */
+    private $original_list;
+
+    /**
      * Get id
      *
      * @return integer
@@ -304,5 +311,25 @@ class Candidate
     public function getCompetence()
     {
         return $this->competence;
+    }
+
+    /**
+     * Set original list
+     *
+     * @param string $original_list
+     */
+    public function setOriginalList($originalList)
+    {
+        $this->original_list = $originalList;
+    }
+
+    /**
+     * Get original list
+     *
+     * @return string
+     */
+    public function getOriginalList()
+    {
+        return $this->original_list;
     }
 }

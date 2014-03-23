@@ -21,6 +21,10 @@ class CandidateFormClass
     /**
      * @var string
      */
+    public $original_list;
+    /**
+     * @var string
+     */
     public $competence;
     /**
      * @Assert\NotBlank(message="Introduce una bio")
@@ -61,6 +65,7 @@ class CandidateFormClass
         $this->image = $candidate->getImagePath();
         $this->gender = $candidate->getGender();
         $this->election = $candidate->getElection();
+        $this->original_list = $candidate->getOriginalList();
     }
 
 
