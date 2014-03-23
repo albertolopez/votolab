@@ -84,7 +84,7 @@ h3, h4 {
     text-transform: uppercase;
 }
 
-div.securityForm {
+.securityForm {
     background: none repeat scroll 0 0 #F9F9F9;
     margin: 10px auto 0;
     padding: 25px;
