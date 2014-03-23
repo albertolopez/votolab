@@ -17,7 +17,7 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 login_path: /
-                default_target_path: /elections
+                default_target_path: /election/europeas-2014
                 always_use_default_target_path: true
             logout:
                 target: /

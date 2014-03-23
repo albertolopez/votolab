@@ -11,7 +11,7 @@
                         <span class="glyphicon glyphicon-calendar"></span>
                     {{ election.dateStart|date("d/m/Y") }}
                     {% if election.dateStart|date("d/m/Y") != election.dateEnd|date("d/m/Y") %}
-                        al {{ election.dateEnd|date("d/m/Y") }}
+                        - {{ election.dateEnd|date("d/m/Y") }}
                     {% endif %}
                     </span></h2></div>
         <div class="panel-body">
