@@ -21,14 +21,14 @@ class ReminderAllCommand extends ContainerAwareCommand
         $container = $this->getApplication()->getKernel()->getContainer();
         $userManager = $container->get('fos_user.user_manager');
         $em = $container->get('doctrine')->getManager()->getRepository('UserBundle:User');
-        $users = $em->findByReminderSent(false);
+        $users = $em->findAll();
         if (!empty($users)) {
             foreach ($users as $user) {
                 $email = $user->getEmail();
                 $user->setReminderSent(true);
                 $userManager->updateUser($user);
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('¡Todo preparado para el fogueo de mañana sábado 22 de marzo!')
+                    ->setSubject('Último día para la votación de los candiadatos de la Red Ciudadana')
                     ->setFrom(array('red-ciudadana@partidox.org' => 'Red Ciudadana - Partido X'))
                     ->setTo($user->getEmail())
                     ->setBody($container->get('templating')->render('UserBundle:Email:reminder.html.twig'), 'text/html');
