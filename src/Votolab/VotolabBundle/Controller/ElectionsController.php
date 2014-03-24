@@ -61,7 +61,8 @@ class ElectionsController extends Controller
             'VotolabBundle:Elections:candidates.html.twig',
             array(
                 'election' => $election,
-                'candidates' => $candidateManager->findByElectionOrderRandom($election)
+                'candidates' => $candidateManager->findByElectionOrderRandom($election),
+                'criteria' => $election->getElectionCriteria()
             )
         );
     }
