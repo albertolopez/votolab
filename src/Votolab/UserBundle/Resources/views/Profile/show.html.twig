@@ -9,6 +9,8 @@
         </div>
         <div class="panel-body">
             {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+
+            <h4><a href="{{ path('votolab_election', {'slug': 'europeas-2014'}) }}">{{ 'link_ep2014'|trans|capitalize }}</a></h4>
         </div>
     </div>
 {% endblock %}
