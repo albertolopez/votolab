@@ -39,6 +39,15 @@ class ElectionFormType extends AbstractType
                 )
             )
             ->add(
+                'description_public',
+                'textarea',
+                array(
+                    'required' => false,
+                    'label' => 'descripción de la página pública',
+                    'trim' => true
+                )
+            )
+            ->add(
                 'slug',
                 'text',
                 array(

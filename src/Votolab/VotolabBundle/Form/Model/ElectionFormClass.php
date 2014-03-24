@@ -25,6 +25,10 @@ class ElectionFormClass
     public $description_tally;
     /**
      * @var string
+     */
+    public $description_public;
+    /**
+     * @var string
      * @Assert\NotBlank(message="Introduce una url")
      */
     public $slug;
@@ -70,6 +74,7 @@ class ElectionFormClass
         $this->title = $election->getTitle();
         $this->description = $election->getDescription();
         $this->description_tally = $election->getDescriptionTally();
+        $this->description_public = $election->getDescriptionPublic();
         $this->slug = $election->getSlug();
         $this->dateStart = $election->getDateStart();
         $this->dateEnd = $election->getDateEnd();

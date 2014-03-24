@@ -29,6 +29,12 @@
                 </p>
 
                 <p>
+                    <label>{{ form_label(form.description_public) }}</label>
+                    <span class="field">{{ form_widget(form.description_public,  {'attr': {'class': 'form-control' }}
+                        ) }} {{ form_errors(form.description_public) }}</span>
+                </p>
+
+                <p>
                     <label>{{ form_label(form.slug) }}</label>
                     <span class="field">{{ form_widget(form.slug,  {'attr': {'class': 'form-control' }}
                         ) }} {{ form_errors(form.slug) }}</span>
