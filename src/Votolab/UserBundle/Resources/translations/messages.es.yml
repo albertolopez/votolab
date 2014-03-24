@@ -21,3 +21,11 @@ resetting:
 
             Atentamente,
             Red Ciudadana Partido X
+
+security:
+    login:
+        email: "Dirección de correo electrónico:"
+        username: "Nombre de usuario:"
+        password: "Contraseña:"
+        remember_me: Recordar
+        submit: Entrar
