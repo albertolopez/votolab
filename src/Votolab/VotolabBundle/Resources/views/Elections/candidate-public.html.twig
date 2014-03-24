@@ -2,21 +2,53 @@
     {{ candidate.image|vlabs_filter('resize', { width : 227, height : 200, keepRatio : true } )|vlabs_media('image_responsive') }}
 </div>
 <div class="col-md-9">
-    <div>
+    <div class="row">
         <div>
             <button type="button" class="pull-right btn btn-default read-more" data-toggle="collapse"
                     data-target="#moreInfo-{{ candidate.id }}">
-                <span class="glyphicon glyphicon-plus"></span> {{ 'view_videos'|trans|capitalize }}
+                <span class="glyphicon glyphicon-plus"></span> {{ 'read_more'|trans|capitalize }}
             </button>
             <h3>{{ candidate.name }}</h3>
+            <span class="label label-success">{{ candidate.getOriginalList()|trans }}</span>
         </div>
-        <p class="competence top-buffer">{{ candidate.competence }}</p>
+        <p class="competence top-buffer"><strong>{{ 'competences'|trans|capitalize }}
+                :</strong> {{ candidate.competence }}</p>
         {{ candidate.biography|raw }}
     </div>
-    <div class="moreInfo collapse top-buffer" id="moreInfo-{{ candidate.id }}">
+    <div class="moreInfo collapse top-buffer row" id="moreInfo-{{ candidate.id }}">
+        <h4 class="bottom-buffer">{{ 'fogueo'|trans|capitalize }} {{ candidate.name }}:</h4>
         <span>{{ candidate.video|embed|lazy|raw }}</span>
+        <h4 class="bottom-buffer top-buffer">{{ 'proposal_video1'|trans|capitalize }} {{ candidate.name }} {{ 'proposal_video2'|trans }}
+            :</h4>
         <span>{{ candidate.video2|embed|lazy|raw }}</span>
 
+        <div id="valueCandidate-{{ candidate.id }}" class="top-buffer">
+            <h4>{{ 'vote_candidate'|trans|capitalize }}:</h4>
+
+            <form action="">
+                <div>
+                    <ul class="criteria col-md-12">
+                        {% for criterion in criteria %}
+                            <li class="top-buffer form-group">
+                                <p>{{ criterion.criterion }}:</p>
+                                <select data-criterion="{{ criterion.id }}" name="{{ criterion.id }}"
+                                        class="criterion">
+                                    <option value=""></option>
+                                    {% for i in criterion.min..criterion.max %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                                <span class="control-label hide input-error">{{ 'required_field'|trans|capitalize }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="alert alert-danger col-md-12 top-buffer hide"
+                         id="valueCandidateError-{{ candidate.id }}">{{ 'vote_error'|trans|capitalize }}</div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="alert alert-warning hide top-buffer" id="valueCandidateSuccess-{{ candidate.id }}">
         <strong>{{ 'vote_sent'|trans|capitalize }}</strong>
