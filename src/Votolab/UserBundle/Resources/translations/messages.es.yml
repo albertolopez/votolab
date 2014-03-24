@@ -1,2 +1,23 @@
 listas_abiertas: "Listas abiertas ciudadanas"
 forgot_password: "He olvidado mi contraseña"
+# Password resetting
+resetting:
+    password_already_requested: La contraseña para este usuario ya ha sido solicitada dentro de las 24 horas.
+    check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para restablecer tu contraseña.
+    request:
+        invalid_username: La dirección de correo "%username%" no existe.
+        email: "Dirección de correo electrónico:"
+        submit: Restablecer contraseña
+    reset:
+        submit: Cambiar contraseña
+    flash:
+        success: La contraseña se ha cambiado con éxito
+    email:
+        subject: Restablecer Contraseña
+        message : |
+            Hola %username%!
+
+            Para restablecer tu contraseña - por favor visita %confirmationUrl%
+
+            Atentamente,
+            Red Ciudadana Partido X
